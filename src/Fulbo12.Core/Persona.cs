@@ -9,5 +9,24 @@ namespace Fulbo12.Core
         public float Peso { get; set; }
         public float Altura { get; set; }
         public Pais Pais { get; set; }
+
+        public byte Edad
+        {
+            get
+            {
+                var hoy = DateTime.Today;
+                var anios = Convert.ToByte((hoy.Year - Nacimiento.Year));
+                
+                if (hoy.Month < Nacimiento.Month)
+                {
+                    return --anios;
+                }
+                else if (hoy.Month == Nacimiento.Month && hoy.Day >= Nacimiento.Day)
+                {
+                    return anios;
+                }
+                else return --anios;
+            }
+        }
     }
 }
