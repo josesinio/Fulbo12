@@ -63,6 +63,7 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
 
 * **Arturo Cruz** - *Desarrollo* - [ArturoCruz606](https://github.com/ArturoCruz606)
+* **Lucas Medina** - *Desarrollo* - [LucasMedina04](https://github.com/LucasMedina04)
 * **Luis Duran** - *Documentación* - [luchoxx87](https://github.com/luchoxx87)
 
 ## Licencia 📄
