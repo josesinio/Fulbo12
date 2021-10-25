@@ -28,5 +28,7 @@ namespace Fulbo12.Core
                 else return --anios;
             }
         }
+        public bool MismaNacionalidad(Persona persona)
+            =>  persona.Pais==this.Pais;
     }
 }
