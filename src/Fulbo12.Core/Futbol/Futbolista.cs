@@ -8,5 +8,9 @@ namespace Fulbo12.Core.Futbol
 
         public bool MismaNacionalidad(Futbolista futbolista)
             => Persona.MismaNacionalidad(futbolista.Persona);
+
+        public bool MismaLiga(Futbolista futbolista)
+            => this.Equipo.MismaLiga(futbolista.Equipo);
+        
     }
 }
