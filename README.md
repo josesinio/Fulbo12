@@ -65,6 +65,7 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 | Arturo Cruz | Desarrollo | [ArturoCruz606](https://github.com/ArturoCruz606) |
 | Lucas Medina | Desarrollo | [LucasMedina04](https://github.com/LucasMedina04) |
 | Ezequiel Kippes | Desarrollo | [Liono02](https://github.com/Liono02) |
+| Martín Morandini | Desarrollo | [MMorandiniGit](https://github.com/MMorandiniGit) |
 | Luis Duran | Documentación | [luchoxx87](https://github.com/luchoxx87) |
 
 
