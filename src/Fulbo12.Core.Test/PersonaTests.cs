@@ -2,31 +2,29 @@ using Xunit;
 
 namespace Fulbo12.Core.Test
 {
+    [Collection("ColeccionPersonasFutbolistas")]
     public class PersonaTests
     {
-        public Persona PepeArgento { get; set; }
-        public Pais Argentina { get; set; }
-
-        public PersonaTests()
+        FutbolistasFixture Fixture { get; set; }
+        public PersonaTests(FutbolistasFixture fixture)
         {
-            Argentina = new Pais("Argentina");
-            PepeArgento = new Persona()
-            {
-                Nombre = "Pepe",
-                Apellido = "Argento",
-                Pais = Argentina,
-                Altura = 1.68f,
-                Peso = 65
-            };
-
+            Fixture = fixture;
         }
+
         [Fact]
         public void InstanciaPersona()
         {
-            Assert.Same(Argentina, PepeArgento.Pais);
-            Assert.Equal("Pepe", PepeArgento.Nombre);
-            Assert.Equal("Argento", PepeArgento.Apellido);
-            Assert.Equal(1.68f, PepeArgento.Altura, precision: 2);
+            Assert.Same(Fixture.Argentina, Fixture.PLioMessi.Pais);
+            Assert.Equal("Lionel", Fixture.PLioMessi.Nombre);
+            Assert.Equal("Messi", Fixture.PLioMessi.Apellido);
+            Assert.Equal(1.7f, Fixture.PLioMessi.Altura, precision: 2);
+        }
+
+        [Fact]
+        public void MismaNacionalidad()
+        {
+            Assert.False(Fixture.PLioMessi.MismaNacionalidad(Fixture.PFrankFabra));
+            Assert.True(Fixture.PLioMessi.MismaNacionalidad(Fixture.PMarcosRojo));
         }
     }
 }
