@@ -12,5 +12,7 @@ namespace Fulbo12.Core.Futbol
         public bool MismaLiga(Futbolista futbolista)
             => this.Equipo.MismaLiga(futbolista.Equipo);
         
+        public bool MismoEquipo(Futbolista futbolista)
+            => futbolista.Equipo == this.Equipo; 
     }
 }
