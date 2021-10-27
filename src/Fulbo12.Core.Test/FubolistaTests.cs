@@ -24,5 +24,12 @@ namespace Fulbo12.Core.Test
             Assert.False(Fixture.FLioMessi.MismaLiga(Fixture.FMarcosRojo));
             Assert.True(Fixture.FMarcosRojo.MismaLiga(Fixture.FFrankFabra));
         }
+
+        [Fact]
+        public void MismoEquipo()
+        {
+            Assert.False(Fixture.FLioMessi.MismoEquipo(Fixture.FMarcosRojo));
+            Assert.True(Fixture.FMarcosRojo.MismoEquipo(Fixture.FFrankFabra));
+        }
     }
 }
