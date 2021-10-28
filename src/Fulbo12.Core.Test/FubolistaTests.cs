@@ -31,5 +31,13 @@ namespace Fulbo12.Core.Test
             Assert.False(Fixture.FLioMessi.MismoEquipo(Fixture.FMarcosRojo));
             Assert.True(Fixture.FMarcosRojo.MismoEquipo(Fixture.FFrankFabra));
         }
+        [Fact]
+        public void JuegaDe()
+        {
+            Assert.True(Fixture.FLioMessi.JuegaDe(Fixture.MediocampistaOfensivo));
+            Assert.False(Fixture.FLioMessi.JuegaDe(Fixture.DefensorCentral));
+            Assert.True(Fixture.FFrankFabra.JuegaDe(Fixture.DefensorIzquierdo));
+            Assert.False(Fixture.FFrankFabra.JuegaDe(Fixture.MediaPunta));
+        }
     }
 }

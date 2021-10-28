@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Fulbo12.Core.Futbol
 {
     public class Futbolista
@@ -5,6 +7,7 @@ namespace Fulbo12.Core.Futbol
         public Persona Persona { get; set; }
         public TipoFutbolista Tipofutbolista { get; set; }
         public Equipo Equipo { get; set; }
+        public List<Posicion> Posiciones { get; set;}
 
         public bool MismaNacionalidad(Futbolista futbolista)
             => Persona.MismaNacionalidad(futbolista.Persona);
@@ -13,6 +16,14 @@ namespace Fulbo12.Core.Futbol
             => this.Equipo.MismaLiga(futbolista.Equipo);
         
         public bool MismoEquipo(Futbolista futbolista)
-            => futbolista.Equipo == this.Equipo; 
+            => futbolista.Equipo == this.Equipo;
+        
+        public bool JuegaDe(Posicion posicion)
+            => Posiciones.Contains(posicion);
+
+        public Futbolista()
+        {
+            Posiciones = new List<Posicion>();
+        }
     }
 }
