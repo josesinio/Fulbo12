@@ -22,16 +22,31 @@ namespace Fulbo12.Core.Test
         #endregion
         public FutbolistasFixture()
         {
+            SetupPaises();
+            SetupLigas();
+            SetupEquipos();
+            SetupPersonas();
+            SetupFutbolistas();
+        }
+
+        private void SetupPaises()
+        {
             Argentina = new Pais("Argentina");
             Colombia = new Pais("Colombia");
             Francia = new Pais("Francia");
-
+        }
+        private void SetupLigas()
+        {
             ProfFutbol = new Liga("Liga Profesional de Fútbol", Argentina);
             Ligue1 = new Liga("Ligue 1", Francia);
-
+        }
+        private void SetupEquipos()
+        {
             BocaJrs = new Equipo("Club Atlético Boca Juniors", ProfFutbol);
             PSG = new Equipo("Paris Saint-Germain Football Club", Ligue1);
-
+        }
+        private void SetupPersonas()
+        {
             PLioMessi = new Persona()
             {
                 Nombre = "Lionel",
@@ -39,11 +54,6 @@ namespace Fulbo12.Core.Test
                 Pais = Argentina,
                 Altura = 1.7f,
                 Peso = 67
-            };
-            FLioMessi = new Futbolista()
-            {
-                Persona = PLioMessi,
-                Equipo = PSG
             };
 
             PFrankFabra = new Persona()
@@ -54,11 +64,6 @@ namespace Fulbo12.Core.Test
                 Altura = 1.74f,
                 Peso = 80
             };
-            FFrankFabra = new Futbolista()
-            {
-                Persona = PFrankFabra,
-                Equipo = BocaJrs
-            };
 
             PMarcosRojo = new Persona()
             {
@@ -68,6 +73,21 @@ namespace Fulbo12.Core.Test
                 Altura = 1.87f,
                 Peso = 82
             };
+        }
+        private void SetupFutbolistas()
+        {
+            FLioMessi = new Futbolista()
+            {
+                Persona = PLioMessi,
+                Equipo = PSG
+            };
+
+            FFrankFabra = new Futbolista()
+            {
+                Persona = PFrankFabra,
+                Equipo = BocaJrs
+            };
+
             FMarcosRojo = new Futbolista()
             {
                 Persona = PMarcosRojo,
