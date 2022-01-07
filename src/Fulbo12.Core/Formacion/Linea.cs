@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fulbo12.Core.Formacion
 {
@@ -9,28 +11,11 @@ namespace Fulbo12.Core.Formacion
         public Linea() => Posiciones = new List<PosicionEnCancha>();
         public byte CantidadJugadores
         {
-            get
-            {
-                byte jugadores = 0;
-                foreach (var item in Posiciones)
-                {
-                    if (item.Jugador != null)
-                    jugadores++;
-                }
-                return jugadores;
-            }
+            get => Convert.ToByte(Posiciones.Count(item => item.Futbolista != null));
         }
         public byte QuimicaJugadores
         {
-            get
-            {
-                byte suma = 0;
-                foreach (var item in Posiciones)
-                {
-                    suma += item.QuimicaJugador;
-                }
-                return suma;
-            }
+            get => Convert.ToByte(Posiciones.Sum(item => item.QuimicaJugador));
         }
     }
 }
