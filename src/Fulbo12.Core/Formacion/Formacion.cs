@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Fulbo12.Core.Formacion
 {
@@ -10,15 +11,7 @@ namespace Fulbo12.Core.Formacion
         public Formacion() => Lineas = new List<Linea>();
         public byte QuimicaJugadores
         {
-            get
-            {
-                byte suma = 0;
-                foreach (var item in Lineas)
-                {
-                    suma += item.QuimicaJugadores;
-                }
-                return suma;
-            }
+            get => Convert.ToByte(Lineas.Sum(item => item.QuimicaJugadores));
         }
     }
 }
