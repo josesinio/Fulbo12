@@ -11,7 +11,7 @@ namespace Fulbo12.Core.Formacion
         public Formacion() => Lineas = new List<Linea>();
         public byte QuimicaJugadores
         {
-            get => Convert.ToByte(Lineas.Sum(item => item.QuimicaJugadores));
+            get => Convert.ToByte(Lineas.Sum(l => l.QuimicaJugadores));
         }
     }
 }
