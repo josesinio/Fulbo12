@@ -13,5 +13,12 @@ namespace Fulbo12.Core.Formacion
         {
             get => Convert.ToByte(Lineas.Sum(l => l.QuimicaJugadores));
         }
+        private IEnumerable<byte> PosicionesPorLinea
+            => Lineas.Select(l => l.CantidadPosiciones);
+        public override string ToString()
+        {
+            //TODO usar la prop PosicionesPorLinea y el método string join
+            return "";
+        }
     }
 }

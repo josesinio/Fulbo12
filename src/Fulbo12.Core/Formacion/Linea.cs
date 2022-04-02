@@ -10,16 +10,10 @@ namespace Fulbo12.Core.Formacion
         public List<PosicionEnCancha> Posiciones { get; set; }
         public Linea() => Posiciones = new List<PosicionEnCancha>();
         public byte CantidadJugadores
-        {
-            get => Convert.ToByte(Posiciones.Count(p => p.Futbolista != null));
-        }
+            => Convert.ToByte(Posiciones.Count(p => p.HayJugador));
         public byte CantidadPosiciones
-        {
-            get => Convert.ToByte(Posiciones.Count);
-        }
+            => Convert.ToByte(Posiciones.Count);
         public byte QuimicaJugadores
-        {
-            get => Convert.ToByte(Posiciones.Sum(p => p.QuimicaJugador));
-        }
+            => Convert.ToByte(Posiciones.Sum(p => p.QuimicaJugador));
     }
 }
