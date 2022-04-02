@@ -11,11 +11,14 @@ namespace Fulbo12.Core.Formacion
         {
             get
             {
-                if (Futbolista == null)
-                {
-                    return 0;
-                }
-                else return 10;
+                if (HayJugador) return 0; else return 10;
+            }
+        }
+        public bool HayJugador
+        {
+            get
+            {
+                if (Futbolista == null) return false; else return true;
             }
         }
     }
