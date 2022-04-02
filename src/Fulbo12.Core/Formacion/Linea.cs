@@ -13,9 +13,13 @@ namespace Fulbo12.Core.Formacion
         {
             get => Convert.ToByte(Posiciones.Count(item => item.Futbolista != null));
         }
+        public byte CantidadPosiciones
+        {
+            get => Convert.ToByte(Posiciones.Count);
+        }
         public byte QuimicaJugadores
         {
-            get => Convert.ToByte(Posiciones.Sum(item => item.QuimicaJugador));
+            get => Convert.ToByte(Posiciones.Sum(p => p.QuimicaJugador));
         }
     }
 }
