@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Fulbo12.Core.Formacion
 {
@@ -16,9 +17,6 @@ namespace Fulbo12.Core.Formacion
         private IEnumerable<byte> PosicionesPorLinea
             => Lineas.Select(l => l.CantidadPosiciones);
         public override string ToString()
-        {
-            //TODO usar la prop PosicionesPorLinea y el método string join
-            return "";
-        }
+            => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
     }
 }
