@@ -16,8 +16,6 @@ namespace Fulbo12.Core.Formacion
         }
         public bool HayJugador => Futbolista is not null;
         public bool EsNumero(byte numeroCamiseta)
-        {
-            if (NumeroCamiseta is null) return false; return NumeroCamiseta == numeroCamiseta;
-        }
+            => NumeroCamiseta.HasValue && NumeroCamiseta == numeroCamiseta;
     }
 }
