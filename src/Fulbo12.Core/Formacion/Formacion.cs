@@ -15,5 +15,7 @@ namespace Fulbo12.Core.Formacion
             => Lineas.Select(l => l.CantidadPosiciones);
         public override string ToString()
             => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
+        public bool ExisteNumero(byte numeroCamiseta)
+            => Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
     }
 }
