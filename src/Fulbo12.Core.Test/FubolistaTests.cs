@@ -1,43 +1,41 @@
 using Xunit;
+using Fulbo12.Core.Futbol.Fixtures;
 
 namespace Fulbo12.Core.Test
 {
-    [Collection("ColeccionPersonasFutbolistas")]
-    public class FubolistaTests
+    public class FubolistaTests : IClassFixture<FutbolFixture>
     {
-        FutbolistasFixture Fixture { get; set; }
-        public FubolistaTests(FutbolistasFixture fixture)
-        {
-            Fixture = fixture;
-        }
+        FutbolFixture ff { get; set; }
+        public FubolistaTests(FutbolFixture futbolistasFixture)
+            => ff = futbolistasFixture;
 
         [Fact]
         public void MismaNacionalidad()
         {
-            Assert.False(Fixture.FFrankFabra.MismaNacionalidad(Fixture.FLioMessi));
-            Assert.True(Fixture.FLioMessi.MismaNacionalidad(Fixture.FMarcosRojo));
+            Assert.False(ff.Futbolistas.FFrankFabra.MismaNacionalidad(ff.Futbolistas.FLioMessi));
+            Assert.True(ff.Futbolistas.FLioMessi.MismaNacionalidad(ff.Futbolistas.FMarcosRojo));
         }
 
         [Fact]
         public void MismaLiga()
         {
-            Assert.False(Fixture.FLioMessi.MismaLiga(Fixture.FMarcosRojo));
-            Assert.True(Fixture.FMarcosRojo.MismaLiga(Fixture.FFrankFabra));
+            Assert.False(ff.Futbolistas.FLioMessi.MismaLiga(ff.Futbolistas.FMarcosRojo));
+            Assert.True(ff.Futbolistas.FMarcosRojo.MismaLiga(ff.Futbolistas.FFrankFabra));
         }
 
         [Fact]
         public void MismoEquipo()
         {
-            Assert.False(Fixture.FLioMessi.MismoEquipo(Fixture.FMarcosRojo));
-            Assert.True(Fixture.FMarcosRojo.MismoEquipo(Fixture.FFrankFabra));
+            Assert.False(ff.Futbolistas.FLioMessi.MismoEquipo(ff.Futbolistas.FMarcosRojo));
+            Assert.True(ff.Futbolistas.FMarcosRojo.MismoEquipo(ff.Futbolistas.FFrankFabra));
         }
         [Fact]
         public void JuegaDe()
         {
-            Assert.True(Fixture.FLioMessi.JuegaDe(Fixture.MediocampistaOfensivo));
-            Assert.False(Fixture.FLioMessi.JuegaDe(Fixture.DefensorCentral));
-            Assert.True(Fixture.FFrankFabra.JuegaDe(Fixture.DefensorIzquierdo));
-            Assert.False(Fixture.FFrankFabra.JuegaDe(Fixture.MediaPunta));
+            Assert.True(ff.Futbolistas.FLioMessi.JuegaDe(ff.Posiciones.MediocampistaOfensivo));
+            Assert.False(ff.Futbolistas.FLioMessi.JuegaDe(ff.Posiciones.DefensorCentral));
+            Assert.True(ff.Futbolistas.FFrankFabra.JuegaDe(ff.Posiciones.DefensorIzquierdo));
+            Assert.False(ff.Futbolistas.FFrankFabra.JuegaDe(ff.Posiciones.MediaPunta));
         }
     }
 }

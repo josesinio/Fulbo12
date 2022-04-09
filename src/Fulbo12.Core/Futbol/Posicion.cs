@@ -4,5 +4,7 @@ namespace Fulbo12.Core.Futbol
     {
         public byte Id { get; set; }
         public string Nombre { get; set; }
+        public Posicion() { }
+        public Posicion(string nombre) => Nombre = nombre;
     }
 }
