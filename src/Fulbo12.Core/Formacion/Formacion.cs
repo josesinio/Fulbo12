@@ -7,6 +7,11 @@ namespace Fulbo12.Core.Formacion
 {
     public class Formacion
     {
+        public static readonly byte CantidadTitulares = 11;
+        public static readonly byte CantidadSuplentes = 5;
+        public static readonly byte CantidadReserva = 5;
+        public static readonly byte CantidadTotalJugadores =
+            Convert.ToByte(CantidadTitulares + CantidadSuplentes + CantidadReserva);
         public List<Linea> Lineas { get; set; }
         public Formacion() => Lineas = new List<Linea>();
         public byte QuimicaJugadores

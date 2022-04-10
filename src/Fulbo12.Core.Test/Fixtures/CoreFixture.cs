@@ -1,7 +1,3 @@
-
-using Fulbo12.Core.Futbol.Fixtures;
-using Xunit;
-
 namespace Fulbo12.Core.Fixtures
 {
     public class CoreFixture
