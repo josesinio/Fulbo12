@@ -9,6 +9,8 @@ namespace Fulbo12.Core.Formacion
         public byte NumeroDeLinea { get; set; }
         public List<PosicionEnCancha> Posiciones { get; set; }
         public Linea() => Posiciones = new List<PosicionEnCancha>();
+        public Linea(List<PosicionEnCancha> posicionesEnCancha)
+            => Posiciones = posicionesEnCancha;
         public byte CantidadJugadores
             => Convert.ToByte(Posiciones.Count(p => p.HayJugador));
         public byte CantidadPosiciones

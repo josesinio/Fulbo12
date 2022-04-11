@@ -19,6 +19,14 @@ namespace Fulbo12.Core.Formacion.Test
         public void HayJugador()
         {
             Assert.True(PosicionesEnCancha.DFI.HayJugador);
+            Assert.True(PosicionesEnCancha.DFC.HayJugador);
+        }
+
+        [Fact]
+        public void NoHayJugador()
+        {
+            Assert.False(PosicionesEnCancha.DFCVacante.HayJugador);
+            Assert.False(PosicionesEnCancha.DFDVacante.HayJugador);
         }
     }
 }
