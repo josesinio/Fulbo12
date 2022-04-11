@@ -30,7 +30,6 @@ namespace Fulbo12.Core.Formacion
                 {
                     if (!ExisteNumero(i))
                         return i;
-                    i++;
                 }
                 throw new InvalidOperationException("No hay más dorsales disponibles");
             }
