@@ -33,6 +33,9 @@ namespace Fulbo12.Core.Futbol.Fixtures
         public Futbolista FJavierPinola { get; private set; }
         public Futbolista FEmanuelMammana { get; private set; }
         public Futbolista FEliasGomez { get; private set; }
+        public Futbolista FFrancoArmani { get; private set; }
+        public Futbolista FEzequielCenturion { get; private set; }
+        public Futbolista FFrancoPetroli { get; private set; }
         public FutbolistasFixture(PersonasFixture pef, EquiposFixture ef, PosicionesFixture pof)
         {
             FLioMessi = new Futbolista()
@@ -229,6 +232,27 @@ namespace Fulbo12.Core.Futbol.Fixtures
                 Persona = pef.PEliasGomez,
                 Equipo = ef.RiverPlate,
                 Posiciones = new List<Posicion>() {pof.DefensorIzquierdo}
+            };
+
+            FFrancoArmani = new Futbolista()
+            {
+                Persona = pef.PFrancoArmani,
+                Equipo = ef.RiverPlate,
+                Posiciones = new List<Posicion>() {pof.Arquero}
+            };
+
+            FEzequielCenturion = new Futbolista()
+            {
+                Persona = pef.PEzequielCenturion,
+                Equipo = ef.RiverPlate,
+                Posiciones = new List<Posicion>() {pof.Arquero}
+            };
+
+            FFrancoPetroli = new Futbolista()
+            {
+                Persona = pef.PFrancoPetroli,
+                Equipo = ef.RiverPlate,
+                Posiciones = new List<Posicion>() {pof.Arquero}
             };
         }
     }

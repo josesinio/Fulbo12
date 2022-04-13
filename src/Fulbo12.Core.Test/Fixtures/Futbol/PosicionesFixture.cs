@@ -7,6 +7,7 @@ namespace Fulbo12.Core.Futbol.Fixtures
         public Posicion MediaPunta { get; set; }
         public Posicion MediocampistaOfensivo { get; set; }
         public Posicion DefensorDerecho { get; set; }
+        public Posicion Arquero { get; set; }
 
         public PosicionesFixture()
         {
@@ -15,6 +16,7 @@ namespace Fulbo12.Core.Futbol.Fixtures
             DefensorCentral = new Posicion("Defensor Central");
             MediaPunta = new Posicion("Media Punta");
             MediocampistaOfensivo = new Posicion("Mediocampista Ofensivo");
+            Arquero = new Posicion("Arquero");
         }
     }
 }

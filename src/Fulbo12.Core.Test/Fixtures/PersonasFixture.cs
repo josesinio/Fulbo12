@@ -30,6 +30,9 @@ namespace Fulbo12.Core.Fixtures
         public Persona PJavierPinola { get; set; }
         public Persona PEmanuelMammana { get; set; }
         public Persona PEliasGomez { get; set; }
+        public Persona PFrancoArmani { get; set; }
+        public Persona PEzequielCenturion { get; set; }
+        public Persona PFrancoPetroli { get; set; }
 
         public PersonasFixture(PaisesFixtures paisesFixtures)
         {
@@ -181,7 +184,7 @@ namespace Fulbo12.Core.Fixtures
             {
                 Nombre = "Julian",
                 Apellido = "Alvarez",
-                Pais = paisesFixtures.Colombia,
+                Pais = paisesFixtures.Argentina,
                 Altura = 1.70f,
                 Peso = 71
             };
@@ -190,7 +193,7 @@ namespace Fulbo12.Core.Fixtures
             {
                 Nombre = "Matias",
                 Apellido = "Suarez",
-                Pais = paisesFixtures.Colombia,
+                Pais = paisesFixtures.Argentina,
                 Altura = 1.83f,
                 Peso = 77
             };
@@ -283,6 +286,33 @@ namespace Fulbo12.Core.Fixtures
                 Pais = paisesFixtures.Argentina,
                 Altura = 1.75f,
                 Peso = 79
+            };
+
+            PFrancoArmani = new Persona()
+            {
+                Nombre = "Franco",
+                Apellido = "Armani",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.89f,
+                Peso = 88
+            };
+
+            PEzequielCenturion = new Persona()
+            {
+                Nombre = "Ezequiel",
+                Apellido = "Centurón",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.84f,
+                Peso = 79
+            };
+
+            PFrancoPetroli = new Persona()
+            {
+                Nombre = "Franco",
+                Apellido = "Petrolito",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.87f,
+                Peso = 85
             };
         }
     }
