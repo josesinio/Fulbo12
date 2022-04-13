@@ -16,6 +16,10 @@ namespace Fulbo12.Core.Fixtures
         public Persona PFelipePenaBiafore { get; set; }
         public Persona PSantiagoSimon { get; set; }
         public Persona PTomasPochettino { get; set; }
+        public Persona PBraianRomero { get; set; }
+        public Persona PFlabianLondono { get; set; }
+        public Persona PJulianAlvarez { get; set; }
+        public Persona PMatiasSuarez { get; set; }
 
         public PersonasFixture(PaisesFixtures paisesFixtures)
         {
@@ -143,6 +147,42 @@ namespace Fulbo12.Core.Fixtures
                 Pais = paisesFixtures.Argentina,
                 Altura = 1.80f,
                 Peso = 72
+            };
+
+            PBraianRomero = new Persona()
+            {
+                Nombre = "Braian",
+                Apellido = "Romero",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.76f,
+                Peso = 73
+            };
+
+            PFlabianLondono = new Persona()
+            {
+                Nombre = "Flabian",
+                Apellido = "Londoño",
+                Pais = paisesFixtures.Colombia,
+                Altura = 1.80f,
+                Peso = 82
+            };
+
+            PJulianAlvarez = new Persona()
+            {
+                Nombre = "Julian",
+                Apellido = "Alvarez",
+                Pais = paisesFixtures.Colombia,
+                Altura = 1.70f,
+                Peso = 71
+            };
+
+            PMatiasSuarez = new Persona()
+            {
+                Nombre = "Matias",
+                Apellido = "Suarez",
+                Pais = paisesFixtures.Colombia,
+                Altura = 1.83f,
+                Peso = 77
             };
         }
     }
