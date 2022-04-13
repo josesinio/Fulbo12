@@ -20,6 +20,16 @@ namespace Fulbo12.Core.Fixtures
         public Persona PFlabianLondono { get; set; }
         public Persona PJulianAlvarez { get; set; }
         public Persona PMatiasSuarez { get; set; }
+        public Persona PRobertRojas { get; set; }
+        public Persona PJonatanMaidana { get; set; }
+        public Persona PDavidMartinez { get; set; }
+        public Persona PLeanGonzalesPirez { get; set; }
+        public Persona PMarceAndresHerrera { get; set; }
+        public Persona PPauloDiaz { get; set; }
+        public Persona PMiltonCasco { get; set; }
+        public Persona PJavierPinola { get; set; }
+        public Persona PEmanuelMammana { get; set; }
+        public Persona PEliasGomez { get; set; }
 
         public PersonasFixture(PaisesFixtures paisesFixtures)
         {
@@ -183,6 +193,96 @@ namespace Fulbo12.Core.Fixtures
                 Pais = paisesFixtures.Colombia,
                 Altura = 1.83f,
                 Peso = 77
+            };
+
+            PRobertRojas = new Persona()
+            {
+                Nombre = "Robert",
+                Apellido = "Rojas",
+                Pais = paisesFixtures.Paraguay,
+                Altura = 1.76f,
+                Peso = 75
+            };
+
+            PJonatanMaidana = new Persona()
+            {
+                Nombre = "Jonatan",
+                Apellido = "Maidana",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.85f,
+                Peso = 86
+            };
+
+            PDavidMartinez = new Persona()
+            {
+                Nombre = "David",
+                Apellido = "Martinez",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.82f,
+                Peso = 76
+            };
+
+            PLeanGonzalesPirez = new Persona()
+            {
+                Nombre = "Leandro",
+                Apellido = "Gonzáles Pirez",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.85f,
+                Peso = 89
+            };
+
+            PMarceAndresHerrera = new Persona()
+            {
+                Nombre = "Marcelo",
+                Apellido = "Andrés Herrera",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.78f,
+                Peso = 75
+            };
+
+            PPauloDiaz = new Persona()
+            {
+                Nombre = "Paulo",
+                Apellido = "Díaz",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.78f,
+                Peso = 76
+            };
+
+            PMiltonCasco = new Persona()
+            {
+                Nombre = "Milton",
+                Apellido = "Casco",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.70f,
+                Peso = 69
+            };
+
+            PJavierPinola = new Persona()
+            {
+                Nombre = "Javier",
+                Apellido = "Pinola",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.80f,
+                Peso = 79
+            };
+
+            PEmanuelMammana = new Persona()
+            {
+                Nombre = "Emanuel",
+                Apellido = "Mammana",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.83f,
+                Peso = 72
+            };
+
+            PEliasGomez = new Persona()
+            {
+                Nombre = "Elías",
+                Apellido = "Gómez",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.75f,
+                Peso = 79
             };
         }
     }
