@@ -5,6 +5,18 @@ namespace Fulbo12.Core.Fixtures
         public Persona PLioMessi { get; set; }
         public Persona PFrankFabra { get; set; }
         public Persona PMarcosRojo { get; set; }
+        public Persona PEsequielBarco { get; set; }
+        public Persona PBrunoZuculini { get; set; }
+        public Persona PAgustinPalavecino { get; set; }
+        public Persona PJuanferQuintero { get; set; }
+        public Persona PNicoDeLaCruz { get; set; }
+        public Persona PEnzoFernandez { get; set; }
+        public Persona PEnzoPerez { get; set; }
+        public Persona PJoseParadela { get; set; }
+        public Persona PFelipePenaBiafore { get; set; }
+        public Persona PSantiagoSimon { get; set; }
+        public Persona PTomasPochettino { get; set; }
+
         public PersonasFixture(PaisesFixtures paisesFixtures)
         {
             PLioMessi = new Persona()
@@ -32,6 +44,105 @@ namespace Fulbo12.Core.Fixtures
                 Pais = paisesFixtures.Argentina,
                 Altura = 1.87f,
                 Peso = 82
+            };
+
+            PEsequielBarco = new Persona()
+            {
+                Nombre = "Esequiel",
+                Apellido = "Barco",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.67f,
+                Peso = 65
+            };
+
+            PBrunoZuculini = new Persona()
+            {
+                Nombre = "Bruno",
+                Apellido = "Zuculini",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.82f,
+                Peso = 77
+            };
+
+            PAgustinPalavecino = new Persona()
+            {
+                Nombre = "Agustin",
+                Apellido = "Palavecino",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.79f,
+                Peso = 74
+            };
+
+            PJuanferQuintero = new Persona()
+            {
+                Nombre = "Juan Fernando",
+                Apellido = "Quintero",
+                Pais = paisesFixtures.Colombia,
+                Altura = 1.68f,
+                Peso = 67
+            };
+
+            PNicoDeLaCruz = new Persona()
+            {
+                Nombre = "Nicolas",
+                Apellido = "De La Cruz",
+                Pais = paisesFixtures.Uruguay,
+                Altura = 1.67f,
+                Peso = 65
+            };
+
+            PEnzoFernandez = new Persona()
+            {
+                Nombre = "Enzo",
+                Apellido = "Fernandez",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.80f,
+                Peso = 77
+            };
+
+            PEnzoPerez = new Persona()
+            {
+                Nombre = "Enzo",
+                Apellido = "Perez",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.78f,
+                Peso = 77
+            };
+
+            PJoseParadela = new Persona()
+            {
+                Nombre = "Jose",
+                Apellido = "Paradela",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.79f,
+                Peso = 71
+            };
+
+            PFelipePenaBiafore = new Persona()
+            {
+                Nombre = "Felipe",
+                Apellido = "Peña Biafore",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.80f,
+                Peso = 75
+            };
+
+            PSantiagoSimon = new Persona()
+            {
+                Nombre = "Santiago",
+                Apellido = "Simon",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.81f,
+                Peso = 74
+            };
+
+            PTomasPochettino = new Persona()
+            {
+                Nombre = "Tomas",
+                Apellido = "Pochettino",
+                Pais = paisesFixtures.Argentina,
+                Altura = 1.80f,
+                Peso = 72
             };
         }
     }
