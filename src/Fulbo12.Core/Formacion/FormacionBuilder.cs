@@ -4,12 +4,12 @@ namespace Fulbo12.Core.Formacion
 {
     public class FormacionBuilder
     {
-        public Formacion formacion { get; private set; }
+        public Formacion Formacion { get; private set; }
         private Linea linea { get; set; }
         public FormacionBuilder() => IniciarFormacion();
         public FormacionBuilder IniciarFormacion()
         {
-            formacion = new Formacion();
+            Formacion = new Formacion();
             linea = null;
             return this;
         }
@@ -21,7 +21,7 @@ namespace Fulbo12.Core.Formacion
         public FormacionBuilder AgregarLinea(Linea linea)
         {
             this.linea = linea;
-            formacion.Lineas.Add(linea);
+            Formacion.Lineas.Add(linea);
             return this;
         }
         public FormacionBuilder AgregarPosicion(Futbolista futbolista, Posicion posicion, byte? nro = null)
@@ -30,14 +30,13 @@ namespace Fulbo12.Core.Formacion
             {
                 Futbolista = futbolista,
                 Posicion = posicion,
-                NumeroCamiseta = nro ?? formacion.NumeroDisponible
+                NumeroCamiseta = nro ?? Formacion.NumeroDisponible
             };
-            linea.Posiciones.Add(posicionEnCancha);
             return AgregarPosicion(posicionEnCancha);
         }
         public FormacionBuilder AgregarPosicion(PosicionEnCancha posicionEnCancha)
         {
-            posicionEnCancha.NumeroCamiseta ??= formacion.NumeroDisponible;
+            posicionEnCancha.NumeroCamiseta ??= Formacion.NumeroDisponible;
             linea.Posiciones.Add(posicionEnCancha);
             return this;
         }
