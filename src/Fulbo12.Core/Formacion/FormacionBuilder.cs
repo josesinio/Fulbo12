@@ -6,10 +6,17 @@ namespace Fulbo12.Core.Formacion
     {
         public Formacion formacion { get; private set; }
         private Linea linea { get; set; }
-        public FormacionBuilder()
+        public FormacionBuilder() => IniciarFormacion();
+        public FormacionBuilder IniciarFormacion()
         {
             formacion = new Formacion();
+            linea = null;
+            return this;
+        }
+        public FormacionBuilder AgregarLinea()
+        {
             linea = new Linea();
+            return AgregarLinea(linea);
         }
         public FormacionBuilder AgregarLinea(Linea linea)
         {
