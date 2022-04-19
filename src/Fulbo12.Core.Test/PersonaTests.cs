@@ -1,30 +1,28 @@
+using Fulbo12.Core.Fixtures;
 using Xunit;
 
 namespace Fulbo12.Core.Test
 {
-    [Collection("ColeccionPersonasFutbolistas")]
-    public class PersonaTests
+    public class PersonaTests : IClassFixture<CoreFixture>
     {
-        FutbolistasFixture Fixture { get; set; }
-        public PersonaTests(FutbolistasFixture fixture)
-        {
-            Fixture = fixture;
-        }
+        CoreFixture f { get; set; }
+
+        public PersonaTests(CoreFixture coreFixture) => f = coreFixture;
 
         [Fact]
         public void InstanciaPersona()
         {
-            Assert.Same(Fixture.Argentina, Fixture.PLioMessi.Pais);
-            Assert.Equal("Lionel", Fixture.PLioMessi.Nombre);
-            Assert.Equal("Messi", Fixture.PLioMessi.Apellido);
-            Assert.Equal(1.7f, Fixture.PLioMessi.Altura, precision: 2);
+            Assert.Same(f.Paises.Argentina, f.Personas.PLioMessi.Pais);
+            Assert.Equal("Lionel", f.Personas.PLioMessi.Nombre);
+            Assert.Equal("Messi", f.Personas.PLioMessi.Apellido);
+            Assert.Equal(1.7f, f.Personas.PLioMessi.Altura, precision: 2);
         }
 
         [Fact]
         public void MismaNacionalidad()
         {
-            Assert.False(Fixture.PLioMessi.MismaNacionalidad(Fixture.PFrankFabra));
-            Assert.True(Fixture.PLioMessi.MismaNacionalidad(Fixture.PMarcosRojo));
+            Assert.False(f.Personas.PLioMessi.MismaNacionalidad(f.Personas.PFrankFabra));
+            Assert.True(f.Personas.PLioMessi.MismaNacionalidad(f.Personas.PMarcosRojo));
         }
     }
 }
