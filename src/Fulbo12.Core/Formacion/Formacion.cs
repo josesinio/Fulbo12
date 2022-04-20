@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fulbo12.Core.Futbol;
 
 namespace Fulbo12.Core.Formacion
 {
@@ -33,6 +34,12 @@ namespace Fulbo12.Core.Formacion
                 }
                 throw new InvalidOperationException("No hay más dorsales disponibles");
             }
+        }
+        public bool ExistePersona(Persona persona)
+            => Lineas.Any(l => l.ExistePersona(persona));
+        public void AgregarSuplente(Futbolista futbolista)
+        {
+            
         }
     }
 }

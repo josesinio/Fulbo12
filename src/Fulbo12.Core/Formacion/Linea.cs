@@ -19,5 +19,7 @@ namespace Fulbo12.Core.Formacion
             => Convert.ToByte(Posiciones.Sum(p => p.QuimicaJugador));
         public bool ExisteNumero(byte numeroCamiseta)
             => Posiciones.Any(p => p.EsNumero(numeroCamiseta));
+        public bool ExistePersona(Persona persona)
+            => Posiciones.Any(p => p.Futbolista.Persona == persona);
     }
 }
