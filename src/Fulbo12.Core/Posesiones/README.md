@@ -1,15 +1,17 @@
+## Código Posesiones
+
 Ya teniendo nuestros futbolistas, podemos crear a nuestros usuarios (físicos).
 
 #### Posesion
 
 Define la posesión de un Futbolista por parte de un Usuario; es la parte fundamental donde se van a guardar las estadísticas de partidos y goles convertidos. **Los goles en contra no suman ni restan goles para el historial del jugador.**
 
-- [ ] Referencias al Usuario dueño y Futbolista en cuestión.
-- [ ] Cantidad de dueños que tuvo (máximo 199), partidos jugados y goles convertidos (máximo 9.999).
-- [ ] `void ReiniciarContadores()`: vuelve a cero los partidos jugados al igual que sus goles.
-- [ ] `void IncrementarPartido()`: suma 1 a los partidos jugados.
-- [ ] `void IncrementarGoles(byte)`: incrementa la cantidad de goles.
-- [ ] `void IncrementarDueno()`: suma 1 a los dueños.
+- [x] Referencias al Usuario dueño y Futbolista en cuestión.
+- [x] Cantidad de dueños que tuvo (máximo 199), partidos jugados y goles convertidos (máximo 9.999).
+- [x] `void ReiniciarContadores()`: vuelve a cero los partidos jugados al igual que sus goles.
+- [x] `void IncrementarPartido()`: suma 1 a los partidos jugados.
+- [x] `void IncrementarGoles(byte)`: incrementa la cantidad de goles.
+- [x] `void IncrementarDueno()`: suma 1 a los dueños.
 
 #### Usuario
 
@@ -32,12 +34,12 @@ Define la posesión de un Futbolista por parte de un Usuario; es la parte fundam
 
 Son las publicaciones que hacen los usuarios de sus futbolistas transferibles.
 
-- [ ] Poseen: Posesion en cuestión, fecha y hora de la publicación y cantidad de días en publicación (valor máximo, 5 días, igual para todas las transferencias), precio mínimo de subasta y precio de compra inmediata (la compra inmediata siempre debe ser mayor al precio minimo); ademas cuando un usuario hace una oferta, se registran las monedas ofertadas y el usuario ofertante.
+- [ ] Poseen: Posesión en cuestión, fecha y hora de la publicación y cantidad de días en publicación (valor máximo, 5 días, igual para todas las transferencias), precio mínimo de subasta y precio de compra inmediata (la compra inmediata siempre debe ser mayor al precio mínimo); ademas cuando un usuario hace una oferta, se registran las monedas ofertadas y el usuario ofertante.
 - [ ] `bool CantidadEsMayor(uint)`: devuelve `true` solo si la cantidad recibida por parámetro es mayor a 
 - [ ] `void RecibirOferta (Usuario, uint)`: registra el usuario ofertante y las monedas, siempre y cuando la cantidad ofertada sea superior a una cantidad ofertada previa o al precio mínimo de subasta si no existe oferta previa; además si previamente ya había un ofertante
 se le deben devolver a este la cantidad de monedas ofertadas.
 - [ ] `void Aplicar()`: Si hay un ofertante se debe:
-  - Reiniciar los contadores de la Posesion.
+  - Reiniciar los contadores, acumuladores y adquisición de la Posesión.
   - Sacar a la transferencia de la colección de transferencias del vendedor
   - _Acreditar_ en el Vendedor las monedas de la transacción.
   - Agregar la posesión a la colección de posesiones nuevas del comprador.

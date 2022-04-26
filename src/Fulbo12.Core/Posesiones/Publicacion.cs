@@ -11,7 +11,6 @@ namespace Fulbo12.Core.Posesiones
         public Usuario Ofertante { get; set; }
         public uint? Oferta { get; set; }
         public uint OfertaOMinima => Oferta ?? OfertaMinima;
-        private Usuario Vendedor => Posesion.Usuario;
         public Publicacion(Posesion posesion)
         {
             Posesion = posesion;
@@ -30,14 +29,16 @@ namespace Fulbo12.Core.Posesiones
         }
         public void Aplicar()
         {
-            Vendedor.BajarPublicacion(this);
+            var vendedor = Posesion.Usuario;
+
+            vendedor.BajarPublicacion(this);
             if (Ofertante is not null)
             {
                 Posesion.Reiniciar();
-                Vendedor.Acreditar(OfertaOMinima);
+                vendedor.Acreditar(OfertaOMinima);
                 Posesion.Usuario = Ofertante;
             }
-            Vendedor.AgregarNovedad(Posesion);
+            vendedor.AgregarNovedad(Posesion);
         }
     }
 }

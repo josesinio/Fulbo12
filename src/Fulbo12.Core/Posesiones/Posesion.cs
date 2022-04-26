@@ -17,7 +17,7 @@ namespace Fulbo12.Core.Posesiones
         {
             Usuario = usuario;
             Futbolista = futbolista;
-            Duenos = 1;
+            Duenos = 0;
             Reiniciar();
         }
         public Posesion(Usuario usuario, Futbolista futbolista, DateTime adquision,
@@ -34,6 +34,7 @@ namespace Fulbo12.Core.Posesiones
         {
             Goles = PartidosJugados = 0;
             Adquisicion = DateTime.Today;
+            Duenos++;
         }
         public void IncrementarPartido()
         {
