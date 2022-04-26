@@ -1,0 +1,113 @@
+using System;
+using System.Collections.Generic;
+using Fulbo12.Core.Futbol;
+
+namespace Fulbo12.Core.Posesiones
+{
+    public class Usuario
+    {
+        public static readonly uint MonedasMaximas = 9999999;
+        public static readonly byte LimitePosesiones = 100;
+        internal static readonly string _futbolistaEnPosesion
+            = "Futbolista ya se encuentra en posesión";
+        internal static readonly string _noEstaEnNovedades
+            = "No se encuentra posesion entre las novedades";
+        internal static readonly string _limitePosesiones
+            = "Ya alcanzó el limite para posesiones";
+        internal static readonly string _noPoseeMonedasSuficientes
+            = "No se poseee la cantidad de monedas suficientes";
+        internal static readonly string _mismoVendedor
+            = "No se puede ofertar por Publicaciones propias";
+        internal static readonly string _ofertaMenor
+            = "No se puede ofertar por debajo";
+        public void AgregarNovedad(Posesion posesion) => NuevasPosesiones.Add(posesion);
+        public string Nombre { get; init; }
+        public string Apellido { get; init; }
+        public DateTime Nacimiento { get; init; }
+        public string Email { get; set; }
+        public uint Monedas { get; private set; }
+        public List<Posesion> NuevasPosesiones { get; init; }
+        public List<Posesion> Posesiones { get; init; }
+        public List<Posesion> Transferibles { get; init; }
+        public List<Publicacion> Publicaciones { get; init; }
+        public Usuario(string nombre, string apellido, DateTime nacimiento, string email)
+        {
+            Nombre = nombre;
+            Apellido = apellido;
+            Nacimiento = nacimiento;
+            Email = email;
+            Monedas = 0;
+            NuevasPosesiones = new List<Posesion>();
+            Posesiones = new List<Posesion>();
+            Transferibles = new List<Posesion>();
+            Publicaciones = new List<Publicacion>();
+        }
+        public bool PuedeAgregar
+            => Transferibles.Count + Publicaciones.Count < LimitePosesiones;
+        public bool PoseeFutbolista(Futbolista futbolista)
+            => Posesiones.Exists(p => p.EsFutbolista(futbolista));
+        public void AgregarPosesion(Posesion posesion)
+        {
+            if (!PoseeFutbolista(posesion.Futbolista))
+            {
+                try
+                {
+                    RemoverPosesionDeNovedad(posesion);
+                    Posesiones.Add(posesion);
+                }
+                catch (InvalidOperationException e)
+                {
+                    throw e;
+                }
+            }
+            else
+                throw new InvalidOperationException(_futbolistaEnPosesion);
+        }
+        public void AgregarTransferible(Posesion posesion)
+        {
+            if (PuedeAgregar)
+            {
+                try
+                {
+                    if (NuevasPosesiones.Remove(posesion))
+                        Transferibles.Add(posesion);
+                }
+                catch (InvalidOperationException e)
+                {
+                    throw e;
+                }
+            }
+            else
+                throw new InvalidOperationException(_limitePosesiones);
+        }
+        private bool RemoverPosesionDeNovedad(Posesion posesion)
+        {
+            if (NuevasPosesiones.Remove(posesion))
+                return true;
+            throw new InvalidOperationException(_noEstaEnNovedades);
+        }
+        public void Publicar(Publicacion publicacion)
+        {
+            if (Transferibles.Remove(publicacion.Posesion))
+                Publicaciones.Add(publicacion);
+        }
+        public bool TieneAlMenos(uint monedas) => Monedas >= monedas;
+        public void Ofertar(Publicacion publicacion, uint oferta)
+        {
+            if (oferta <= publicacion.OfertaMinima)
+                throw new InvalidOperationException(_ofertaMenor);
+            if (!TieneAlMenos(publicacion.OfertaOMinima))
+                throw new InvalidOperationException(_noPoseeMonedasSuficientes);
+            if (publicacion.EsVendedor(this))
+                throw new InvalidOperationException(_mismoVendedor);
+            Debitar(oferta);
+            publicacion.RecibirOferta(this, oferta);
+        }
+        public void SacarOferta(Publicacion publicacion) => Acreditar(publicacion.Oferta.Value);
+        public void Acreditar(uint monedas)
+            => Monedas = Monedas + monedas > MonedasMaximas ? MonedasMaximas : Monedas + monedas;
+        public void BajarPublicacion(Publicacion publicacion)
+            => Publicaciones.Remove(publicacion);
+        private void Debitar(uint monedas) => Monedas -= monedas;
+    }
+}
