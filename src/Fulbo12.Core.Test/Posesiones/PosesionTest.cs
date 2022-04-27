@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Fulbo12.Core.Posesiones.Test
 {
+    [Trait("Category", "Posesion")]
     public class PosesionTest : IClassFixture<PosesionesFixture>
     {
         public Posesion LuchoFabra { get; set; }
@@ -75,6 +76,5 @@ namespace Fulbo12.Core.Posesiones.Test
             
             Assert.Equal(Posesion.MaximaCantidadDuenos, LuchoFabra.Duenos);
         }
-
     }
 }

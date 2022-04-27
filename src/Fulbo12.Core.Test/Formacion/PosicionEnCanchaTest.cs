@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Fulbo12.Core.Formacion.Test
 {
+    [Trait("Category", "Formacion")]
     public class PosicionEnCanchaTest : IClassFixture<FormacionFixture>
     {
         PosicionEnCanchaFixture PosicionesEnCancha { get; set; }

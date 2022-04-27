@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Fulbo12.Core.Formacion.Test
 {
+    [Trait("Category", "Formacion")]
     public class FormacionTest: IClassFixture<FormacionFixture>
     {
         public Formacion Formacion { get; set; }
