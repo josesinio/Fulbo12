@@ -8,17 +8,17 @@ namespace Fulbo12.Core.Posesiones
     {
         public static readonly uint MonedasMaximas = 9999999;
         public static readonly byte LimitePosesiones = 100;
-        internal static readonly string _futbolistaEnPosesion
+        public static readonly string _futbolistaEnPosesion
             = "Futbolista ya se encuentra en posesión";
-        internal static readonly string _noEstaEnNovedades
+        public static readonly string _noEstaEnNovedades
             = "No se encuentra posesion entre las novedades";
-        internal static readonly string _limitePosesiones
+        public static readonly string _limitePosesiones
             = "Ya alcanzó el limite para posesiones";
-        internal static readonly string _noPoseeMonedasSuficientes
+        public static readonly string _noPoseeMonedasSuficientes
             = "No se poseee la cantidad de monedas suficientes";
-        internal static readonly string _mismoVendedor
+        public static readonly string _mismoVendedor
             = "No se puede ofertar por Publicaciones propias";
-        internal static readonly string _ofertaMenor
+        public static readonly string _ofertaMenor
             = "No se puede ofertar por debajo";
         public void AgregarNovedad(Posesion posesion) => NuevasPosesiones.Add(posesion);
         public string Nombre { get; init; }
