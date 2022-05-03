@@ -15,20 +15,20 @@ Define la posesión de un Futbolista por parte de un Usuario; es la parte fundam
 
 #### Usuario
 
-- [ ] Poseen: nombre, apellido, email, fecha de nacimiento y monedas (valor máximo 9.999.999).
-- [ ] Colección de posesiones nuevas.
-- [ ] Colección de futbolistas en posesión.
-- [ ] `bool PoseeFutbolista(Futbolista)`: verifica si el Usuario posee al futbolista en su lista de Posesiones.
-- [ ] `void AgregarPosesion(Posesion)`: agrega un futbolista a la lista de posesiones; solamente puede si no lo tiene entre su lista de posesiones; en ese caso se tiene que devolver una excepción del tipo `InvalidOperationException` con la leyenda "Futbolista ya se encuentra en posesión".
-- [ ] `void AgregarTransferible(Posesion)`: agrega la posesión a la colección de transferibles
-- [ ] Colección de transferencias.
-- [ ] Cuando un jugador recibe un futbolista nuevo y ya lo tiene entre su lista de posesiones, puede agregarlo a una lista de posesiones transferibles, la cual tiene un limite de 100 entre la suma de cantidades de posesiones transferibles y posesiones ofertadas.
-- [ ] `void Publicar (Transferencia)`: un jugador puede publicar una de sus posesiones solo si esta se encuentra en su colección de _Posesiones transferibles_. Este método saca a dicha posesión de su lista de transferibles y la coloca en su lista de transferencias.
-- [ ] `bool TieneAlMenos (uint)`: método que recibe una cantidad de monedas e indica si el Usuario posee esa cantidad mínima.
-- [ ] `void Ofertar (Transferencia, uint)`: permite al usuario en cuestión ofertar por una transferencia publicada siempre y cuando:
+- [x] Poseen: nombre, apellido, email, fecha de nacimiento y monedas (valor máximo 9.999.999).
+- [x] Colección de posesiones nuevas.
+- [x] Colección de futbolistas en posesión.
+- [x] `bool PoseeFutbolista(Futbolista)`: verifica si el Usuario posee al futbolista en su lista de Posesiones.
+- [x] `void AgregarPosesion(Posesion)`: agrega un futbolista a la lista de posesiones; solamente puede si no lo tiene entre su lista de posesiones; en ese caso se tiene que devolver una excepción del tipo `InvalidOperationException` con la leyenda "Futbolista ya se encuentra en posesión".
+- [x] `void AgregarTransferible(Posesion)`: agrega la posesión a la colección de transferibles, solo si esta ya se encuentra en su colección de posesiones nuevas.
+- [x] Colección de transferencias.
+- [x] Cuando un jugador recibe un futbolista nuevo y ya lo tiene entre su lista de posesiones, puede agregarlo a una lista de posesiones transferibles, la cual tiene un limite de 100 entre la suma de cantidades de posesiones transferibles y posesiones ofertadas.
+- [x] `void Publicar (Transferencia)`: un jugador puede publicar una de sus posesiones solo si esta se encuentra en su colección de _Posesiones transferibles_. Este método saca a dicha posesión de su lista de transferibles y la coloca en su lista de publicaciones.
+- [x] `bool TieneAlMenos (uint)`: método que recibe una cantidad de monedas e indica si el Usuario posee esa cantidad mínima.
+- [x] `void Ofertar (Publicacion, uint)`: permite al usuario en cuestión ofertar por una publicación siempre y cuando:
   - El usuario a ofertante tenga al menos la cantidad de monedas que oferta; caso contrario se arroja `InvalidOperationException` con la leyenda "No hay monedas suficientes".
   - El usuario oferte por una transferencia de la cual él no sea el vendedor;  caso contrario se arroja `InvalidOperationException` con la leyenda "No se puede ofertar por publicaciones propias".
-  En caso de que la oferta cumpla las reglas, se debe _Debitar_ la cantidad de monedas ofertadas en el ofertante y registrar la suma de la oferta y Usuario ofertante en la transferencia.
+  En caso de que la oferta cumpla las reglas, se debe _Debitar_ la cantidad de monedas ofertadas en el ofertante y registrar la suma de la oferta y Usuario ofertante en la publicación.
 
 #### Publicacion
 

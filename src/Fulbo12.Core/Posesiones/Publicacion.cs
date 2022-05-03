@@ -16,7 +16,12 @@ namespace Fulbo12.Core.Posesiones
             Posesion = posesion;
             Inicio = DateTime.Now;
             Ofertante = null;
-            Oferta = null;
+            Oferta = null;            
+        }
+        public Publicacion(Posesion posesion, uint minima, uint compra):this(posesion)
+        {
+            OfertaMinima = minima;
+            Compra = compra;
         }
         public bool EsVendedor(Usuario usuario) => Posesion.Usuario == usuario;
 

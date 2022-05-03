@@ -67,15 +67,8 @@ namespace Fulbo12.Core.Posesiones
         {
             if (PuedeAgregar)
             {
-                try
-                {
-                    if (NuevasPosesiones.Remove(posesion))
-                        Transferibles.Add(posesion);
-                }
-                catch (InvalidOperationException e)
-                {
-                    throw e;
-                }
+                if (NuevasPosesiones.Remove(posesion))
+                    Transferibles.Add(posesion);
             }
             else
                 throw new InvalidOperationException(_limitePosesiones);
@@ -94,7 +87,7 @@ namespace Fulbo12.Core.Posesiones
         public bool TieneAlMenos(uint monedas) => Monedas >= monedas;
         public void Ofertar(Publicacion publicacion, uint oferta)
         {
-            if (oferta <= publicacion.OfertaMinima)
+            if (oferta < publicacion.OfertaMinima)
                 throw new InvalidOperationException(_ofertaMenor);
             if (!TieneAlMenos(publicacion.OfertaOMinima))
                 throw new InvalidOperationException(_noPoseeMonedasSuficientes);
@@ -108,6 +101,6 @@ namespace Fulbo12.Core.Posesiones
             => Monedas = Monedas + monedas > MonedasMaximas ? MonedasMaximas : Monedas + monedas;
         public void BajarPublicacion(Publicacion publicacion)
             => Publicaciones.Remove(publicacion);
-        private void Debitar(uint monedas) => Monedas -= monedas;
+        public void Debitar(uint monedas) => Monedas -= monedas;
     }
 }
