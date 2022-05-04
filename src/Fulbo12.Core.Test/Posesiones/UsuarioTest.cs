@@ -101,7 +101,7 @@ namespace Fulbo12.Core.Posesiones.Test
         {
             Arturo.AgregarNovedad(Posesion);
             Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra);
+            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
             Arturo.Publicar(publicacion);
 
             Assert.Empty(Arturo.Transferibles);
@@ -114,7 +114,7 @@ namespace Fulbo12.Core.Posesiones.Test
         public void NoPublica()
         {
             Arturo.AgregarNovedad(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra);
+            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
             Arturo.Publicar(publicacion);
 
             Assert.Empty(Arturo.Transferibles);
@@ -142,7 +142,7 @@ namespace Fulbo12.Core.Posesiones.Test
         {
             Arturo.AgregarNovedad(Posesion);
             Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra);
+            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
             Arturo.Publicar(publicacion);
             Arturo.Acreditar(_monedas);
 
@@ -155,7 +155,7 @@ namespace Fulbo12.Core.Posesiones.Test
         {
             Arturo.AgregarNovedad(Posesion);
             Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra);
+            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
             Arturo.Publicar(publicacion);
 
             var ex = Assert.Throws<InvalidOperationException>(() => Arturo.Ofertar(publicacion, _minima));
@@ -167,7 +167,7 @@ namespace Fulbo12.Core.Posesiones.Test
         {
             Arturo.AgregarNovedad(Posesion);
             Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra);
+            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
             Arturo.Publicar(publicacion);
             
             Lucho.Acreditar(_minima);

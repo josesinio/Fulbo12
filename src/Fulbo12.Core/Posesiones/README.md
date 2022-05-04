@@ -35,9 +35,12 @@ Define la posesión de un Futbolista por parte de un Usuario; es la parte fundam
 Son las publicaciones que hacen los usuarios de sus futbolistas transferibles.
 
 - [ ] Poseen: Posesión en cuestión, fecha y hora de la publicación y cantidad de días en publicación (valor máximo, 5 días, igual para todas las transferencias), precio mínimo de subasta y precio de compra inmediata (la compra inmediata siempre debe ser mayor al precio mínimo); ademas cuando un usuario hace una oferta, se registran las monedas ofertadas y el usuario ofertante.
-- [ ] `bool CantidadEsMayor(uint)`: devuelve `true` solo si la cantidad recibida por parámetro es mayor a 
-- [ ] `void RecibirOferta (Usuario, uint)`: registra el usuario ofertante y las monedas, siempre y cuando la cantidad ofertada sea superior a una cantidad ofertada previa o al precio mínimo de subasta si no existe oferta previa; además si previamente ya había un ofertante
-se le deben devolver a este la cantidad de monedas ofertadas.
+- [ ] `uint OfertaOMinimo`: propiedad de solo lectura que devuelve una oferta y en caso de no poseerla, devuelve el precio mínimo.
+- [ ] `bool HayOfertante`: propiedad de solo lectura que devuelve si la publicación posee ofertante o no.
+- [ ] `bool CantidadEsMayorOIgual(uint)`: devuelve `true` solo si la cantidad recibida por parámetro es mayor una oferta (si existe) ó si es mayor o igual a la oferta mínima.
+- [ ] `void BajarOfertanteAntiguo()`: en caso de existir un ofertante, da de baja esta publicación de su colección de ofertas.
+- [ ] `void RegistrarOfertante(Usuario, uint)`: registra al usuario como nuevo ofertante junto con la cantidad establecida de monedas (oferta).l
+- [ ] `void RecibirOferta (Usuario, uint)`: registra el usuario ofertante y las monedas, siempre y cuando la cantidad ofertada sea superior a una cantidad ofertada previa o al precio mínimo de subasta si no existe oferta previa; además si previamente ya había un ofertante se le deben devolver a este la cantidad de monedas ofertadas.
 - [ ] `void Aplicar()`: Si hay un ofertante se debe:
   - Reiniciar los contadores, acumuladores y adquisición de la Posesión.
   - Sacar a la transferencia de la colección de transferencias del vendedor
