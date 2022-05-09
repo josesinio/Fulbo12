@@ -62,8 +62,13 @@ namespace Fulbo12.Core.Posesiones
                 Posesion.Reiniciar();
                 vendedor.Acreditar(Oferta.Value);
                 Posesion.Usuario = Ofertante;
+                Ofertante.AgregarNovedad(Posesion);
             }
-            vendedor.AgregarNovedad(Posesion);
+            else
+            {
+                vendedor.AgregarNovedad(Posesion);
+                vendedor.AgregarTransferible(Posesion);
+            }
         }
     }
 }

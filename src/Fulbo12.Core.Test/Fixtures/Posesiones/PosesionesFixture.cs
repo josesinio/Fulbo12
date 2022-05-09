@@ -11,5 +11,13 @@ namespace Fulbo12.Core.Posesiones.Fixtures
             Usuarios = new UsuariosFixture();
             Futbolistas = new FutbolFixture().Futbolistas;
         }
+        public void BlanquearUsuario(Usuario usuario)
+        {
+            usuario.Posesiones.Clear();
+            usuario.NuevasPosesiones.Clear();
+            usuario.Transferibles.Clear();
+            usuario.Publicaciones.Clear();
+            usuario.Debitar(usuario.Monedas);
+        }
     }
 }

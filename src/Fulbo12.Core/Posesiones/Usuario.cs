@@ -20,7 +20,6 @@ namespace Fulbo12.Core.Posesiones
             = "No se puede ofertar por Publicaciones propias";
         public static readonly string _ofertaMenor
             = "No se puede ofertar por debajo";
-        public void AgregarNovedad(Posesion posesion) => NuevasPosesiones.Add(posesion);
         public string Nombre { get; init; }
         public string Apellido { get; init; }
         public DateTime Nacimiento { get; init; }
@@ -46,6 +45,7 @@ namespace Fulbo12.Core.Posesiones
             => Transferibles.Count + Publicaciones.Count < LimitePosesiones;
         public bool PoseeFutbolista(Futbolista futbolista)
             => Posesiones.Exists(p => p.EsFutbolista(futbolista));
+        public void AgregarNovedad(Posesion posesion) => NuevasPosesiones.Add(posesion);
         public void AgregarPosesion(Posesion posesion)
         {
             if (!PoseeFutbolista(posesion.Futbolista))

@@ -23,12 +23,7 @@ namespace Fulbo12.Core.Posesiones.Test
             Arturo = fixture.Usuarios.Arturo;
             Lucho = fixture.Usuarios.Lucho;
             Posesion = new Posesion(Arturo, Fixture.FLioMessi);
-            Arturo.Posesiones.Clear();
-            Arturo.NuevasPosesiones.Clear();
-            Arturo.Transferibles.Clear();
-            Arturo.Publicaciones.Clear();
-            if (Arturo.TieneAlMenos(_monedas))
-                Arturo.Debitar(_monedas);
+            fixture.BlanquearUsuario(Arturo);
         }
 
         [Fact]
