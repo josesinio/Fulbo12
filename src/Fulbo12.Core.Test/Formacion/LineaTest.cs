@@ -3,6 +3,7 @@ using Xunit;
 
 namespace Fulbo12.Core.Formacion.Test
 {
+    [Trait("Category", "Formacion")]
     public class LineaTest : IClassFixture<FormacionFixture>
     {
         static readonly byte _NroInexistente = 250;
