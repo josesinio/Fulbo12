@@ -14,7 +14,16 @@ namespace Fulbo12.Core.Formacion
         public static readonly byte CantidadTotalJugadores =
             Convert.ToByte(CantidadTitulares + CantidadSuplentes + CantidadReserva);
         public List<Linea> Lineas { get; set; }
-        public Formacion() => Lineas = new List<Linea>();
+        public List<Futbolista> Titulares { get; set; }
+        public List<Futbolista> Suplentes { get; set; }
+        public List<Futbolista> Reserva { get; set; }
+        public Formacion()
+        {
+            Lineas = new List<Linea>();
+            Titulares = new();
+            Suplentes = new();
+            Reserva = new();
+        }
         public byte QuimicaJugadores
             => Convert.ToByte(Lineas.Sum(l => l.QuimicaJugadores));
         private IEnumerable<byte> PosicionesPorLinea
@@ -39,7 +48,29 @@ namespace Fulbo12.Core.Formacion
             => Lineas.Any(l => l.ExistePersona(persona));
         public void AgregarSuplente(Futbolista futbolista)
         {
-            
+            if (Suplentes.Count < CantidadSuplentes)
+            {
+                if (ExistePersona(futbolista.Persona))
+                    throw new InvalidOperationException("Ya existe un jugador con esa persona");
+                Suplentes.Add(futbolista);
+            }
+            else
+            {
+                throw new InvalidOperationException("No hay más espacio para suplentes");
+            }
+        }
+        public void AgregarReserva(Futbolista futbolista)
+        {
+            if (Reserva.Count < CantidadReserva)
+            {
+                if (ExistePersona(futbolista.Persona))
+                    throw new InvalidOperationException("Ya existe este jugador en la formacion");
+                Reserva.Add(futbolista);
+            }
+            else
+            {
+                throw new InvalidOperationException("No hay más espacio para reservas");
+            }
         }
     }
 }

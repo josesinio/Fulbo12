@@ -25,7 +25,5 @@ namespace Fulbo12.Core.Futbol
         {
             Posiciones = new List<Posicion>();
         }
-        public bool EsPersona(Persona persona)
-            => Persona == persona;
     }
 }
