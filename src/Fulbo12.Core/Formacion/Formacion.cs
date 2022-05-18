@@ -22,15 +22,15 @@ namespace Fulbo12.Core.Formacion
         public override string ToString()
             => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
         public bool ExisteNumero(byte numeroCamiseta)
-            => Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
+            => Arquero.EsNumero(numeroCamiseta)
+            || Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
         public byte NumeroDisponible
         {
             get
             {
-                
                 for (byte i = 1; i < CantidadTotalJugadores; i++)
                 {
-                    if (! (ExisteNumero(i) || i == Arquero.NumeroCamiseta))
+                    if (!ExisteNumero(i))
                         return i;
                 }
                 throw new InvalidOperationException("No hay más dorsales disponibles");
