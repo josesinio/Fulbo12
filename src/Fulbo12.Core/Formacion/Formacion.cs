@@ -13,6 +13,7 @@ namespace Fulbo12.Core.Formacion
         public static readonly byte CantidadTotalJugadores =
             Convert.ToByte(CantidadTitulares + CantidadSuplentes + CantidadReserva);
         public List<Linea> Lineas { get; set; }
+        public PosicionEnCancha Arquero { get; set; }
         public Formacion() => Lineas = new List<Linea>();
         public byte QuimicaJugadores
             => Convert.ToByte(Lineas.Sum(l => l.QuimicaJugadores));
@@ -26,9 +27,10 @@ namespace Fulbo12.Core.Formacion
         {
             get
             {
+                
                 for (byte i = 1; i < CantidadTotalJugadores; i++)
                 {
-                    if (!ExisteNumero(i))
+                    if (! (ExisteNumero(i) || i == Arquero.NumeroCamiseta))
                         return i;
                 }
                 throw new InvalidOperationException("No hay más dorsales disponibles");

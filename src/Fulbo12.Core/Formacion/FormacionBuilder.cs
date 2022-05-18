@@ -40,5 +40,21 @@ namespace Fulbo12.Core.Formacion
             linea.Posiciones.Add(posicionEnCancha);
             return this;
         }
+        public FormacionBuilder AgregarArquero(Futbolista futbolista, byte? nro = null)
+        {
+            var Arquero = new PosicionEnCancha()
+            {
+                Futbolista = futbolista,
+                Posicion = new("Arquero"),
+                NumeroCamiseta = nro ?? Formacion.NumeroDisponible
+            };
+            return AgregarArquero(Arquero);
+        }
+        public FormacionBuilder AgregarArquero(PosicionEnCancha posicionEnCancha)
+        {
+            posicionEnCancha.NumeroCamiseta ??= Formacion.NumeroDisponible;
+            Formacion.Arquero = posicionEnCancha;
+            return this;
+        }
     }
 }
