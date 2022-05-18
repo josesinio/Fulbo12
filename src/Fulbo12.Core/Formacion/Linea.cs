@@ -20,6 +20,6 @@ namespace Fulbo12.Core.Formacion
         public bool ExisteNumero(byte numeroCamiseta)
             => Posiciones.Any(p => p.EsNumero(numeroCamiseta));
         public bool ExistePersona(Persona persona)
-            => Posiciones.Any(p => p.Futbolista.Persona == persona);
+            => Posiciones.Any(p => p.EsPersona(persona));
     }
 }

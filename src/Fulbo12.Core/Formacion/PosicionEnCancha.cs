@@ -19,8 +19,7 @@ namespace Fulbo12.Core.Formacion
         public bool HayJugador => Futbolista is not null;
         public bool EsNumero(byte numeroCamiseta)
             => NumeroCamiseta.HasValue && NumeroCamiseta == numeroCamiseta;
-        
         public bool EsPersona(Persona persona)
-            => Futbolista.Persona == persona;
+            => Futbolista is not null && Futbolista.Persona == persona;
     }
 }

@@ -13,6 +13,9 @@ namespace Fulbo12.Core.Formacion
         public static readonly byte CantidadReserva = 5;
         public static readonly byte CantidadTotalJugadores =
             Convert.ToByte(CantidadTitulares + CantidadSuplentes + CantidadReserva);
+        public static readonly string _jugadorYaExiste = "Jugador ya existe en la formación";
+        public static readonly string _posicionesLlenas = "No es posible agregar más jugadores en esta parte";
+
         public List<Linea> Lineas { get; set; }
         public List<Futbolista> Titulares { get; set; }
         public List<Futbolista> Suplentes { get; set; }
@@ -47,30 +50,19 @@ namespace Fulbo12.Core.Formacion
         public bool ExistePersona(Persona persona)
             => Lineas.Any(l => l.ExistePersona(persona));
         public void AgregarSuplente(Futbolista futbolista)
-        {
-            if (Suplentes.Count < CantidadSuplentes)
-            {
-                if (ExistePersona(futbolista.Persona))
-                    throw new InvalidOperationException("Ya existe un jugador con esa persona");
-                Suplentes.Add(futbolista);
-            }
-            else
-            {
-                throw new InvalidOperationException("No hay más espacio para suplentes");
-            }
-        }
+            => AgregarSiSePuedeEn(Suplentes, futbolista, CantidadSuplentes);
         public void AgregarReserva(Futbolista futbolista)
+            => AgregarSiSePuedeEn(Reserva, futbolista, CantidadReserva);
+        private void AgregarSiSePuedeEn(List<Futbolista> lista, Futbolista futbolista, byte tope)
         {
-            if (Reserva.Count < CantidadReserva)
+            if (lista.Count < tope)
             {
                 if (ExistePersona(futbolista.Persona))
-                    throw new InvalidOperationException("Ya existe este jugador en la formacion");
-                Reserva.Add(futbolista);
+                    throw new InvalidOperationException(_jugadorYaExiste);
+                lista.Add(futbolista);
             }
             else
-            {
-                throw new InvalidOperationException("No hay más espacio para reservas");
-            }
+                throw new InvalidOperationException(_posicionesLlenas);
         }
     }
 }
