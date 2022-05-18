@@ -13,6 +13,7 @@ namespace Fulbo12.Core.Formacion
         public static readonly byte CantidadTotalJugadores =
             Convert.ToByte(CantidadTitulares + CantidadSuplentes + CantidadReserva);
         public List<Linea> Lineas { get; set; }
+        public PosicionEnCancha Arquero { get; set; }
         public Formacion() => Lineas = new List<Linea>();
         public byte QuimicaJugadores
             => Convert.ToByte(Lineas.Sum(l => l.QuimicaJugadores));
@@ -21,7 +22,8 @@ namespace Fulbo12.Core.Formacion
         public override string ToString()
             => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
         public bool ExisteNumero(byte numeroCamiseta)
-            => Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
+            => Arquero.EsNumero(numeroCamiseta)
+            || Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
         public byte NumeroDisponible
         {
             get
