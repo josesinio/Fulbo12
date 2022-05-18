@@ -5,6 +5,7 @@ using System;
 
 namespace Fulbo12.Core.Formacion.Test
 {
+    [Trait("Category", "Formacion")]
     public class FormacionTest : IClassFixture<FormacionFixture>
     {
         public Formacion Formacion { get; set; }
@@ -38,7 +39,7 @@ namespace Fulbo12.Core.Formacion.Test
         [Fact]
         public void NumeroDisponible()
         // Cuando se agregue arquero, hay que cambiar este 1
-            => Assert.Equal(1, Formacion.NumeroDisponible);
+            => Assert.Equal(12, Formacion.NumeroDisponible);
 
         [Fact]
         public void NoSePuedeAgregarRepetido()

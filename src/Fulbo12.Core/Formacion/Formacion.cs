@@ -20,6 +20,7 @@ namespace Fulbo12.Core.Formacion
         public List<Futbolista> Titulares { get; set; }
         public List<Futbolista> Suplentes { get; set; }
         public List<Futbolista> Reserva { get; set; }
+        public PosicionEnCancha Arquero { get; set; }
         public Formacion()
         {
             Lineas = new List<Linea>();
@@ -34,7 +35,8 @@ namespace Fulbo12.Core.Formacion
         public override string ToString()
             => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
         public bool ExisteNumero(byte numeroCamiseta)
-            => Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
+            => Arquero.EsNumero(numeroCamiseta)
+            || Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
         public byte NumeroDisponible
         {
             get

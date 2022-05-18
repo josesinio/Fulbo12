@@ -26,6 +26,7 @@ namespace Fulbo12.Core.Formacion.Fixtures
                             .AgregarPosicion(futbolistas.FEsequielBarco, posiciones.MediocampistaIzquierdo, 11)
                         .AgregarLinea()
                             .AgregarPosicion(futbolistas.FJulianAlvarez, posiciones.DelanteroCentral, 9)
+                        .AgregarArquero(futbolistas.FFrancoArmani, 1)
                         .Formacion;
         }
 
