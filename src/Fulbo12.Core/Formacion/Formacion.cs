@@ -17,14 +17,12 @@ namespace Fulbo12.Core.Formacion
         public static readonly string _posicionesLlenas = "No es posible agregar más jugadores en esta parte";
 
         public List<Linea> Lineas { get; set; }
-        public List<Futbolista> Titulares { get; set; }
-        public List<Futbolista> Suplentes { get; set; }
-        public List<Futbolista> Reserva { get; set; }
+        public List<PosicionEnCancha> Suplentes { get; set; }
+        public List<PosicionEnCancha> Reserva { get; set; }
         public PosicionEnCancha Arquero { get; set; }
         public Formacion()
         {
             Lineas = new List<Linea>();
-            Titulares = new();
             Suplentes = new();
             Reserva = new();
         }
@@ -51,17 +49,17 @@ namespace Fulbo12.Core.Formacion
         }
         public bool ExistePersona(Persona persona)
             => Lineas.Any(l => l.ExistePersona(persona));
-        public void AgregarSuplente(Futbolista futbolista)
+        public void AgregarSuplente(PosicionEnCancha futbolista)
             => AgregarSiSePuedeEn(Suplentes, futbolista, CantidadSuplentes);
-        public void AgregarReserva(Futbolista futbolista)
+        public void AgregarReserva(PosicionEnCancha futbolista)
             => AgregarSiSePuedeEn(Reserva, futbolista, CantidadReserva);
-        private void AgregarSiSePuedeEn(List<Futbolista> lista, Futbolista futbolista, byte tope)
+        private void AgregarSiSePuedeEn(List<PosicionEnCancha> lista, PosicionEnCancha pec, byte tope)
         {
             if (lista.Count < tope)
             {
-                if (ExistePersona(futbolista.Persona))
+                if (ExistePersona(pec.Persona))
                     throw new InvalidOperationException(_jugadorYaExiste);
-                lista.Add(futbolista);
+                lista.Add(pec);
             }
             else
                 throw new InvalidOperationException(_posicionesLlenas);
