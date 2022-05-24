@@ -8,6 +8,13 @@ namespace Fulbo12.Core.Formacion.Fixtures
         public PosicionEnCancha DFC { get; set; }
         public PosicionEnCancha DFCVacante { get; set; }
         public PosicionEnCancha DFDVacante { get; set; }
+        public PosicionEnCancha PecNicoDeLaCruz { get; set; }
+        public PosicionEnCancha PecTomasPochettino { get; set; }
+        public PosicionEnCancha PecFrancoPetroli { get; set; }
+        public PosicionEnCancha PecEzequielCenturion { get; set; }
+        public PosicionEnCancha PecEmanuelMammana { get; set; }
+        public PosicionEnCancha PecMiltonCasco { get; set; }
+        public PosicionEnCancha PecEliasGomez { get; set; }
         public FutbolFixture Futbol { get; set; }
         public const byte NroFabra = 3;
         public const byte nroRojo = 6;
@@ -35,6 +42,41 @@ namespace Fulbo12.Core.Formacion.Fixtures
             {
                 NumeroCamiseta = nroRojo,
                 Futbolista = Futbol.Futbolistas.FMarcosRojo
+            };
+
+            PecNicoDeLaCruz = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FNicoDeLaCruz
+            };
+
+            PecTomasPochettino = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FTomasPochettino
+            };
+
+            PecFrancoPetroli = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FFrancoPetroli
+            };
+
+            PecEzequielCenturion = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FEzequielCenturion
+            };
+
+            PecEmanuelMammana = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FEmanuelMammana
+            };
+
+            PecMiltonCasco = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FMiltonCasco
+            };
+
+            PecEliasGomez = new PosicionEnCancha(posicion: null)
+            {
+                Futbolista = Futbol.Futbolistas.FEliasGomez
             };
         }
     }

@@ -10,11 +10,13 @@ namespace Fulbo12.Core.Formacion.Test
     {
         public Formacion Formacion { get; set; }
         private FutbolistasFixture FixFutbolistas { get; set; }
+        public PosicionEnCanchaFixture PecF { get; set; }
         static readonly string _nombre = "4 - 1 - 4 - 1";
         public FormacionTest(FormacionFixture fixture)
         {
             Formacion = fixture.CrearFormacion();
             FixFutbolistas = fixture.PosicionesEnCancha.Futbol.Futbolistas;
+            PecF = fixture.PosicionesEnCancha;
         }
 
         [Fact]
@@ -45,11 +47,11 @@ namespace Fulbo12.Core.Formacion.Test
         public void NoSePuedeAgregarRepetido()
         {
             var msj = Assert.Throws<InvalidOperationException>
-                (() => Formacion.AgregarSuplente(FixFutbolistas.FNicoDeLaCruz));
+                (() => Formacion.AgregarSuplente(PecF.PecNicoDeLaCruz));
             Assert.Equal(Formacion._jugadorYaExiste, msj.Message);
 
             msj = Assert.Throws<InvalidOperationException>
-                (() => Formacion.AgregarReserva(FixFutbolistas.FNicoDeLaCruz));
+                (() => Formacion.AgregarReserva(PecF.PecNicoDeLaCruz));
             Assert.Equal(Formacion._jugadorYaExiste, msj.Message);
         }
 
@@ -57,7 +59,7 @@ namespace Fulbo12.Core.Formacion.Test
         public void AgregarSuplenteOK()
         {
             Assert.Empty(Formacion.Suplentes);
-            Formacion.AgregarSuplente(FixFutbolistas.FTomasPochettino);
+            Formacion.AgregarSuplente(PecF.PecTomasPochettino);
 
             Assert.Single(Formacion.Suplentes);
         }
@@ -66,7 +68,7 @@ namespace Fulbo12.Core.Formacion.Test
         public void AgregarReservaOK()
         {
             Assert.Empty(Formacion.Suplentes);
-            Formacion.AgregarSuplente(FixFutbolistas.FTomasPochettino);
+            Formacion.AgregarSuplente(PecF.PecTomasPochettino);
 
             Assert.Single(Formacion.Suplentes);
         }
@@ -75,15 +77,15 @@ namespace Fulbo12.Core.Formacion.Test
         public void SinEspacioSuplentes()
         {
             //Completo los suplentes
-            Formacion.AgregarSuplente(FixFutbolistas.FTomasPochettino);
-            Formacion.AgregarSuplente(FixFutbolistas.FEliasGomez);
-            Formacion.AgregarSuplente(FixFutbolistas.FFrancoPetroli);
-            Formacion.AgregarSuplente(FixFutbolistas.FEzequielCenturion);
-            Formacion.AgregarSuplente(FixFutbolistas.FEmanuelMammana);
+            Formacion.AgregarSuplente(PecF.PecTomasPochettino);
+            Formacion.AgregarSuplente(PecF.PecEliasGomez);
+            Formacion.AgregarSuplente(PecF.PecFrancoPetroli);
+            Formacion.AgregarSuplente(PecF.PecEzequielCenturion);
+            Formacion.AgregarSuplente(PecF.PecEmanuelMammana);
 
             //Intento agregar como suplente a un futbolista nuevo
             var excep = Assert.Throws<InvalidOperationException>
-                (() => Formacion.AgregarSuplente(FixFutbolistas.FMiltonCasco));
+                (() => Formacion.AgregarSuplente(PecF.PecMiltonCasco));
 
             Assert.Equal(Formacion._posicionesLlenas, excep.Message);
         }
