@@ -34,7 +34,9 @@ namespace Fulbo12.Core.Formacion
             => new StringBuilder().AppendJoin(" - ", PosicionesPorLinea).ToString();
         public bool ExisteNumero(byte numeroCamiseta)
             => Arquero.EsNumero(numeroCamiseta)
-            || Lineas.Any(l => l.ExisteNumero(numeroCamiseta));
+            || Lineas.Any(l => l.ExisteNumero(numeroCamiseta))
+            || Suplentes.Any(s => s.EsNumero(numeroCamiseta))
+            || Reserva.Any(r => r.EsNumero(numeroCamiseta));
         public byte NumeroDisponible
         {
             get
