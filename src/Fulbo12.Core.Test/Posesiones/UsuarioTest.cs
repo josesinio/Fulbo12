@@ -1,176 +1,172 @@
-using Xunit;
 using Fulbo12.Core.Posesiones.Fixtures;
 using Fulbo12.Core.Futbol.Fixtures;
-using System;
 
-namespace Fulbo12.Core.Posesiones.Test
+namespace Fulbo12.Core.Posesiones.Test;
+[Trait("Category", "Posesion")]
+public class UsuarioTest : IClassFixture<PosesionesFixture>
 {
-    [Trait("Category", "Posesion")]
-    public class UsuarioTest : IClassFixture<PosesionesFixture>
+    public FutbolistasFixture Fixture { get; set; }
+    public Posesion Posesion { get; set; }
+    public Usuario Arturo { get; set; }
+    public Usuario Lucho {get; set;}
+    readonly uint _minima = 500;
+    readonly uint _compra = 2500;
+    readonly uint _monedas = 800;
+
+
+    public UsuarioTest(PosesionesFixture fixture)
     {
-        public FutbolistasFixture Fixture { get; set; }
-        public Posesion Posesion { get; set; }
-        public Usuario Arturo { get; set; }
-        public Usuario Lucho {get; set;}
-        readonly uint _minima = 500;
-        readonly uint _compra = 2500;
-        readonly uint _monedas = 800;
+        Fixture = fixture.Futbolistas;
+        Arturo = fixture.Usuarios.Arturo;
+        Lucho = fixture.Usuarios.Lucho;
+        Posesion = new Posesion(Arturo, Fixture.FLioMessi);
+        fixture.BlanquearUsuario(Arturo);
+    }
 
+    [Fact]
+    public void Constructor()
+    {
+        Assert.Equal<uint>(0, Arturo.Monedas);
+        Assert.Empty(Arturo.Posesiones);
+        Assert.Empty(Arturo.NuevasPosesiones);
+        Assert.Empty(Arturo.Transferibles);
+    }
 
-        public UsuarioTest(PosesionesFixture fixture)
-        {
-            Fixture = fixture.Futbolistas;
-            Arturo = fixture.Usuarios.Arturo;
-            Lucho = fixture.Usuarios.Lucho;
-            Posesion = new Posesion(Arturo, Fixture.FLioMessi);
-            fixture.BlanquearUsuario(Arturo);
-        }
+    [Fact]
+    public void SiPoseeFutbolista()
+    {
+        ArturoAgregaNovedadYLuegoPosesion();
 
-        [Fact]
-        public void Constructor()
-        {
-            Assert.Equal<uint>(0, Arturo.Monedas);
-            Assert.Empty(Arturo.Posesiones);
-            Assert.Empty(Arturo.NuevasPosesiones);
-            Assert.Empty(Arturo.Transferibles);
-        }
+        Assert.True(Arturo.PoseeFutbolista(Fixture.FLioMessi));
+    }
 
-        [Fact]
-        public void SiPoseeFutbolista()
-        {
-            ArturoAgregaNovedadYLuegoPosesion();
+    [Fact]
+    public void NoPoseeFutbolista()
+    {
+        Assert.False(Arturo.PoseeFutbolista(Fixture.FBrunoZuculini));
+    }
 
-            Assert.True(Arturo.PoseeFutbolista(Fixture.FLioMessi));
-        }
+    [Fact]
+    public void AgregarFutbolistaYaPoseido()
+    {
+        ArturoAgregaNovedadYLuegoPosesion();
 
-        [Fact]
-        public void NoPoseeFutbolista()
-        {
-            Assert.False(Arturo.PoseeFutbolista(Fixture.FBrunoZuculini));
-        }
+        var ex = Assert.Throws<InvalidOperationException>(() => Arturo.AgregarPosesion(Posesion));
+        Assert.Equal(Usuario._futbolistaEnPosesion, ex.Message);
+    }
 
-        [Fact]
-        public void AgregarFutbolistaYaPoseido()
-        {
-            ArturoAgregaNovedadYLuegoPosesion();
+    [Fact]
+    public void AgregarFutbolistaNoPoseido()
+    {
+        ArturoAgregaNovedadYLuegoPosesion();
 
-            var ex = Assert.Throws<InvalidOperationException>(() => Arturo.AgregarPosesion(Posesion));
-            Assert.Equal(Usuario._futbolistaEnPosesion, ex.Message);
-        }
+        Assert.Single(Arturo.Posesiones);
+    }
 
-        [Fact]
-        public void AgregarFutbolistaNoPoseido()
-        {
-            ArturoAgregaNovedadYLuegoPosesion();
+    private void ArturoAgregaNovedadYLuegoPosesion()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Arturo.AgregarPosesion(Posesion);
+    }
 
-            Assert.Single(Arturo.Posesiones);
-        }
+    [Fact]
+    public void SiAgregaTransferible()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Assert.Empty(Arturo.Transferibles);
+        Assert.Single(Arturo.NuevasPosesiones);
 
-        private void ArturoAgregaNovedadYLuegoPosesion()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Arturo.AgregarPosesion(Posesion);
-        }
+        Arturo.AgregarTransferible(Posesion);
+        Assert.Empty(Arturo.NuevasPosesiones);
+        Assert.Single(Arturo.Transferibles);
+    }
 
-        [Fact]
-        public void SiAgregaTransferible()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Assert.Empty(Arturo.Transferibles);
-            Assert.Single(Arturo.NuevasPosesiones);
+    [Fact]
+    public void NoAgregaTransferible()
+    {
+        Arturo.AgregarTransferible(Posesion);
+        Assert.Empty(Arturo.Transferibles);
+    }
 
-            Arturo.AgregarTransferible(Posesion);
-            Assert.Empty(Arturo.NuevasPosesiones);
-            Assert.Single(Arturo.Transferibles);
-        }
+    [Fact]
+    public void SiPublica()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Arturo.AgregarTransferible(Posesion);
+        var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
+        Arturo.Publicar(publicacion);
 
-        [Fact]
-        public void NoAgregaTransferible()
-        {
-            Arturo.AgregarTransferible(Posesion);
-            Assert.Empty(Arturo.Transferibles);
-        }
+        Assert.Empty(Arturo.Transferibles);
+        Assert.Single(Arturo.Publicaciones);
+        Assert.Equal(_minima, publicacion.OfertaMinima);
+        Assert.Equal(_compra, publicacion.Compra);
+    }
 
-        [Fact]
-        public void SiPublica()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
-            Arturo.Publicar(publicacion);
+    [Fact]
+    public void NoPublica()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
+        Arturo.Publicar(publicacion);
 
-            Assert.Empty(Arturo.Transferibles);
-            Assert.Single(Arturo.Publicaciones);
-            Assert.Equal(_minima, publicacion.OfertaMinima);
-            Assert.Equal(_compra, publicacion.Compra);
-        }
+        Assert.Empty(Arturo.Transferibles);
+        Assert.Empty(Arturo.Publicaciones);
+    }
 
-        [Fact]
-        public void NoPublica()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
-            Arturo.Publicar(publicacion);
+    [Fact]
+    public void SiTieneAlMenos()
+    {
+        Arturo.Acreditar(_monedas);
 
-            Assert.Empty(Arturo.Transferibles);
-            Assert.Empty(Arturo.Publicaciones);
-        }
+        Assert.True(Arturo.TieneAlMenos(_monedas));
+    }
 
-        [Fact]
-        public void SiTieneAlMenos()
-        {
-            Arturo.Acreditar(_monedas);
+    [Fact]
+    public void NoTieneAlMenos()
+    {
+        Arturo.Acreditar(_monedas);
 
-            Assert.True(Arturo.TieneAlMenos(_monedas));
-        }
+        Assert.False(Arturo.TieneAlMenos(_monedas + 1));
+    }
 
-        [Fact]
-        public void NoTieneAlMenos()
-        {
-            Arturo.Acreditar(_monedas);
+    [Fact]
+    public void NoPuedeOfertarPropia()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Arturo.AgregarTransferible(Posesion);
+        var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
+        Arturo.Publicar(publicacion);
+        Arturo.Acreditar(_monedas);
 
-            Assert.False(Arturo.TieneAlMenos(_monedas + 1));
-        }
+        var ex = Assert.Throws<InvalidOperationException>(() => Arturo.Ofertar(publicacion, _minima));
+        Assert.Equal(Usuario._mismoVendedor, ex.Message);
+    }
 
-        [Fact]
-        public void NoPuedeOfertarPropia()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
-            Arturo.Publicar(publicacion);
-            Arturo.Acreditar(_monedas);
+    [Fact]
+    public void NoPuedeOfertarNoAlcanza()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Arturo.AgregarTransferible(Posesion);
+        var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
+        Arturo.Publicar(publicacion);
 
-            var ex = Assert.Throws<InvalidOperationException>(() => Arturo.Ofertar(publicacion, _minima));
-            Assert.Equal(Usuario._mismoVendedor, ex.Message);
-        }
+        var ex = Assert.Throws<InvalidOperationException>(() => Arturo.Ofertar(publicacion, _minima));
+        Assert.Equal(Usuario._noPoseeMonedasSuficientes, ex.Message);
+    }
 
-        [Fact]
-        public void NoPuedeOfertarNoAlcanza()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
-            Arturo.Publicar(publicacion);
-
-            var ex = Assert.Throws<InvalidOperationException>(() => Arturo.Ofertar(publicacion, _minima));
-            Assert.Equal(Usuario._noPoseeMonedasSuficientes, ex.Message);
-        }
-
-        [Fact]
-        public void LuchoSiOferta()
-        {
-            Arturo.AgregarNovedad(Posesion);
-            Arturo.AgregarTransferible(Posesion);
-            var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
-            Arturo.Publicar(publicacion);
-            
-            Lucho.Acreditar(_minima);
-            Lucho.Ofertar(publicacion, _minima);
-            
-            Assert.Equal<uint>(0 , Lucho.Monedas);
-            Assert.Same(Lucho, publicacion.Ofertante);
-            Assert.Equal(_minima, publicacion.OfertaOMinima);
-        }
+    [Fact]
+    public void LuchoSiOferta()
+    {
+        Arturo.AgregarNovedad(Posesion);
+        Arturo.AgregarTransferible(Posesion);
+        var publicacion = new Publicacion(Posesion, _minima, _compra, 1);
+        Arturo.Publicar(publicacion);
+        
+        Lucho.Acreditar(_minima);
+        Lucho.Ofertar(publicacion, _minima);
+        
+        Assert.Equal<uint>(0 , Lucho.Monedas);
+        Assert.Same(Lucho, publicacion.Ofertante);
+        Assert.Equal(_minima, publicacion.OfertaOMinima);
     }
 }
