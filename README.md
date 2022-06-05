@@ -1,6 +1,6 @@
-![main build.NET5](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-build.NET5/badge.svg?branch=main) ![main test.NET5](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-test.NET5/badge.svg?branch=main)
-![dev build.NET5](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-build.NET5/badge.svg?branch=dev) ![dev test.NET5](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-test.NET5/badge.svg?branch=dev)
-[![Abrir en Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/ET12DE1Computacion/Fulbo12)
+![main build.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-build.NET6/badge.svg?branch=main) ![main test.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-test.NET6/badge.svg?branch=main)
+![dev build.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-build.NET6/badge.svg?branch=dev) ![dev test.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-test.NET6/badge.svg?branch=dev)
+[![Abrir en Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Abrir%20en%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/ET12DE1Computacion/Fulbo12)
 
 <h1 align="center">E.T. Nº12 D.E. 1º "Libertador Gral. José de San Martín"</h1>
 <p align="center">
@@ -9,7 +9,7 @@
 
 # Fulbo12
 
-Proyecto en `C#` para generar un simulador de futbol. El proyecto apunta a reforzar los conocimientos de nuestros alumnos en Programación y abordar tematicas extra-curriculares pero presentes en un ambito laboral: versionado de software y trabajo colaborativo en grupo.
+Proyecto en `C#` para generar un simulador de futbol. El proyecto apunta a reforzar los conocimientos de nuestros alumnos en Programación y abordar temáticas extra-curriculares pero presentes en un ámbito laboral: versionado de software y trabajo colaborativo en grupo.
 
 ## Comenzando 🚀
 
@@ -21,7 +21,7 @@ git clone https://github.com/ET12DE1Computacion/Fulbo12
 
 ### Pre-requisitos 📋
 
-- .NET 5.0.7 (SDK .NET 5.0.301) [Descargar](https://dotnet.microsoft.com/download/dotnet/5.0)
+- .NET 6.0.5 (SDK .NET 6.0.300) - [Descargar](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ### Instalación 🔧
 
@@ -60,13 +60,13 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 
 ## Autores ✒️
 
-| Integrante | Rol | User |
-| :--------: | :-: | :--: |
-| Arturo Cruz | Desarrollo | [ArturoCruz606](https://github.com/ArturoCruz606) |
-| Lucas Medina | Desarrollo | [LucasMedina04](https://github.com/LucasMedina04) |
-| Ezequiel Kippes | Desarrollo | [Liono02](https://github.com/Liono02) |
-| Martín Morandini | Desarrollo | [MMorandiniGit](https://github.com/MMorandiniGit) |
-| Luis Duran | Documentación | [luchoxx87](https://github.com/luchoxx87) |
+| Integrante        | Rol                   | User                                              |
+| :--------:        | :-:                   | :--:                                              |
+| Arturo Cruz       | Desarrollo / Test     | [ArturoCruz606](https://github.com/ArturoCruz606) |
+| Lucas Medina      | Desarrollo            | [LucasMedina04](https://github.com/LucasMedina04) |
+| Ezequiel Kippes   | Desarrollo            | [Liono02](https://github.com/Liono02)             |
+| Martín Morandini  | Desarrollo / Fixtures | [MMorandiniGit](https://github.com/MMorandiniGit) |
+| Luis Duran        | Documentación / Test  | [luchoxx87](https://github.com/luchoxx87)         |
 
 
 ## Licencia 📄
