@@ -14,8 +14,14 @@ public sealed class Fulbo12Contexto : DbContext
     {
         if (!ob.IsConfigured)
         {
-            var serverVersion = new MySqlServerVersion("8.0.29");
-            ob.UseMySql(serverVersion);
+            IConfiguration myConfig = new ConfigurationBuilder()
+                .SetBasePath(Environment.CurrentDirectory)
+                .AddJsonFile("appSettings.json")
+                .Build();
+            
+            string strConexion = myConfig.GetConnectionString("dev");
+            var serverVersion = new MySqlServerVersion(versionString: myConfig["SerVersion"]);
+            ob.UseMySql(strConexion, serverVersion);
         }
     }
 }
