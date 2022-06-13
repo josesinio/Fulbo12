@@ -6,6 +6,9 @@
 # Ignore Enterprise Cache
 *.ldb
 
+# Migraciones
+[Mm]igrations/
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

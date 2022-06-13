@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-  <Using Include="Xunit" />
-</ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
 
 </Project>

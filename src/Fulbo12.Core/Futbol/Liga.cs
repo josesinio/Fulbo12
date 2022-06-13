@@ -1,13 +1,8 @@
 namespace Fulbo12.Core.Futbol;
-public class Liga
+public class Liga : ConNombre
 {
-    public string Nombre { get; set; }
     public List<Equipo> Equipos { get; set; }
     public Pais Pais { get; set; }
-    public Liga() { }
-    public Liga(string nombre, Pais pais)
-    {
-        Nombre = nombre;
-        Pais = pais;
-    }
+    public Liga(string nombre, Pais pais) : base(nombre)
+        => Pais = pais;
 }
