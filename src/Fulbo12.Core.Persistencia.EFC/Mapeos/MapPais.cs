@@ -1,19 +1,22 @@
 namespace Fulbo12.Core.Persistencia.EFC.Mapeos;
 public class MapPais : IEntityTypeConfiguration<Pais>
 {
-    public void Configure(EntityTypeBuilder<Pais> builder)
+    public static readonly byte IdArgentina = 1;
+    public void Configure(EntityTypeBuilder<Pais> etb)
     {
-        builder.ToTable("Pais");
+        etb.ToTable("Pais");
 
-        builder.HasKey(p => p.Id)
+        etb.HasKey(p => p.Id)
             .HasName("PK_Pais");
-        builder.Property(p => p.Id)
+        etb.Property(p => p.Id)
             .HasColumnName("idPais");
 
-        builder.Property(p => p.Nombre)
+        etb.Property(p => p.Nombre)
             .HasColumnName("pais");
-        builder.HasIndex(p => p.Nombre)
+        etb.HasIndex(p => p.Nombre)
             .HasDatabaseName("UQ_Pais_pais")
             .IsUnique();
+
+        etb.HasData(new Pais(IdArgentina, "Argentina"));
     }
 }

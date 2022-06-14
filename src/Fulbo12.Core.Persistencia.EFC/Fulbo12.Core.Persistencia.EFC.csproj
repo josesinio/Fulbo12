@@ -20,8 +20,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Using Include="Fulbo12.Core.Persistencia.Repos" />
     <Using Include="Microsoft.EntityFrameworkCore.Metadata.Builders" />
-    <Using Include="Microsoft.EntityFrameworkCore;" />
+    <Using Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
 
 </Project>

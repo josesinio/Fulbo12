@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace Fulbo12.Core.Persistencia;
+namespace Fulbo12.Core.Persistencia.Repos;
 public interface IRepo<T> where T : class
 {
     void Alta(T entidad);

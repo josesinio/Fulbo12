@@ -1,4 +1,5 @@
 using System.Linq.Expressions;
+using Fulbo12.Core.Persistencia.Repos;
 
 namespace Fulbo12.Core.Persistencia.EFC.Repos;
 public class RepoGenerico<T> : IRepo<T> where T: class

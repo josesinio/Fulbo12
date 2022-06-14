@@ -1,7 +1,5 @@
-namespace Fulbo12.Core.Persistencia.EFC.Repos
+namespace Fulbo12.Core.Persistencia.EFC.Repos;
+public class RepoPais : RepoGenerico<Pais>, IRepoPais
 {
-    public class RepoPais : RepoGenerico<Pais>
-    {
-        public RepoPais(Fulbo12Contexto contexto) : base(contexto) { }
-    }
+    public RepoPais(Fulbo12Contexto contexto) : base(contexto) { }
 }
