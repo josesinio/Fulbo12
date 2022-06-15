@@ -5,4 +5,6 @@ public class Liga : ConNombre
     public Pais Pais { get; set; }
     public Liga(string nombre, Pais pais) : base(nombre)
         => Pais = pais;
+    public Liga(string nombre) : base(nombre) {}
+        
 }
