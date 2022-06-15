@@ -16,4 +16,6 @@ public class Unidad : IUnidad
         repoPersona = new RepoPersona(contexto);
     }
     public void Guardar() => Contexto.SaveChanges();
+    public async Task GuardarAsync()
+        => await Contexto.SaveChangesAsync();
 }

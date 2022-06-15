@@ -6,4 +6,5 @@ public interface IUnidad
     IRepoPais RepoPais { get; }
     IRepoPersona RepoPersona { get; }
     void Guardar();
+    Task GuardarAsync();
 }
