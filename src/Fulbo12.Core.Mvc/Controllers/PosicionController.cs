@@ -4,11 +4,11 @@ using Fulbo12.Core.Mvc.Models;
 
 namespace Fulbo12.Core.Mvc.Controllers;
 
-public class HomeController : Controller
+public class PosicionController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<PosicionController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public PosicionController(ILogger<PosicionController> logger)
     {
         _logger = logger;
     }
