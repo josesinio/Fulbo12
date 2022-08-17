@@ -1,6 +1,7 @@
 namespace Fulbo12.Core.Futbol;
 public class Posicion : ConNombre
 {
+    public string Abreviado { get; set; }
     public Posicion(string nombre) : base(nombre) { }
     public Posicion(byte id, string nombre) : base(nombre, id) { }
     //Colección para configurar el N-N con futbolista
