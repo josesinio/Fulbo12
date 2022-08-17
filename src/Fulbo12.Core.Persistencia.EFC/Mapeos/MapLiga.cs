@@ -23,6 +23,8 @@ public class MapLiga : IEntityTypeConfiguration<Liga>
             .IsRequired()
             .HasConstraintName("FK_Liga_Pais");
 
-        etb.Ignore(l => l.Equipos);
+        etb.HasIndex(l => l.Nombre)
+            .HasDatabaseName("UQ_Liga_nombre")
+            .IsUnique();
     }
 }

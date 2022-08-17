@@ -20,5 +20,9 @@ public class MapPersona : IEntityTypeConfiguration<Persona>
             .HasForeignKey("idPais")
             .IsRequired()
             .HasConstraintName("FK_Persona_Pais");
+
+        etb.HasIndex(p => new { p.Apellido, p.Nombre })
+            .IsFullText()
+            .HasDatabaseName("FT_Persona_apellido_nombre");
     }
 }

@@ -16,6 +16,7 @@ public sealed class Fulbo12Contexto : DbContext
         mb.ApplyConfiguration<Persona>(new MapPersona());
         mb.ApplyConfiguration<Liga>(new MapLiga());
         mb.ApplyConfiguration<Equipo>(new MapEquipo());
+        mb.ApplyConfiguration<Futbolista>(new MapFutbolista());
     }
     protected override void OnConfiguring(DbContextOptionsBuilder ob)
     {

@@ -22,5 +22,10 @@ public class MapEquipo : IEntityTypeConfiguration<Equipo>
             .HasColumnName("nombre")
             .IsRequired()
             .HasMaxLength(30);
+
+        //Unico nombre por liga
+        etb.HasIndex(nameof(Equipo.Nombre), "idLiga")
+            .HasDatabaseName("UQ_Equipo_nombre_liga")
+            .IsUnique();
     }
 }
