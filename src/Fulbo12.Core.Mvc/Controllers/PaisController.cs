@@ -10,13 +10,24 @@ public class PaisController : Controller
     private readonly IUnidad _unidad;
 
     public PaisController(IUnidad unidad) => _unidad = unidad;
-
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var paises = _unidad.RepoPais.Obtener(); 
+        var paises = await _unidad.RepoPais.ObtenerAsync
+            (orden: ps => ps.OrderBy(p => p.Nombre));
         return View(paises);
     }
-
+    [HttpGet]
+    public IActionResult Alta()
+    {
+        return View("Upsert");
+    }
+    [HttpPost]
+    public async Task<IActionResult> Upsert(Pais pais)
+    {
+        await _unidad.RepoPais.AltaAsync(pais);
+        await _unidad.GuardarAsync();
+        return RedirectToAction("Index");
+    }
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

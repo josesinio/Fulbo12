@@ -13,6 +13,7 @@ public abstract class ConNombre
     [MaxLength(30)]
     [Required]
     public string Nombre { get; set; }
+    public ConNombre(){}
     public ConNombre(string nombre) => Nombre = nombre;
     public ConNombre(string nombre, byte id) : this(nombre)
         => Id = id;

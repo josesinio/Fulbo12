@@ -4,14 +4,15 @@ namespace Fulbo12.Core.Persistencia.EFC.Repos;
 public abstract class RepoGenerico<T> : IRepo<T> where T : class
 {
     Fulbo12Contexto _contexto;
+    protected DbSet<T> DbSet => _contexto.Set<T>();
     public RepoGenerico(Fulbo12Contexto contexto) => _contexto = contexto;
-    public void Alta(T entidad) => _contexto.Set<T>().Add(entidad);
-    public void Alta(IEnumerable<T> entidades) => _contexto.Set<T>().AddRange(entidades);
+    public void Alta(T entidad) => DbSet.Add(entidad);
+    public void Alta(IEnumerable<T> entidades) => DbSet.AddRange(entidades);
     public async Task AltaAsync(T entidad)
-        => await _contexto.Set<T>().AddAsync(entidad);
-    public IEnumerable<T> Obtener(Expression<Func<T, bool>> filtro = null!, Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
+        => await DbSet.AddAsync(entidad);
+    private IQueryable<T> ConfigurarConsulta(Expression<Func<T, bool>> filtro = null!, Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string? includes = null!)
     {
-        IQueryable<T> query = _contexto.Set<T>();
+        IQueryable<T> query = DbSet;
 
         if (filtro != null)
             query = query.Where(filtro);
@@ -21,7 +22,17 @@ public abstract class RepoGenerico<T> : IRepo<T> where T : class
             {
                 query = query.Include(propiedad);
             }
-
-        return orden is null ? query.ToList() : orden(query).ToList();
+        
+        if (orden != null)
+            query = orden(query);
+        
+        return query;
     }
+    public virtual IEnumerable<T> Obtener(  Expression<Func<T, bool>> filtro = null!,
+                                            Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
+        => ConfigurarConsulta(filtro, orden, includes)
+                .ToList();
+    public virtual async Task<IEnumerable<T>> ObtenerAsync(Expression<Func<T, bool>> filtro = null!, Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
+        => await ConfigurarConsulta(filtro, orden, includes)
+                .ToListAsync();
 }
