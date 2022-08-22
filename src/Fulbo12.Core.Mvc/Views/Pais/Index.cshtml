@@ -1,3 +1,18 @@
+@using Fulbo12.Core;
+@model IEnumerable<Pais>
 @{
     ViewData["Title"] = "Pais";
+}
+
+@if (Model.Count() != 0)
+{
+    <h3>Paises</h3>
+    @foreach (var pais in Model)
+    {
+        <ol>@pais.Nombre</ol>
+    }
+}
+else
+{
+    <p>No hay paises cargados.</p>
 }

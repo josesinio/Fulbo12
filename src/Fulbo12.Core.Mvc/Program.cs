@@ -1,7 +1,12 @@
+using Fulbo12.Core.Persistencia;
+using Fulbo12.Core.Persistencia.EFC;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Fulbo12Contexto>();
+builder.Services.AddTransient<IUnidad, Unidad>();
 
 var app = builder.Build();
 

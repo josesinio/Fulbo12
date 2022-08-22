@@ -11,6 +11,17 @@ public abstract class RepoGenerico<T> : IRepo<T> where T : class
         => await _contexto.Set<T>().AddAsync(entidad);
     public IEnumerable<T> Obtener(Expression<Func<T, bool>> filtro = null!, Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
     {
-        throw new NotImplementedException();
+        IQueryable<T> query = _contexto.Set<T>();
+
+        if (filtro != null)
+            query = query.Where(filtro);
+
+        if (includes != null)
+            foreach (var propiedad in includes.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(propiedad);
+            }
+
+        return orden is null ? query.ToList() : orden(query).ToList();
     }
 }
