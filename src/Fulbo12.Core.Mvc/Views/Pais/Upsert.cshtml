@@ -1,8 +1,10 @@
 @using Fulbo12.Core;
 @model Pais;
 @{
-    ViewData["Title"] = "Pais";
+    var texto = Model is null ? "Alta Pais" : "Modificar Pais";
+    ViewData["Title"] = texto;
 }
+
 <form asp-controller="Pais" asp-action="Upsert" method="post">
     <div asp-validation-summary="All"></div>
     <div><input type="hidden" asp-for="@Model.Id" /></div>
@@ -14,7 +16,14 @@
             <input asp-for="Nombre" class="form-control" />
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Alta Categoria</button>
+            @if (Model is null)
+            {
+                <button type="submit" class="btn btn-primary">@texto</button>
+            }
+            else
+            {
+                <button type="submit" class="btn btn-warning">@texto</button>
+            }
         </div>
-    </div>    
+    </div>
 </form>

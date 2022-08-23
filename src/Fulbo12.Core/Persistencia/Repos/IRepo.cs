@@ -14,4 +14,7 @@ public interface IRepo<T> where T : class
         Expression<Func<T, bool>> filtro = null,
         Func<IQueryable<T>, IOrderedQueryable<T>> orden = null,
         string includes = null);
+    T ObtenerPorId(params object[] claves);
+    Task<T> ObtenerPorIdAsync(params object[] claves);
+    void Modificar(T entidad);
 }

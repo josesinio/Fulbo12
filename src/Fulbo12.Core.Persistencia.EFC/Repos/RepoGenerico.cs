@@ -29,10 +29,19 @@ public abstract class RepoGenerico<T> : IRepo<T> where T : class
         return query;
     }
     public virtual IEnumerable<T> Obtener(  Expression<Func<T, bool>> filtro = null!,
-                                            Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
+                                            Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!,
+                                            string includes = null!)
         => ConfigurarConsulta(filtro, orden, includes)
                 .ToList();
-    public virtual async Task<IEnumerable<T>> ObtenerAsync(Expression<Func<T, bool>> filtro = null!, Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!, string includes = null!)
+    public virtual async Task<IEnumerable<T>> ObtenerAsync( Expression<Func<T, bool>> filtro = null!,
+                                                            Func<IQueryable<T>, IOrderedQueryable<T>> orden = null!,
+                                                            string includes = null!)
         => await ConfigurarConsulta(filtro, orden, includes)
                 .ToListAsync();
+    public T? ObtenerPorId(params object[] claves) => DbSet.Find(claves);
+
+    public async Task<T>? ObtenerPorIdAsync(params object[] claves)
+        => await DbSet.FindAsync(claves);
+
+    public void Modificar(T entidad) => DbSet.Update(entidad);
 }

@@ -9,7 +9,7 @@
     <h3>Paises</h3>
     @foreach (var pais in Model)
     {
-        <ol>@pais.Nombre</ol>
+        <ol><a asp-action="Modificar" asp-route-Id="@pais.Id">@pais.Nombre</a></ol>
     }
 }
 else
