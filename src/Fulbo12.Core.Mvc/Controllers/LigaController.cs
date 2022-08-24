@@ -10,9 +10,11 @@ public class LigaController : Controller
     private readonly IUnidad _unidad;
     public LigaController(IUnidad unidad) => _unidad = unidad;
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var ligas = await _unidad.RepoLiga.ObtenerAsync
+            (orden: ls => ls.OrderBy(l => l.Nombre));
+        return View(ligas);
     }
 
     [HttpGet]
