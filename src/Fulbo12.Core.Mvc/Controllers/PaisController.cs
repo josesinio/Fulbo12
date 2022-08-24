@@ -1,7 +1,6 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Fulbo12.Core.Mvc.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Fulbo12.Core.Persistencia;
+using Fulbo12.Core.Persistencia.Excepciones;
 
 namespace Fulbo12.Core.Mvc.Controllers;
 
@@ -47,12 +46,14 @@ public class PaisController : Controller
             paisRepo.Nombre = pais.Nombre;
             _unidad.RepoPais.Modificar(paisRepo);
         }
-        await _unidad.GuardarAsync();
+        try
+        {
+            await _unidad.GuardarAsync();
+        }
+        catch (EntidadDuplicadaException e)
+        {
+            return NotFound();
+        }
         return RedirectToAction(nameof(Index));
-    }
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 }

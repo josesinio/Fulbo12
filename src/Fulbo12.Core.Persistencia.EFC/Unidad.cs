@@ -1,11 +1,12 @@
 ﻿using Fulbo12.Core.Persistencia.EFC.Repos;
+using Fulbo12.Core.Persistencia.Excepciones;
 
 namespace Fulbo12.Core.Persistencia.EFC;
 public class Unidad : IUnidad
 {
     public IRepoPais RepoPais => repoPais;
     public IRepoPersona RepoPersona => repoPersona;
-    public IRepoLiga RepoLiga => RepoLiga;
+    public IRepoLiga RepoLiga => repoLiga;
 
     RepoPais repoPais;
     RepoPersona repoPersona;
@@ -18,7 +19,27 @@ public class Unidad : IUnidad
         repoPersona = new RepoPersona(contexto);
         repoLiga = new RepoLiga(contexto);
     }
-    public void Guardar() => Contexto.SaveChanges();
+    public void Guardar()
+    {
+        try
+        {
+            Contexto.SaveChanges();
+        }
+        catch (System.Exception e)
+        {
+            throw new EntidadDuplicadaException("bla", e);
+        }
+    }
     public async Task GuardarAsync()
-        => await Contexto.SaveChangesAsync();
+    {
+        try
+        {
+            await Contexto.SaveChangesAsync();
+        }
+        catch (System.Exception e)
+        {
+            throw new EntidadDuplicadaException("bla", e);
+        }
+    }
+    
 }
