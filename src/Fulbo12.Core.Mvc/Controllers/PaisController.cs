@@ -32,6 +32,17 @@ public class PaisController : Controller
 
         return View("Upsert", pais);
     }
+    public async Task<IActionResult> Detalle(byte? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var pais = await _unidad.RepoPais.ObtenerPorIdAsync(id);
+        if (pais is null)
+            return NotFound();
+
+        return View("Detalle", pais);
+    }
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upsert(Pais pais)
