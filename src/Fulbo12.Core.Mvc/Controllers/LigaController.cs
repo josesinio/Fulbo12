@@ -10,9 +10,12 @@ public class LigaController : Controller
     private readonly IUnidad _unidad;
     public LigaController(IUnidad unidad) => _unidad = unidad;
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var ligas = await _unidad.RepoLiga.ObtenerAsync
+            (orden: ls => ls.OrderBy(l => l.Nombre),
+            includes: "Pais");
+        return View(ligas);
     }
 
     [HttpGet]
@@ -24,6 +27,20 @@ public class LigaController : Controller
         return View("Upsert", vmLiga);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> Modificar(byte? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var liga = await _unidad.RepoLiga.ObtenerPorIdAsync(id);
+        if (liga is null)
+            return NotFound();
+        
+        var paises = await _unidad.RepoPais.ObtenerAsync();
+        var vmLiga = new VMLiga(paises, liga);
+        return View("Upsert", vmLiga);
+    }
     [HttpPost]
     public async Task<IActionResult> Upsert(VMLiga vmLiga)
     {

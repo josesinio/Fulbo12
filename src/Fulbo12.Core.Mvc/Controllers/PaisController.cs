@@ -40,8 +40,8 @@ public class PaisController : Controller
         var pais = await _unidad.RepoPais.ObtenerPorIdAsync(id);
         if (pais is null)
             return NotFound();
-
-        return View("Detalle", pais);
+        var ligas = await _unidad.RepoLiga.LigasDeAsync(pais);
+        return View("Detalle", ligas);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
