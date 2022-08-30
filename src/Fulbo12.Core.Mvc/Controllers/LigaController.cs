@@ -36,7 +36,7 @@ public class LigaController : Controller
         var liga = await _unidad.RepoLiga.ObtenerPorIdAsync(id);
         if (liga is null)
             return NotFound();
-        
+
         var paises = await _unidad.RepoPais.ObtenerAsync();
         var vmLiga = new VMLiga(paises, liga);
         return View("Upsert", vmLiga);
@@ -44,6 +44,9 @@ public class LigaController : Controller
     [HttpPost]
     public async Task<IActionResult> Upsert(VMLiga vmLiga)
     {
+        if (!ModelState.IsValid)
+            return View("Upsert", vmLiga);
+
         if (vmLiga.IdLiga == 0)
         {
             var pais = await _unidad.RepoPais.ObtenerPorIdAsync(vmLiga.IdPais);

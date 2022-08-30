@@ -18,7 +18,7 @@
     </div>
     <div class="row g-2 align-items-center">
         <div class="col-auto">
-            <select asp-items="Model.Paises" asp-for="IdPais">
+            <select asp-items="Model.Paises" asp-for="IdPais" class="form-select">
                 @if (Model.IdLiga == 0)
                 {
                     <option selected="selected" value="" disabled>Seleccione un pais</option>

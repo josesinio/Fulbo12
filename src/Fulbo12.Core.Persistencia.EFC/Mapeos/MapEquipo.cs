@@ -2,6 +2,7 @@ using Fulbo12.Core.Futbol;
 namespace Fulbo12.Core.Persistencia.EFC.Mapeos;
 public class MapEquipo : IEntityTypeConfiguration<Equipo>
 {
+    public static short IdEquipoCompu = 1;
     public void Configure(EntityTypeBuilder<Equipo> etb)
     {
         etb.ToTable("Equipo");
@@ -27,5 +28,9 @@ public class MapEquipo : IEntityTypeConfiguration<Equipo>
         etb.HasIndex(nameof(Equipo.Nombre), "idLiga")
             .HasDatabaseName("UQ_Equipo_nombre_liga")
             .IsUnique();
+
+        etb.HasData(
+            new { Id = IdEquipoCompu, Nombre = "Computación", idLiga = MapLiga.IdLigaEt12 }
+        );
     }
 }

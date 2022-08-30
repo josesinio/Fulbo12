@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Fulbo12.Core.Futbol;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -6,7 +7,8 @@ namespace Fulbo12.Core.Mvc.ViewModels
     public class VMLiga
     {
         public SelectList? Paises { get; set; }
-        public string? NombreLiga {get; set;}
+        public string? NombreLiga { get; set; }
+        [Range(1, byte.MaxValue, ErrorMessage = "Seleccione un pais por favor")]
         public byte IdPais {get; set;}
         public byte IdLiga { get; set; }
         public VMLiga() { }
