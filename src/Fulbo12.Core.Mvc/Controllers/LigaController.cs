@@ -41,6 +41,25 @@ public class LigaController : Controller
         var vmLiga = new VMLiga(paises, liga);
         return View("Upsert", vmLiga);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Detalle(byte? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var ligas = await _unidad.RepoLiga.ObtenerAsync
+            (filtro: ls => ls.Id == id,
+            includes: "Pais,Equipos");
+
+        if (ligas is null)
+            return NotFound();
+
+        if (ligas.Count() == 0)
+            return NotFound();
+
+        return View("Detalle", ligas.First());
+    }
     [HttpPost]
     public async Task<IActionResult> Upsert(VMLiga vmLiga)
     {

@@ -4,20 +4,23 @@ using Fulbo12.Core.Persistencia.Excepciones;
 namespace Fulbo12.Core.Persistencia.EFC;
 public class Unidad : IUnidad
 {
-    public IRepoPais RepoPais => repoPais;
-    public IRepoPersona RepoPersona => repoPersona;
-    public IRepoLiga RepoLiga => repoLiga;
+    public IRepoPais RepoPais => _repoPais;
+    public IRepoPersona RepoPersona => _repoPersona;
+    public IRepoLiga RepoLiga => _repoLiga;
+    public IRepoEquipo RepoEquipo => _repoEquipo;
 
-    RepoPais repoPais;
-    RepoPersona repoPersona;
-    RepoLiga repoLiga;
+    RepoPais _repoPais;
+    RepoPersona _repoPersona;
+    RepoLiga _repoLiga;
+    RepoEquipo _repoEquipo;
     private readonly Fulbo12Contexto Contexto;
     public Unidad(Fulbo12Contexto contexto)
     {
         Contexto = contexto;
-        repoPais = new RepoPais(contexto);
-        repoPersona = new RepoPersona(contexto);
-        repoLiga = new RepoLiga(contexto);
+        _repoPais = new RepoPais(contexto);
+        _repoPersona = new RepoPersona(contexto);
+        _repoLiga = new RepoLiga(contexto);
+        _repoEquipo = new RepoEquipo(contexto);
     }
     public void Guardar()
     {

@@ -1,3 +1,34 @@
+@using Fulbo12.Core.Futbol;
+@model IEnumerable<Equipo>;
 @{
     ViewData["Title"] = "Equipo";
+}
+
+@if (Model.Count() != 0)
+{
+    <h3>Equipos</h3>
+    <br><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col" colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach (var equipo in Model)
+            {
+                <tr>
+                    <th scope="row"><a asp-action="Detalle" asp-route-Id="@equipo.Id">@equipo.Nombre</a></th>
+                    <td><a asp-action="Detalle" asp-route-Id="@equipo.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
+                    <td><a asp-action="Modificar" asp-route-Id="@equipo.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+}
+else
+{
+    <p>No hay ligas cargados.</p>
 }

@@ -1,12 +1,12 @@
 @using Fulbo12.Core.Futbol;
-@model IEnumerable<Liga>;
+@model Liga;
 @{
-    ViewData["Title"] = "Pais - Detalle";
+    ViewData["Title"] = "Liga - -Detalle";
 }
 
-<h2 class="text-center">@Model.First().Pais.Nombre</h2>
+<h2 class="text-center">@Model.Nombre</h2>
 <br><br>
-<h1>Ligas</h1>
+<h2>Equipos</h2>
 <table class="table table-striped">
         <thead>
             <tr>
@@ -15,10 +15,10 @@
             </tr>
         </thead>
         <tbody class="">
-            @foreach (var liga in Model)
+            @foreach (var equipo in Model.Equipos)
             {
                 <tr>
-                    <th scope="row">@liga.Nombre</th>
+                    <th scope="row">@equipo.Nombre</th>
                     @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
                     <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td> *@
                 </tr>
