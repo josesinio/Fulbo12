@@ -19,8 +19,8 @@
             @foreach (var pais in Model)
             {
                 <tr>
-                    <th scope="row"><a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
-                    <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
+                    <th scope="row"><a asp-controller="Pais" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
+                    <td><a asp-controller="Pais" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
                     <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>
                 </tr>
             }
