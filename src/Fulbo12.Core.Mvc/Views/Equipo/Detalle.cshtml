@@ -1,0 +1,24 @@
+@using Fulbo12.Core.Futbol;
+@model Equipo;
+@{
+    ViewData["Title"] = "Equipo - Detalle";
+}
+
+<h2 class="text-center">@string.Concat(Model.Nombre,'(',Model.Liga.Nombre,')')</h2>
+<br><br>
+@*<h2>Futbolistas</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach (var futbolista in Model.Futbolistas)
+            {
+                <tr>
+                    <th scope="row">@futbolista.</th>
+                </tr>
+            }
+        </tbody>
+    </table> *@

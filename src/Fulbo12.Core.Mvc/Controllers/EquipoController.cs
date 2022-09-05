@@ -20,7 +20,20 @@ public class EquipoController : Controller
             includes: "Liga");
         return View(equipos);
     }
+    [HttpGet]
+    public async Task<IActionResult> Detalle(short? id)
+    {
+        if (id is null || id == 0)
+            return NotFound();
 
+        var equipo = await _unidad.RepoEquipo.ObtenerAsync(filtro: es => es.Id == id,
+            includes: "Liga,Futbolistas");
+
+        if (equipo is null)
+            return NotFound();
+
+        return View("Detalle", equipo.First());
+    }
     [HttpGet]
     public async Task<IActionResult> Alta()
     {

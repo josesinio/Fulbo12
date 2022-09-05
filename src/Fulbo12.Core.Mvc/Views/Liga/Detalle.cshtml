@@ -4,7 +4,7 @@
     ViewData["Title"] = "Liga - Detalle";
 }
 
-<h2 class="text-center">@Model.Nombre</h2>
+<h2 class="text-center">@string.Concat(Model.Nombre,'(',Model.Pais.Nombre,')')</h2>
 <br><br>
 <h2>Equipos</h2>
 <table class="table table-striped">
@@ -18,7 +18,7 @@
             @foreach (var equipo in Model.Equipos)
             {
                 <tr>
-                    <th scope="row">@equipo.Nombre</th>
+                    <th scope="row"><a asp-controller="Equipo" asp-action="Detalle" asp-route-Id="@equipo.Id">@equipo.Nombre</a></th>
                     @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
                     <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td> *@
                 </tr>
