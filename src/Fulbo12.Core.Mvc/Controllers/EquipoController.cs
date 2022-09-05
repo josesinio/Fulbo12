@@ -53,7 +53,14 @@ public class EquipoController : Controller
             return NotFound();
         }
 
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction(nameof(Index));
+    }
+
+    [AcceptVerbs("GET", "POST")]
+    public async Task<IActionResult> VerificarNombre(string nombreEquipo, byte idLiga)
+    {
+        var resultado = await _unidad.RepoEquipo.ExisteNombreEnLigaAsync(idLiga, nombreEquipo);
+        return resultado ? Json($"Ya existe {nombreEquipo} en esa liga") : Json(true);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

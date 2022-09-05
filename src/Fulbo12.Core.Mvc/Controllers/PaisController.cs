@@ -9,26 +9,26 @@ public class PaisController : Controller
     private readonly IUnidad _unidad;
 
     public PaisController(IUnidad unidad) => _unidad = unidad;
-    public async Task<IActionResult> Index(byte? id)
+
+    public async Task<IActionResult> Listado()
     {
-        if (id is null || id == 0)
-        {
-            var paises = await _unidad.RepoPais.ObtenerAsync
+        var paises = await _unidad.RepoPais.ObtenerAsync
                             (orden: ps => ps.OrderBy(p => p.Nombre));
-            return View(paises);
-        }
+        return View(paises);
+    }
+    public async Task<IActionResult> Detalle(byte id)
+    {
+        if (id == 0)
+            return RedirectToAction(nameof(Listado));        
 
         var pais = await _unidad.RepoPais.ObtenerPorIdAsync(id);
         if (pais is null)
             return NotFound();
         var ligas = await _unidad.RepoLiga.LigasDeAsync(pais);
-        return View("Detalle", ligas);
+        return View(ligas);
     }
     [HttpGet]
-    public IActionResult Alta()
-    {
-        return View("Upsert");
-    }
+    public IActionResult Alta() => View("Upsert");
     [HttpGet]
     public async Task<IActionResult> Modificar(byte? id)
     {
@@ -41,7 +41,7 @@ public class PaisController : Controller
 
         return View("Upsert", pais);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Upsert(Pais pais)
@@ -64,6 +64,6 @@ public class PaisController : Controller
         {
             return NotFound();
         }
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction(nameof(Listado));
     }
 }

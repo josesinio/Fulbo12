@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Fulbo12.Core.Futbol;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Fulbo12.Core.Mvc.ViewModels
@@ -7,9 +8,12 @@ namespace Fulbo12.Core.Mvc.ViewModels
     public class VMEquipo
     {
         public SelectList? Ligas { get; set; }
-        public string? NombreEquipo { get; set; }
+        [Remote(action: "VerificarNombre", controller: "Equipo",
+                AdditionalFields = nameof(IdLiga))]
+        public string NombreEquipo { get; set; }
+        private byte LigaSelecionada => (byte)Ligas!.SelectedValue;
         [Range(1, byte.MaxValue, ErrorMessage = "Seleccione una liga por favor")]
-        public byte IdLiga {get; set;}
+        public byte IdLiga { get; set; }
         public short IdEquipo { get; set; }
         public VMEquipo() { }
         public VMEquipo(IEnumerable<Liga> ligas)

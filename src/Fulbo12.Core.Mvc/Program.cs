@@ -26,9 +26,14 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "ListaDetalle",
-    pattern: "{controller=Home}/{id?}",
-    defaults: new {action="Index"});
+    name: "Listado",
+    pattern: "{controller=Home}",
+    defaults: new {action="Listado"});
+
+app.MapControllerRoute(
+    name: "Detalle",
+    pattern: "{controller=Home}/{id:int:required}",
+    defaults: new {action="Detalle"});
 
 app.MapControllerRoute(
     name: "default",
