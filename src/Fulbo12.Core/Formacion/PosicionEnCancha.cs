@@ -16,8 +16,8 @@ public class PosicionEnCancha
         }
     }
     public bool HayJugador => Futbolista is not null;
-    public bool EsPersona(Persona persona)
+    public bool EsPersona(PersonaJuego persona)
         => HayJugador && Futbolista.Persona == persona;
     public bool EsNumero(byte numCamiseta) => NumeroCamiseta.Equals(numCamiseta);
-    public Persona Persona => Futbolista.Persona;
+    public PersonaJuego Persona => Futbolista.Persona;
 }

@@ -1,21 +1,17 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fulbo12.Core;
-public class Persona
+public abstract class PersonaBase
 {
-    [Column("idPersona")][DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Column("idPersona")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public short Id { get; set; }
     public string Nombre { get; set; }
     public string Apellido { get; set; }
-    
+
     [Column("nacimiento")]
     public DateOnly Nacimiento { get; set; }
-    
-    [Column("peso")]
-    public float Peso { get; set; }
-    
-    [Column("altura")]
-    public float Altura { get; set; }
+
     public Pais Pais { get; set; }
 
     [NotMapped]
@@ -37,6 +33,6 @@ public class Persona
             else return --anios;
         }
     }
-    public bool MismaNacionalidad(Persona persona)
+    public bool MismaNacionalidad(PersonaJuego persona)
         => persona.Pais == this.Pais;
 }

@@ -44,7 +44,7 @@ public class Formacion
             throw new InvalidOperationException("No hay más dorsales disponibles");
         }
     }
-    public bool ExistePersona(Persona persona)
+    public bool ExistePersona(PersonaJuego persona)
         => Lineas.Any(l => l.ExistePersona(persona));
     public void AgregarSuplente(PosicionEnCancha futbolista)
         => AgregarSiSePuedeEn(Suplentes, futbolista, CantidadSuplentes);

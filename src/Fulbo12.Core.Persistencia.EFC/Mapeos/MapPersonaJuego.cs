@@ -1,7 +1,7 @@
 namespace Fulbo12.Core.Persistencia.EFC.Mapeos;
-public class MapPersona : IEntityTypeConfiguration<Persona>
+public class MapPersonaJuego : IEntityTypeConfiguration<PersonaJuego>
 {
-    public void Configure(EntityTypeBuilder<Persona> etb)
+    public void Configure(EntityTypeBuilder<PersonaJuego> etb)
     {
         etb.ToTable("Persona");
 

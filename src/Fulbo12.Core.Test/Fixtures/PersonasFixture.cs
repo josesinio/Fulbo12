@@ -1,41 +1,41 @@
 namespace Fulbo12.Core.Fixtures;
 public class PersonasFixture
 {
-    public Persona PLioMessi { get; set; }
-    public Persona PFrankFabra { get; set; }
-    public Persona PMarcosRojo { get; set; }
-    public Persona PEsequielBarco { get; set; }
-    public Persona PBrunoZuculini { get; set; }
-    public Persona PAgustinPalavecino { get; set; }
-    public Persona PJuanferQuintero { get; set; }
-    public Persona PNicoDeLaCruz { get; set; }
-    public Persona PEnzoFernandez { get; set; }
-    public Persona PEnzoPerez { get; set; }
-    public Persona PJoseParadela { get; set; }
-    public Persona PFelipePenaBiafore { get; set; }
-    public Persona PSantiagoSimon { get; set; }
-    public Persona PTomasPochettino { get; set; }
-    public Persona PBraianRomero { get; set; }
-    public Persona PFlabianLondono { get; set; }
-    public Persona PJulianAlvarez { get; set; }
-    public Persona PMatiasSuarez { get; set; }
-    public Persona PRobertRojas { get; set; }
-    public Persona PJonatanMaidana { get; set; }
-    public Persona PDavidMartinez { get; set; }
-    public Persona PLeanGonzalesPirez { get; set; }
-    public Persona PMarceAndresHerrera { get; set; }
-    public Persona PPauloDiaz { get; set; }
-    public Persona PMiltonCasco { get; set; }
-    public Persona PJavierPinola { get; set; }
-    public Persona PEmanuelMammana { get; set; }
-    public Persona PEliasGomez { get; set; }
-    public Persona PFrancoArmani { get; set; }
-    public Persona PEzequielCenturion { get; set; }
-    public Persona PFrancoPetroli { get; set; }
+    public PersonaJuego PLioMessi { get; set; }
+    public PersonaJuego PFrankFabra { get; set; }
+    public PersonaJuego PMarcosRojo { get; set; }
+    public PersonaJuego PEsequielBarco { get; set; }
+    public PersonaJuego PBrunoZuculini { get; set; }
+    public PersonaJuego PAgustinPalavecino { get; set; }
+    public PersonaJuego PJuanferQuintero { get; set; }
+    public PersonaJuego PNicoDeLaCruz { get; set; }
+    public PersonaJuego PEnzoFernandez { get; set; }
+    public PersonaJuego PEnzoPerez { get; set; }
+    public PersonaJuego PJoseParadela { get; set; }
+    public PersonaJuego PFelipePenaBiafore { get; set; }
+    public PersonaJuego PSantiagoSimon { get; set; }
+    public PersonaJuego PTomasPochettino { get; set; }
+    public PersonaJuego PBraianRomero { get; set; }
+    public PersonaJuego PFlabianLondono { get; set; }
+    public PersonaJuego PJulianAlvarez { get; set; }
+    public PersonaJuego PMatiasSuarez { get; set; }
+    public PersonaJuego PRobertRojas { get; set; }
+    public PersonaJuego PJonatanMaidana { get; set; }
+    public PersonaJuego PDavidMartinez { get; set; }
+    public PersonaJuego PLeanGonzalesPirez { get; set; }
+    public PersonaJuego PMarceAndresHerrera { get; set; }
+    public PersonaJuego PPauloDiaz { get; set; }
+    public PersonaJuego PMiltonCasco { get; set; }
+    public PersonaJuego PJavierPinola { get; set; }
+    public PersonaJuego PEmanuelMammana { get; set; }
+    public PersonaJuego PEliasGomez { get; set; }
+    public PersonaJuego PFrancoArmani { get; set; }
+    public PersonaJuego PEzequielCenturion { get; set; }
+    public PersonaJuego PFrancoPetroli { get; set; }
 
     public PersonasFixture(PaisesFixtures paisesFixtures)
     {
-        PLioMessi = new Persona()
+        PLioMessi = new PersonaJuego()
         {
             Nombre = "Lionel",
             Apellido = "Messi",
@@ -44,7 +44,7 @@ public class PersonasFixture
             Peso = 67
         };
 
-        PFrankFabra = new Persona()
+        PFrankFabra = new PersonaJuego()
         {
             Nombre = "Frank",
             Apellido = "Fabra",
@@ -53,7 +53,7 @@ public class PersonasFixture
             Peso = 80
         };
 
-        PMarcosRojo = new Persona()
+        PMarcosRojo = new PersonaJuego()
         {
             Nombre = "Marcos",
             Apellido = "Rojo",
@@ -62,7 +62,7 @@ public class PersonasFixture
             Peso = 82
         };
 
-        PEsequielBarco = new Persona()
+        PEsequielBarco = new PersonaJuego()
         {
             Nombre = "Esequiel",
             Apellido = "Barco",
@@ -71,7 +71,7 @@ public class PersonasFixture
             Peso = 65
         };
 
-        PBrunoZuculini = new Persona()
+        PBrunoZuculini = new PersonaJuego()
         {
             Nombre = "Bruno",
             Apellido = "Zuculini",
@@ -80,7 +80,7 @@ public class PersonasFixture
             Peso = 77
         };
 
-        PAgustinPalavecino = new Persona()
+        PAgustinPalavecino = new PersonaJuego()
         {
             Nombre = "Agustin",
             Apellido = "Palavecino",
@@ -89,7 +89,7 @@ public class PersonasFixture
             Peso = 74
         };
 
-        PJuanferQuintero = new Persona()
+        PJuanferQuintero = new PersonaJuego()
         {
             Nombre = "Juan Fernando",
             Apellido = "Quintero",
@@ -98,7 +98,7 @@ public class PersonasFixture
             Peso = 67
         };
 
-        PNicoDeLaCruz = new Persona()
+        PNicoDeLaCruz = new PersonaJuego()
         {
             Nombre = "Nicolas",
             Apellido = "De La Cruz",
@@ -107,7 +107,7 @@ public class PersonasFixture
             Peso = 65
         };
 
-        PEnzoFernandez = new Persona()
+        PEnzoFernandez = new PersonaJuego()
         {
             Nombre = "Enzo",
             Apellido = "Fernandez",
@@ -116,7 +116,7 @@ public class PersonasFixture
             Peso = 77
         };
 
-        PEnzoPerez = new Persona()
+        PEnzoPerez = new PersonaJuego()
         {
             Nombre = "Enzo",
             Apellido = "Perez",
@@ -125,7 +125,7 @@ public class PersonasFixture
             Peso = 77
         };
 
-        PJoseParadela = new Persona()
+        PJoseParadela = new PersonaJuego()
         {
             Nombre = "Jose",
             Apellido = "Paradela",
@@ -134,7 +134,7 @@ public class PersonasFixture
             Peso = 71
         };
 
-        PFelipePenaBiafore = new Persona()
+        PFelipePenaBiafore = new PersonaJuego()
         {
             Nombre = "Felipe",
             Apellido = "Peña Biafore",
@@ -143,7 +143,7 @@ public class PersonasFixture
             Peso = 75
         };
 
-        PSantiagoSimon = new Persona()
+        PSantiagoSimon = new PersonaJuego()
         {
             Nombre = "Santiago",
             Apellido = "Simon",
@@ -152,7 +152,7 @@ public class PersonasFixture
             Peso = 74
         };
 
-        PTomasPochettino = new Persona()
+        PTomasPochettino = new PersonaJuego()
         {
             Nombre = "Tomas",
             Apellido = "Pochettino",
@@ -161,7 +161,7 @@ public class PersonasFixture
             Peso = 72
         };
 
-        PBraianRomero = new Persona()
+        PBraianRomero = new PersonaJuego()
         {
             Nombre = "Braian",
             Apellido = "Romero",
@@ -170,7 +170,7 @@ public class PersonasFixture
             Peso = 73
         };
 
-        PFlabianLondono = new Persona()
+        PFlabianLondono = new PersonaJuego()
         {
             Nombre = "Flabian",
             Apellido = "Londoño",
@@ -179,7 +179,7 @@ public class PersonasFixture
             Peso = 82
         };
 
-        PJulianAlvarez = new Persona()
+        PJulianAlvarez = new PersonaJuego()
         {
             Nombre = "Julian",
             Apellido = "Alvarez",
@@ -188,7 +188,7 @@ public class PersonasFixture
             Peso = 71
         };
 
-        PMatiasSuarez = new Persona()
+        PMatiasSuarez = new PersonaJuego()
         {
             Nombre = "Matias",
             Apellido = "Suarez",
@@ -197,7 +197,7 @@ public class PersonasFixture
             Peso = 77
         };
 
-        PRobertRojas = new Persona()
+        PRobertRojas = new PersonaJuego()
         {
             Nombre = "Robert",
             Apellido = "Rojas",
@@ -206,7 +206,7 @@ public class PersonasFixture
             Peso = 75
         };
 
-        PJonatanMaidana = new Persona()
+        PJonatanMaidana = new PersonaJuego()
         {
             Nombre = "Jonatan",
             Apellido = "Maidana",
@@ -215,7 +215,7 @@ public class PersonasFixture
             Peso = 86
         };
 
-        PDavidMartinez = new Persona()
+        PDavidMartinez = new PersonaJuego()
         {
             Nombre = "David",
             Apellido = "Martinez",
@@ -224,7 +224,7 @@ public class PersonasFixture
             Peso = 76
         };
 
-        PLeanGonzalesPirez = new Persona()
+        PLeanGonzalesPirez = new PersonaJuego()
         {
             Nombre = "Leandro",
             Apellido = "Gonzáles Pirez",
@@ -233,7 +233,7 @@ public class PersonasFixture
             Peso = 89
         };
 
-        PMarceAndresHerrera = new Persona()
+        PMarceAndresHerrera = new PersonaJuego()
         {
             Nombre = "Marcelo",
             Apellido = "Andrés Herrera",
@@ -242,7 +242,7 @@ public class PersonasFixture
             Peso = 75
         };
 
-        PPauloDiaz = new Persona()
+        PPauloDiaz = new PersonaJuego()
         {
             Nombre = "Paulo",
             Apellido = "Díaz",
@@ -251,7 +251,7 @@ public class PersonasFixture
             Peso = 76
         };
 
-        PMiltonCasco = new Persona()
+        PMiltonCasco = new PersonaJuego()
         {
             Nombre = "Milton",
             Apellido = "Casco",
@@ -260,7 +260,7 @@ public class PersonasFixture
             Peso = 69
         };
 
-        PJavierPinola = new Persona()
+        PJavierPinola = new PersonaJuego()
         {
             Nombre = "Javier",
             Apellido = "Pinola",
@@ -269,7 +269,7 @@ public class PersonasFixture
             Peso = 79
         };
 
-        PEmanuelMammana = new Persona()
+        PEmanuelMammana = new PersonaJuego()
         {
             Nombre = "Emanuel",
             Apellido = "Mammana",
@@ -278,7 +278,7 @@ public class PersonasFixture
             Peso = 72
         };
 
-        PEliasGomez = new Persona()
+        PEliasGomez = new PersonaJuego()
         {
             Nombre = "Elías",
             Apellido = "Gómez",
@@ -287,7 +287,7 @@ public class PersonasFixture
             Peso = 79
         };
 
-        PFrancoArmani = new Persona()
+        PFrancoArmani = new PersonaJuego()
         {
             Nombre = "Franco",
             Apellido = "Armani",
@@ -296,7 +296,7 @@ public class PersonasFixture
             Peso = 88
         };
 
-        PEzequielCenturion = new Persona()
+        PEzequielCenturion = new PersonaJuego()
         {
             Nombre = "Ezequiel",
             Apellido = "Centurón",
@@ -305,7 +305,7 @@ public class PersonasFixture
             Peso = 79
         };
 
-        PFrancoPetroli = new Persona()
+        PFrancoPetroli = new PersonaJuego()
         {
             Nombre = "Franco",
             Apellido = "Petrolito",

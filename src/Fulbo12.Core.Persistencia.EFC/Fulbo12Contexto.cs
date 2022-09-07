@@ -6,14 +6,14 @@ namespace Fulbo12.Core.Persistencia.EFC;
 public sealed class Fulbo12Contexto : DbContext
 {
     public DbSet<Pais> Paises => Set<Pais>();
-    public DbSet<Persona> Personas => Set<Persona>();
+    public DbSet<PersonaJuego> Personas => Set<PersonaJuego>();
     public DbSet<Liga> Ligas => Set<Liga>();
     public DbSet<Equipo> Equipo => Set<Equipo>();
 
     protected override void OnModelCreating(ModelBuilder mb)
     {
         mb.ApplyConfiguration<Pais>(new MapPais());
-        mb.ApplyConfiguration<Persona>(new MapPersona());
+        mb.ApplyConfiguration<PersonaJuego>(new MapPersonaJuego());
         mb.ApplyConfiguration<Liga>(new MapLiga());
         mb.ApplyConfiguration<Equipo>(new MapEquipo());
         mb.ApplyConfiguration<Posicion>(new MapPosicion());
