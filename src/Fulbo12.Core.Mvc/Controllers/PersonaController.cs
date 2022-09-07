@@ -25,13 +25,14 @@ public class PersonaController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Alta(){
+    public async Task<IActionResult> Alta()
+    {
         var paises = await _unidad.RepoPais.ObtenerAsync
                         (orden: ps => ps.OrderBy(p => p.Nombre));
         var vmPersona = new VMPersonaJuego(paises);
         return View("Upsert", vmPersona);
     }
-    
+
     [HttpGet]
 
     public async Task<IActionResult> Modificar(byte? id)

@@ -74,11 +74,5 @@ public class EquipoController : Controller
     {
         var resultado = await _unidad.RepoEquipo.ExisteNombreEnLigaAsync(idLiga, nombreEquipo);
         return resultado ? Json($"Ya existe {nombreEquipo} en esa liga") : Json(true);
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    }    
 }

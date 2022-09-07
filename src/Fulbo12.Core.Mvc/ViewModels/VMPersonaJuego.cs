@@ -9,7 +9,6 @@ namespace Fulbo12.Core.Mvc.ViewModels
         public SelectList? Paises { get; set; }
         public string? NombrePersona { get; set; }
         public string ApellidoPersona { get; set; }
-        public int EdadPersona { get; set; }
         public float PesoPersona { get; set; }
         public float AlturaPersona { get; set; }
         public DateOnly NacimientoPersona { get; set; }
@@ -31,7 +30,6 @@ namespace Fulbo12.Core.Mvc.ViewModels
                                     selectedValue: persona.Id);
             NombrePersona = persona.Nombre;
             ApellidoPersona = persona.Apellido;
-            EdadPersona = persona.Edad;
             PesoPersona = persona.Peso;
             AlturaPersona = persona.Altura;
             NacimientoPersona = persona.Nacimiento;
