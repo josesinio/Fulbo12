@@ -13,7 +13,7 @@ public class EquipoController : Controller
     private readonly IUnidad _unidad;
     public EquipoController(IUnidad unidad) => _unidad = unidad;
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Listado()
     {
         var equipos = await _unidad.RepoEquipo.ObtenerAsync
             (orden: es => es.OrderBy(e => e.Nombre),

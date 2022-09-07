@@ -48,8 +48,18 @@
                                 Equipo
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
-                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Index">Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Listado">Listado</a></li>                                
                                 <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Alta">Alta</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Persona
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
+                                <li><a class="dropdown-item" asp-controller="Persona" asp-action="Listado">Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Persona" asp-action="Alta">Alta</a></li>
                             </ul>
                         </li>
                 </div>
