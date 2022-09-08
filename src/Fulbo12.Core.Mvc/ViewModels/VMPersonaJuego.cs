@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using Fulbo12.Core;
+using Fulbo12.Core.Persistencia;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Fulbo12.Core.Mvc.ViewModels
@@ -9,9 +9,14 @@ namespace Fulbo12.Core.Mvc.ViewModels
         public SelectList? Paises { get; set; }
         public string? NombrePersona { get; set; }
         public string ApellidoPersona { get; set; }
+        [Required]
+        [Range(35,160,ErrorMessage = "El peso tiene que estar entre {0} y {1}")]
         public float PesoPersona { get; set; }
+
+        [Required]
+        [Range(1.0,2.5,ErrorMessage = "La altura tiene que estar entre {0} y {1}")]
         public float AlturaPersona { get; set; }
-        public DateOnly NacimientoPersona { get; set; }
+        public DateTime NacimientoPersona { get; set; }
         [Range(1, byte.MaxValue, ErrorMessage = "Seleccione un pais por favor")]
         public byte IdPais {get; set;}
         public short IdPersona { get; set; }
@@ -34,6 +39,20 @@ namespace Fulbo12.Core.Mvc.ViewModels
             AlturaPersona = persona.Altura;
             NacimientoPersona = persona.Nacimiento;
             IdPersona = persona.Id;
+        }
+
+        internal PersonaJuego CrearPersona(IUnidad unidad)
+        {
+            var pais = unidad.RepoPais.ObtenerPorId(IdPais);
+            return new PersonaJuego()
+            {
+                Altura = AlturaPersona,
+                Nacimiento = NacimientoPersona,
+                Nombre = NombrePersona,
+                Pais = pais,
+                Peso = PesoPersona,
+                Apellido = ApellidoPersona            
+            };
         }
     }
 }

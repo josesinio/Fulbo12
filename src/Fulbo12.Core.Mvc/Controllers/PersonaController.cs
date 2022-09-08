@@ -49,23 +49,29 @@ public class PersonaController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Upsert(PersonaJuego persona)
+    public async Task<IActionResult> Upsert(VMPersonaJuego vmPersonaJuego)
     {
-        if (persona.Id == 0)
-            await _unidad.RepoPersona.AltaAsync(persona);
+        if (!ModelState.IsValid)
+            return View("Upsert",vmPersonaJuego);
+
+        if (vmPersonaJuego.IdPersona == 0)
+        {
+            var personaJuego = vmPersonaJuego.CrearPersona(_unidad);
+            await _unidad.RepoPersona.AltaAsync(personaJuego);
+        }            
         else
         {
-            var personaRepo = await _unidad.RepoPersona.ObtenerPorIdAsync(persona.Id);
+            var personaRepo = await _unidad.RepoPersona.ObtenerPorIdAsync(vmPersonaJuego.IdPersona);
             if (personaRepo is null)
                 return NotFound();
-            personaRepo.Nombre = persona.Nombre;
+            personaRepo.Nombre = vmPersonaJuego.NombrePersona;
             _unidad.RepoPersona.Modificar(personaRepo);
         }
         try
         {
             await _unidad.GuardarAsync();
         }
-        catch (EntidadDuplicadaException e)
+        catch (EntidadDuplicadaException)
         {
             return NotFound();
         }

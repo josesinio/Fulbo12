@@ -10,7 +10,7 @@ public abstract class PersonaBase
     public string Apellido { get; set; }
 
     [Column("nacimiento")]
-    public DateOnly Nacimiento { get; set; }
+    public DateTime Nacimiento { get; set; }
 
     public Pais Pais { get; set; }
 
