@@ -10,23 +10,26 @@ namespace Fulbo12.Core.Mvc.ViewModels
         public string? NombrePersona { get; set; }
         public string ApellidoPersona { get; set; }
         [Required]
-        [Range(35,160,ErrorMessage = "El peso tiene que estar entre {0} y {1}")]
+        [Range(35,160,ErrorMessage = "El peso tiene que estar entre {1} y {2}")]
         public float PesoPersona { get; set; }
 
         [Required]
-        [Range(1.0,2.5,ErrorMessage = "La altura tiene que estar entre {0} y {1}")]
+        [Range(1.0,2.5,ErrorMessage = "La altura tiene que estar entre {1} y {2}")]
         public float AlturaPersona { get; set; }
         public DateTime NacimientoPersona { get; set; }
         [Range(1, byte.MaxValue, ErrorMessage = "Seleccione un pais por favor")]
         public byte IdPais {get; set;}
         public short IdPersona { get; set; }
         public VMPersonaJuego() { }
-        public VMPersonaJuego(IEnumerable<Pais> paises)
+        public VMPersonaJuego(IEnumerable<Pais> paises) => AsignarPaises(paises);
+
+        public void AsignarPaises(IEnumerable<Pais> paises)
         {
             Paises = new SelectList(paises,
-                                    dataTextField: nameof(Pais.Nombre),
-                                    dataValueField: nameof(Pais.Id));
+                                                dataTextField: nameof(Pais.Nombre),
+                                                dataValueField: nameof(Pais.Id));
         }
+
         public VMPersonaJuego(IEnumerable<Pais> paises, PersonaJuego persona)
         {
             Paises = new SelectList(paises,
@@ -54,5 +57,6 @@ namespace Fulbo12.Core.Mvc.ViewModels
                 Apellido = ApellidoPersona            
             };
         }
+        
     }
 }

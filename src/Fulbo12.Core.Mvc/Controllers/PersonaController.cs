@@ -52,13 +52,16 @@ public class PersonaController : Controller
     public async Task<IActionResult> Upsert(VMPersonaJuego vmPersonaJuego)
     {
         if (!ModelState.IsValid)
-            return View("Upsert",vmPersonaJuego);
+        {
+            vmPersonaJuego.AsignarPaises(await _unidad.RepoPais.ObtenerAsync());
+            return View("Upsert", vmPersonaJuego);
+        }
 
         if (vmPersonaJuego.IdPersona == 0)
         {
             var personaJuego = vmPersonaJuego.CrearPersona(_unidad);
             await _unidad.RepoPersona.AltaAsync(personaJuego);
-        }            
+        }
         else
         {
             var personaRepo = await _unidad.RepoPersona.ObtenerPorIdAsync(vmPersonaJuego.IdPersona);
