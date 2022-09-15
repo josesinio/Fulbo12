@@ -49,3 +49,32 @@ Son las publicaciones que hacen los usuarios de sus futbolistas transferibles.
   - _Acreditar_ en el Vendedor las monedas de la transacción.
   - Agregar la posesión a la colección de posesiones nuevas del comprador.
   En caso de que no haya un ofertante, se tiene que sacar a la posesión de las publicaciones y devolverla a las transferencias del vendedor.
+
+```mermaid
+classDiagram
+  class Usuario{
+    +MonedasMaximas: uint = 9999999  
+    +LimitePosesiones: byte = 100
+    -nombre: String
+    -apellido: String
+    -nacimiento: DateTime
+    -email: string
+    -monedas: uint
+    -nuevasPosesiones: List~Posesion~
+    -posesiones: List~Posesion~
+    -trasnferubles: List~Posesion~
+    -publicaciones: List~Publicaciones~
+    +PoseeFutbolista(Futbolista): bool
+    +AgregarNovedades(Posesion): void
+    +AgregarPosesion(Posesion): void
+    +AgregarTransferible(Posesion): bool
+    +RemoverPosesionDeNovedad(Posesion): bool
+    +Publicar(Publicacion): void
+    +TieneAlMenos(uint): bool
+    +Ofertar(Publicacion): void
+    +SacarOferta(Publicacion): void
+    +Acreditar(uint): void
+    +BajarPublicacion(Publicacion): void
+    +Debitar(uint): void
+  }
+```

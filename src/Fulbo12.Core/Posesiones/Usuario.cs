@@ -1,7 +1,7 @@
 using Fulbo12.Core.Futbol;
 
 namespace Fulbo12.Core.Posesiones;
-public class Usuario
+public class Usuario : PersonaBase
 {
     public static readonly uint MonedasMaximas = 9999999;
     public static readonly byte LimitePosesiones = 100;
@@ -17,9 +17,6 @@ public class Usuario
         = "No se puede ofertar por Publicaciones propias";
     public static readonly string _ofertaMenor
         = "No se puede ofertar por debajo";
-    public string Nombre { get; init; }
-    public string Apellido { get; init; }
-    public DateTime Nacimiento { get; init; }
     public string Email { get; set; }
     public uint Monedas { get; private set; }
     public List<Posesion> NuevasPosesiones { get; init; }
