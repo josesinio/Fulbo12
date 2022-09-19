@@ -3,7 +3,7 @@ using Fulbo12.Core.Futbol;
 namespace Fulbo12.Core.Posesiones;
 public class Usuario : PersonaBase
 {
-    public static readonly uint MonedasMaximas = 9999999;
+    public static readonly uint MonedasMaximas = 9_999_999;
     public static readonly byte LimitePosesiones = 100;
     public static readonly string _futbolistaEnPosesion
         = "Futbolista ya se encuentra en posesión";

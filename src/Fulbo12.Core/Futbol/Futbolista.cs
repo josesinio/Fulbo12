@@ -6,6 +6,7 @@ public class Futbolista
     public TipoFutbolista Tipofutbolista { get; set; }
     public Equipo Equipo { get; set; }
     public List<Posicion> Posiciones { get; set; }
+    public byte Valoracion { get; set; }
 
     public bool MismaNacionalidad(Futbolista futbolista)
         => Persona.MismaNacionalidad(futbolista.Persona);

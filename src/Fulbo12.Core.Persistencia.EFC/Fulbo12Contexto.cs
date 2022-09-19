@@ -8,7 +8,9 @@ public sealed class Fulbo12Contexto : DbContext
     public DbSet<Pais> Paises => Set<Pais>();
     public DbSet<PersonaJuego> Personas => Set<PersonaJuego>();
     public DbSet<Liga> Ligas => Set<Liga>();
-    public DbSet<Equipo> Equipo => Set<Equipo>();
+    public DbSet<Equipo> Equipos => Set<Equipo>();
+    public DbSet<Futbolista> Futbolistas => Set<Futbolista>();
+    public DbSet<Posicion> Posiciones => Set<Posicion>();
 
     protected override void OnModelCreating(ModelBuilder mb)
     {

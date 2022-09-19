@@ -18,6 +18,10 @@ public class MapFutbolista : IEntityTypeConfiguration<Futbolista>
             .IsRequired()
             .HasConstraintName("FK_Futbolista_Persona");
 
+        etb.Property(f => f.Valoracion)
+            .HasColumnName("valoracion")
+            .IsRequired();
+
         etb.HasOne(f => f.Equipo)
             .WithMany(e => e.Futbolistas)
             .HasForeignKey("idEquipo")
