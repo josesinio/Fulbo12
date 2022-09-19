@@ -38,6 +38,21 @@ public class MapPosicion : IEntityTypeConfiguration<Posicion>
         => new List<Posicion>()
         {
             new Posicion(1, "Arquero", "ARQ"),
-            new Posicion(2, "Defensor Derecho", "DFD")
+            new Posicion(2, "Lateral Derecho", "LD"),
+            new Posicion(3, "Defensor Central", "DFC"),
+            new Posicion(4, "Lateral Izquierdo", "LI"),
+            new Posicion(5, "Carrilero Derecho", "CAD"),
+            new Posicion(6, "Carrilero Izquierdo", "CAI"),
+            new Posicion(7, "Mediocampista Defensivo", "MCD"),
+            new Posicion(8, "Mediocampista Derecho", "MD"),
+            new Posicion(9, "Mediocampista", "MC"),
+            new Posicion(10, "Mediocampista Izquierdo", "MI"),
+            new Posicion(11, "Mediocampista Ofensivo", "MCO"),
+            new Posicion(12, "Media Punta", "MP"),
+            new Posicion(13, "Segundo Delantero Derecho", "SDD"),
+            new Posicion(14, "Segundo Delantero Izquierdo", "SDI"),
+            new Posicion(15, "Extremo Derecho", "ED"),
+            new Posicion(16, "Delantero Centro", "DC"),
+            new Posicion(17, "Extremo Izquierdo", "EI")
         };
 }

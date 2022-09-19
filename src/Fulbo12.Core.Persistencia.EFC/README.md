@@ -131,3 +131,56 @@ Esta es la forma de indicar que tenemos una FK mediante FA. En nuestra clase `Pe
 - `.WithMany()`: ahora definimos la cardinalidad desde el otro lado (`Pais` a `Persona`). Como desde `Pais` no tenemos navegabilidad a `Persona` lo dejamos en blanco (si tuvieras una colección, seria el lugar para declararlo).
 - `.HasForeignKey("idPais")`: le indicamos con que nombre va a persistir el SGBD la propiedad (columna) que usamos como FK.
 - `.HasConstraintName("FK_Persona_Pais")`: le colocamos nombre a la restricción de clave foránea.
+
+## Diagrama de clases
+
+```mermaid
+    classDiagram
+
+        class IRepo~T~{
+            <<interface>>
+            + Alta(T): void
+            + Alta(IEnumerable~T~): void
+            + AltaAsync(T): Task
+            + Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string): IEnumerable~T~
+        }
+
+        IRepo~T~ <|--RepoGenerico~T~ 
+
+        class RepoGenerico~T~{
+            - _contexto: Fulbo12Contexto
+            + Alta(T): void
+            + Alta(IEnumerable~T~): void
+            + AltaAsync(T): Task
+            + Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string): IEnumerable~T~
+            + RepoGenerico(Fulbo12Contexto)
+        }
+
+        RepoGenerico~T~ o-- "1" Fulbo12Contexto
+        RepoGenerico~T~ <|-- RepoPais
+        RepoGenerico~T~ <|-- RepoPersona
+
+        class Fulbo12Contexto{
+            - paises: DbSet~Pais~ 
+            - personas: DbSet~Persona~
+            + OnConfiguring(OnConfiguring): void
+            + OnModelCreating(ModelBuilder): void
+        }
+
+        Fulbo12Contexto "1" --* Unidad
+        RepoPais --* "1" Unidad
+        RepoPersona --* "1" Unidad
+
+        class Unidad{
+            + Guardar(): void
+            + GuardarAsync(): Task
+            + Unidad(Fulbo12Contexto)
+            + RepoEquipo(): IRepoEquipo
+            + RepoFutbolista(): IRepoFutbolista
+            + RepoLiga(): IRepoLiga
+            + RepoPais(): IRepoPais
+            + RepoPersona(): IRepoPersona
+        }
+
+        Unidad <|-- IUnidad
+```
