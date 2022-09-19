@@ -30,5 +30,14 @@ public class MapPosicion : IEntityTypeConfiguration<Posicion>
         etb.HasIndex(p => p.Abreviado)
             .HasDatabaseName("UQ_Posicion_abreviado")
             .IsUnique();
+
+        etb.HasData(InstanciarPosiciones());
     }
+
+    private List<Posicion> InstanciarPosiciones()
+        => new List<Posicion>()
+        {
+            new Posicion(1, "Arquero", "ARQ"),
+            new Posicion(2, "Defensor Derecho", "DFD")
+        };
 }
