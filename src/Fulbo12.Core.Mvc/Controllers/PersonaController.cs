@@ -35,7 +35,7 @@ public class PersonaController : Controller
 
     [HttpGet]
 
-    public async Task<IActionResult> Modificar(byte? id)
+    public async Task<IActionResult> Modificar(short? id)
     {
         if (id is null || id == 0)
             return NotFound();
@@ -45,6 +45,16 @@ public class PersonaController : Controller
             return NotFound();
 
         return View("Upsert", persona);
+    }
+
+    [HttpGet]
+
+    public async Task<IActionResult> Buscar(string? nombre, string? apellido)
+    {
+        var personas = await _unidad.RepoPersona.ObtenerAsync(
+                        filtro: p => p.Nombre == nombre || p.Apellido == apellido);
+
+        return View();
     }
 
     [HttpPost]

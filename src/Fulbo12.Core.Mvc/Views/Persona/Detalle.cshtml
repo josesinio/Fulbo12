@@ -4,6 +4,8 @@
     ViewData["Title"] = "Persona - Detalle";
 }
 
+<a asp-controller="Futbolista" asp-action="Alta" asp-route-Id="@Model.Id">
+    <button>Hacer Futbolista</button>
+</a>
 <h2 class="text-center">@Model.Id</h2>
-<h2 class="text-center">@Model.Nombre</h2>
-<h2 class="text-center">@Model.Apellido</h2>
+<h2 class="text-center">@Model.Nombre @Model.Apellido</h2>
