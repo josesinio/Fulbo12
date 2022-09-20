@@ -1,22 +1,21 @@
 using Fulbo12.Core.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Fulbo12.Core.Mvc.Controllers
+namespace Fulbo12.Core.Mvc.Controllers;
+
+public class FutbolistaController : Controller
 {
     private readonly IUnidad _unidad;
-    public class FutbolistaController : Controller
+    public FutbolistaController(IUnidad unidad) => _unidad = unidad;
+
+    public IActionResult Index()
     {
-        public FutbolistaController(IUnidad unidad) => _unidad = unidad;
+        return View();
+    }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+    public IActionResult Error()
+    {
+        return View("Error!");
     }
 }
