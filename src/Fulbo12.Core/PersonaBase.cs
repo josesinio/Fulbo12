@@ -35,4 +35,7 @@ public abstract class PersonaBase
     }
     public bool MismaNacionalidad(PersonaJuego persona)
         => persona.Pais == this.Pais;
+    
+    [NotMapped]
+    public string NombreCompleto => $"{Nombre}, {Apellido}";
 }

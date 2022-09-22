@@ -48,13 +48,12 @@ public class PersonaController : Controller
     }
 
     [HttpGet]
-
-    public async Task<IActionResult> Buscar(string? nombre, string? apellido)
+    public async Task<IActionResult> Buscar(string? busqueda)
     {
-        var personas = await _unidad.RepoPersona.ObtenerAsync(
-                        filtro: p => p.Nombre == nombre || p.Apellido == apellido);
-
-        return View();
+        IEnumerable<PersonaJuego>? personas = null;
+        if(!string.IsNullOrEmpty(busqueda))
+            personas = await _unidad.RepoPersona.BusquedaPersonaAsync(busqueda);
+        return View("Buscar", personas);
     }
 
     [HttpPost]
