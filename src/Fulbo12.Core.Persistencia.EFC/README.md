@@ -139,21 +139,21 @@ Esta es la forma de indicar que tenemos una FK mediante FA. En nuestra clase `Pe
 
         class IRepo~T~{
             <<interface>>
-            + Alta(T): void
-            + Alta(IEnumerable~T~): void
-            + AltaAsync(T): Task
-            + Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string): IEnumerable~T~
+            +Alta(T)
+            +Alta(IEnumerable~T~)
+            +AltaAsync(T) Task
+            +Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string) IEnumerable~T~
         }
 
-        IRepo~T~ <|--RepoGenerico~T~ 
+        IRepo~T~ <|.. RepoGenerico~T~ 
 
         class RepoGenerico~T~{
             - _contexto: Fulbo12Contexto
-            + Alta(T): void
-            + Alta(IEnumerable~T~): void
-            + AltaAsync(T): Task
-            + Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string): IEnumerable~T~
-            + RepoGenerico(Fulbo12Contexto)
+            +Alta(T)
+            + Alta(IEnumerable~T~)
+            +AltaAsync(T) Task
+            +Obtener(Expression~Func~T, bool~~, Func~IQueryable~T~, IOrderedQueryable~T~~, string) IEnumerable~T~
+            +RepoGenerico(Fulbo12Contexto)
         }
 
         RepoGenerico~T~ o-- "1" Fulbo12Contexto
@@ -161,26 +161,37 @@ Esta es la forma de indicar que tenemos una FK mediante FA. En nuestra clase `Pe
         RepoGenerico~T~ <|-- RepoPersona
 
         class Fulbo12Contexto{
-            - paises: DbSet~Pais~ 
-            - personas: DbSet~Persona~
-            + OnConfiguring(OnConfiguring): void
-            + OnModelCreating(ModelBuilder): void
+            -paises: DbSet~Pais~ 
+            -personas: DbSet~Persona~
+            +OnConfiguring(OnConfiguring)
+            +OnModelCreating(ModelBuilder)
         }
 
         Fulbo12Contexto "1" --* Unidad
-        RepoPais --* "1" Unidad
-        RepoPersona --* "1" Unidad
+        RepoPais "1" --* Unidad
+        RepoPersona "1" --* Unidad
 
         class Unidad{
-            + Guardar(): void
-            + GuardarAsync(): Task
-            + Unidad(Fulbo12Contexto)
-            + RepoEquipo(): IRepoEquipo
-            + RepoFutbolista(): IRepoFutbolista
-            + RepoLiga(): IRepoLiga
-            + RepoPais(): IRepoPais
-            + RepoPersona(): IRepoPersona
+            +Guardar()
+            +GuardarAsync() Task
+            +Unidad(Fulbo12Contexto)
+            +RepoEquipo() IRepoEquipo
+            +RepoFutbolista() IRepoFutbolista
+            +RepoLiga() IRepoLiga
+            +RepoPais() IRepoPais
+            +RepoPersona() IRepoPersona
         }
 
-        Unidad <|-- IUnidad
+        Unidad ..|> IUnidad
+
+        class IUnidad{
+            <<interface>>
+            +Guardar()
+            +GuardarAsync() Task
+            +RepoEquipo() IRepoEquipo
+            +RepoFutbolista() IRepoFutbolista
+            +RepoLiga() IRepoLiga
+            +RepoPais() IRepoPais
+            +RepoPersona() IRepoPersona
+        }
 ```
