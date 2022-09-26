@@ -159,6 +159,9 @@ Esta es la forma de indicar que tenemos una FK mediante FA. En nuestra clase `Pe
         RepoGenerico~T~ o-- "1" Fulbo12Contexto
         RepoGenerico~T~ <|-- RepoPais
         RepoGenerico~T~ <|-- RepoPersona
+        RepoGenerico~T~ <|-- RepoFutbolista
+        RepoGenerico~T~ <|-- RepoEquipo
+        RepoGenerico~T~ <|-- RepoLiga
 
         class Fulbo12Contexto{
             -paises: DbSet~Pais~ 
@@ -167,9 +170,30 @@ Esta es la forma de indicar que tenemos una FK mediante FA. En nuestra clase `Pe
             +OnModelCreating(ModelBuilder)
         }
 
+        class RepoPersona{
+            +BusquedaPersona(string) IEnumerable~PersonaJuego~
+            +BusquedaPersonaAsync(string) TaskIEnumerable~PersonaJuego~
+            -FiltradoBusqueda(string) Expression~Func~PersonaJuego,bool~~
+        }
+
+        class RepoEquipo{
+            +EquipoDe(Liga) IEnumerable~Equipo~
+            +EquipoDeAsync(Liga) TaskIEnumerable~Equipo~
+            +ExisteNombreEnLiga(byte, string) bool
+            +ExisteNombreEnLigaAsync(byte, string) Task~bool~
+        }
+
+        class RepoLiga{
+            +LigasDe(Pais) IEnumerable~Liga~
+            +LigasDeAsync(Pais) TaskIEnumerable~Liga~
+        }
+
         Fulbo12Contexto "1" --* Unidad
         RepoPais "1" --* Unidad
         RepoPersona "1" --* Unidad
+        RepoFutbolista "1" --* Unidad
+        RepoEquipo "1" --* Unidad
+        RepoLiga "1" --* Unidad
 
         class Unidad{
             +Guardar()
