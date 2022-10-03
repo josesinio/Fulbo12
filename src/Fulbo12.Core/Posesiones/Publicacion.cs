@@ -12,7 +12,7 @@ public class Publicacion
     public uint? Oferta { get; set; }
     public uint OfertaOMinima => Oferta ?? OfertaMinima;
     public readonly string msjMaxDias = $"No pueden ser más de {MaximoDias} días";
-    public bool HayOfertante => Ofertante is not null;
+    public bool HayOfertante => Ofertante is not null;                      
     public Publicacion(Posesion posesion)
     {
         Posesion = posesion;
