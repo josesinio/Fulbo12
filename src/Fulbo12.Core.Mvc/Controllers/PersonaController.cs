@@ -53,7 +53,7 @@ public class PersonaController : Controller
         IEnumerable<PersonaJuego>? personas = null;
         if(!string.IsNullOrEmpty(busqueda))
             personas = await _unidad.RepoPersona.BusquedaPersonaAsync(busqueda);
-        return View("Buscar", personas);
+        return View(personas);
     }
 
     [HttpPost]
