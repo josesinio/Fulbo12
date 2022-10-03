@@ -53,28 +53,83 @@ Son las publicaciones que hacen los usuarios de sus futbolistas transferibles.
 ```mermaid
 classDiagram
   class Usuario{
-    +MonedasMaximas: uint = 9999999  
-    +LimitePosesiones: byte = 100
-    -nombre: String
-    -apellido: String
-    -nacimiento: DateTime
-    -email: string
-    -monedas: uint
-    -nuevasPosesiones: List~Posesion~
-    -posesiones: List~Posesion~
-    -trasnferubles: List~Posesion~
-    -publicaciones: List~Publicaciones~
-    +PoseeFutbolista(Futbolista): bool
-    +AgregarNovedades(Posesion): void
-    +AgregarPosesion(Posesion): void
-    +AgregarTransferible(Posesion): bool
-    +RemoverPosesionDeNovedad(Posesion): bool
-    +Publicar(Publicacion): void
-    +TieneAlMenos(uint): bool
-    +Ofertar(Publicacion): void
-    +SacarOferta(Publicacion): void
-    +Acreditar(uint): void
-    +BajarPublicacion(Publicacion): void
-    +Debitar(uint): void
+    +MonedasMaximas : uint = 9999999  
+    +LimitePosesiones : byte = 100
+    -nombre : String
+    -apellido : String
+    -nacimiento : DateTime
+    -email : string
+    -monedas : uint
+    -nuevasPosesiones : List~Posesion~
+    -posesiones : List~Posesion~
+    -trasnferubles : List~Posesion~
+    -publicaciones : List~Publicaciones~
+    +PoseeFutbolista(Futbolista) bool
+    +AgregarNovedades(Posesion) void
+    +AgregarPosesion(Posesion) void
+    +AgregarTransferible(Posesion) bool
+    +RemoverPosesionDeNovedad(Posesion) bool
+    +Publicar(Publicacion) void
+    +TieneAlMenos(uint) bool
+    +Ofertar(Publicacion) void
+    +SacarOferta(Publicacion) void
+    +Acreditar(uint) void
+    +BajarPublicacion(Publicacion) void
+    +Debitar(uint) void
   }
+
+  Usuario "0" -- Publicacion
+
+  class Publicacion{
+    +MaximoDias : byte = 5
+    -posesion : Posesion
+    -inicio : DateTime
+    -dias : byte
+    -ofertaMinima : uint
+    -compra : uint
+    -ofertante : Usuario
+    -oferta : uint?
+    +EsVendedor(Usuario) bool
+    +CantidadEsMayorOIgual(uint) bool
+    +RecibirOferta(Usuario, uint) void
+    +RegistrarOfertante(Usuario, uint) void
+    +BajarOfertanteAntiguo() void
+    +Fin() DateTime
+    +OfertaOMinima() uint
+    +HayOfertante() bool
+  }
+
+  Publicacion o-- "1" Posesion
+
+  class Posesion{
+    +MaximaCantidadDuenos : byte = 199
+    +MaximosPartidosGoles : ushort = 9999
+    -usuario : Usuario
+    -futbolista : Futbolista
+    -adquisicion : DateTime
+    -duenos : byte
+    -goles : ushort
+    -partidosJugados : ushort
+    +Reiniciar() void
+    +IncrementarPartido() void
+    +IncrementarGoles(byte) void
+    +IncrementarDueno() void
+    +EsFutbolista(Futbolista) bool
+  }
+
+  Posesion *-- "1" Futbolista
+
+  class Futbolista{
+    -persona : Persona
+    -tipoFutbolista : TipoFutbolista
+    -equipo : Equipo
+    -posiciones : List~Posicion~
+    +Futbolista()
+    +MismaNacionalidad(Futbolista) bool
+    +MismaLiga(Futbolista) bool
+    +MismoEquipo(Futbolista) bool
+    +JuegaDe(Posicion) bool
+  }
+
+  Posesion "0" --* Usuario 
 ```
