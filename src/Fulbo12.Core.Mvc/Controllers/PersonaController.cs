@@ -16,7 +16,7 @@ public class PersonaController : Controller
     {
         var personas = await _unidad.RepoPersona.ObtenerAsync
                             (orden: ps => ps.OrderBy(p => p.Nombre));
-        return View(personas);
+        return View("Busqueda", personas);
     }
     public async Task<IActionResult> Detalle(short id)
     {
@@ -51,9 +51,15 @@ public class PersonaController : Controller
     public async Task<IActionResult> Buscar(string? busqueda)
     {
         IEnumerable<PersonaJuego>? personas = null;
-        if(!string.IsNullOrEmpty(busqueda))
+        if (!string.IsNullOrEmpty(busqueda))
+        {
             personas = await _unidad.RepoPersona.BusquedaPersonaAsync(busqueda);
-        return View(personas);
+            if (personas.Count() == 0)
+                return View("NoEncontrado");
+        }
+        personas = personas ?? new List<PersonaJuego>();
+        return View("Busqueda", personas);
+
     }
 
     [HttpPost]
