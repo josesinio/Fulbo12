@@ -60,13 +60,14 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 
 ## Autores ✒️
 
-| Integrante        | Rol                   | User                                              |
-| :--------:        | :-:                   | :--:                                              |
-| Arturo Cruz       | Desarrollo / Test     | [ArturoCruz606](https://github.com/ArturoCruz606) |
-| Lucas Medina      | Desarrollo            | [LucasMedina04](https://github.com/LucasMedina04) |
-| Ezequiel Kippes   | Desarrollo            | [Liono02](https://github.com/Liono02)             |
-| Martín Morandini  | Desarrollo / Fixtures | [MMorandiniGit](https://github.com/MMorandiniGit) |
-| Luis Duran        | Documentación / Test  | [luchoxx87](https://github.com/luchoxx87)         |
+| Integrante        | Rol                   | User                                                    |
+| :--------:        | :-:                   | :--:                                                    |
+| Arturo Cruz       | Desarrollo / Test     | [ArturoCruz606](https://github.com/ArturoCruz606)       |
+| Lucas Medina      | Desarrollo            | [LucasMedina04](https://github.com/LucasMedina04)       |
+| Ezequiel Kippes   | Desarrollo            | [Liono02](https://github.com/Liono02)                   |
+| Martín Morandini  | Desarrollo / Fixtures | [MMorandiniGit](https://github.com/MMorandiniGit)       |
+| Luis Duran        | Documentación / Test  | [luchoxx87](https://github.com/luchoxx87)               |
+| Nicolas Benitez   | Documentación         | [NicolasBenitez30](https://github.com/NicolasBenitez30) |
 
 
 ## Licencia 📄
