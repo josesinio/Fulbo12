@@ -8,9 +8,10 @@ public class FutbolistaController : Controller
     private readonly IUnidad _unidad;
     public FutbolistaController(IUnidad unidad) => _unidad = unidad;
 
-    public IActionResult Index()
+    public async Task<IActionResult> Listado()
     {
-        return View();
+        var futbolista = await _unidad.RepoFutbolista.ObtenerAsync();
+        return View(futbolista);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
