@@ -1,0 +1,25 @@
+@using Fulbo12.Core.Futbol;
+@model TipoFutbolista
+@{
+    ViewData["Title"] = "Alta";
+}
+
+<form asp-controller="TipoFutbolista" asp-action="Upsert" method="post">
+    <div asp-validation-summary="All"></div>
+    <div><input type="hidden" asp-for="@Model.Id" /></div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <label asp-for="Nombre" class="col-form-label">Nombre</label>
+        </div>
+        <div class="col-auto">
+            <input asp-for="Nombre" class="form-control" />
+        </div>
+        <div class="col-auto">
+            <label asp-for="Especial" class="col-form-label"> Especial</label>
+        </div>
+        <div>
+            <input type="radio" asp-for="Especial" class="form-control">
+        </div>
+    </div>
+    </div>
+</form>

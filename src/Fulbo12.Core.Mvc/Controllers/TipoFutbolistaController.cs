@@ -14,10 +14,13 @@ namespace Fulbo12.Core.Mvc.Controllers
         private readonly IUnidad _unidad;
         public TipoFutbolistaController(IUnidad unidad) => _unidad = unidad;
 
-        public IActionResult Index()
+        public async Task<IActionResult> Listado()
         {
-            return View();
+            var tipoFutbolistas = await _unidad.RepoTipoFutbolista.ObtenerAsync
+            (orden: ts => ts.OrderBy(t => t.Nombre));
+            return View(tipoFutbolistas);
         }
+        public IActionResult Alta() => View("Upsert");
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

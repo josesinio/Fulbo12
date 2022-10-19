@@ -9,12 +9,14 @@ public class Unidad : IUnidad
     public IRepoLiga RepoLiga => _repoLiga;
     public IRepoEquipo RepoEquipo => _repoEquipo;
     public IRepoFutbolista RepoFutbolista => _repoFutbolista;
+    public IRepoTipoFutbolista RepoTipoFutbolista => _repoTipoFutbolista;
 
     RepoPais _repoPais;
     RepoPersona _repoPersona;
     RepoLiga _repoLiga;
     RepoEquipo _repoEquipo;
     RepoFutbolista _repoFutbolista;
+    RepoTipoFutbolista _repoTipoFutbolista;
     private readonly Fulbo12Contexto Contexto;
     public Unidad(Fulbo12Contexto contexto)
     {
@@ -24,6 +26,7 @@ public class Unidad : IUnidad
         _repoLiga = new RepoLiga(contexto);
         _repoEquipo = new RepoEquipo(contexto);
         _repoFutbolista = new RepoFutbolista(contexto);
+        _repoTipoFutbolista = new RepoTipoFutbolista(contexto);
     }
     public void Guardar()
     {
@@ -47,5 +50,5 @@ public class Unidad : IUnidad
             throw new EntidadDuplicadaException("bla", e);
         }
     }
-    
+
 }
