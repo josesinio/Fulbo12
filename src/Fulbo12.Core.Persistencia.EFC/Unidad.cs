@@ -10,11 +10,14 @@ public class Unidad : IUnidad
     public IRepoEquipo RepoEquipo => _repoEquipo;
     public IRepoFutbolista RepoFutbolista => _repoFutbolista;
 
+    public IRepoSobre RepoSobre => _repoSobre;
+
     RepoPais _repoPais;
     RepoPersona _repoPersona;
     RepoLiga _repoLiga;
     RepoEquipo _repoEquipo;
     RepoFutbolista _repoFutbolista;
+    RepoSobre _repoSobre;
     private readonly Fulbo12Contexto Contexto;
     public Unidad(Fulbo12Contexto contexto)
     {
@@ -24,6 +27,7 @@ public class Unidad : IUnidad
         _repoLiga = new RepoLiga(contexto);
         _repoEquipo = new RepoEquipo(contexto);
         _repoFutbolista = new RepoFutbolista(contexto);
+        _repoSobre = new RepoSobre(contexto);
     }
     public void Guardar()
     {

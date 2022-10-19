@@ -8,6 +8,7 @@ public interface IUnidad
     IRepoLiga RepoLiga { get; }
     IRepoEquipo RepoEquipo { get; }
     IRepoFutbolista RepoFutbolista { get; }
+    IRepoSobre RepoSobre { get; }
     void Guardar();
     Task GuardarAsync();
 }

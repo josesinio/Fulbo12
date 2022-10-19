@@ -1,5 +1,7 @@
 using Fulbo12.Core.Futbol;
 using Fulbo12.Core.Persistencia.EFC.Mapeos;
+using Fulbo12.Core.Persistencia.EFC.Mapeos.Sobres;
+using Fulbo12.Core.Sobres;
 using Microsoft.Extensions.Configuration;
 
 namespace Fulbo12.Core.Persistencia.EFC;
@@ -11,6 +13,8 @@ public sealed class Fulbo12Contexto : DbContext
     public DbSet<Equipo> Equipos => Set<Equipo>();
     public DbSet<Futbolista> Futbolistas => Set<Futbolista>();
     public DbSet<Posicion> Posiciones => Set<Posicion>();
+    public DbSet<Sobre> Sobres => Set<Sobre>();
+    public DbSet<ComponenteSobre> ComponenteSobres => Set<ComponenteSobre>();
 
     protected override void OnModelCreating(ModelBuilder mb)
     {
@@ -20,6 +24,7 @@ public sealed class Fulbo12Contexto : DbContext
         mb.ApplyConfiguration<Equipo>(new MapEquipo());
         mb.ApplyConfiguration<Posicion>(new MapPosicion());
         mb.ApplyConfiguration<Futbolista>(new MapFutbolista());
+        mb.ApplyConfiguration<ComponenteSobre>(new MapComponenteSobre());
     }
     protected override void OnConfiguring(DbContextOptionsBuilder ob)
     {
