@@ -2,6 +2,7 @@ using Fulbo12.Core.Futbol;
 using Fulbo12.Core.Persistencia.EFC.Mapeos;
 using Fulbo12.Core.Persistencia.EFC.Mapeos.Sobres;
 using Fulbo12.Core.Sobres;
+using Fulbo12.Core.Sobres.Condiciones;
 using Microsoft.Extensions.Configuration;
 
 namespace Fulbo12.Core.Persistencia.EFC;
@@ -25,6 +26,7 @@ public sealed class Fulbo12Contexto : DbContext
         mb.ApplyConfiguration<Posicion>(new MapPosicion());
         mb.ApplyConfiguration<Futbolista>(new MapFutbolista());
         mb.ApplyConfiguration<ComponenteSobre>(new MapComponenteSobre());
+        mb.ApplyConfiguration<CondicionFutbolistaEspecifico>(new MapCondicionFutbolistaId());
     }
     protected override void OnConfiguring(DbContextOptionsBuilder ob)
     {
