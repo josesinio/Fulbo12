@@ -18,7 +18,13 @@
             <label asp-for="Especial" class="col-form-label"> Especial</label>
         </div>
         <div>
-            <input type="radio" asp-for="Especial" class="form-control">
+            <input type="radio" asp-for="Especial" class="form-control" value="true">
+            <label for="Especial">Si</label>
+            <input type="radio" asp-for="Especial" class="form-control" value="false">
+            <label for="Especial">No</label>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Alta</button>
         </div>
     </div>
     </div>
