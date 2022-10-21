@@ -13,6 +13,7 @@ classDiagram
     }
 
     class Condicion{
+        <<abstract>>
         -idPadre: short
     }
     ComponenteSobre <|-- Condicion
@@ -22,10 +23,22 @@ classDiagram
         +Expresion() Func~Futbolistabool~
     }
     Condicion <|-- CondicionFutbolistaEspecifico
+
+    class CondicionNacionalidad{
+        -idPais: byte
+        +Expresion() Func~Futbolistabool~
+    }
+    Condicion <|-- CondicionNacionalidad
     
     class CompuestoSobre{
         -condiciones: List~Condicion~
     }
-    ComponenteSobre <|-- CompuestoSobre    
+    ComponenteSobre <|-- CompuestoSobre
+    CompuestoSobre *-- Condicion 
+
+    class CompuestoAnd{
+        +Expresion() Func~Futbolistabool~
+    }
+    CompuestoSobre <|-- CompuestoAnd
 
 ```
