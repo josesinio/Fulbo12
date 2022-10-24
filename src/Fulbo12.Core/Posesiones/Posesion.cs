@@ -11,6 +11,7 @@ public class Posesion
     public byte Duenos { get; private set; }
     public ushort Goles { get; private set; }
     public ushort PartidosJugados { get; private set; }
+    public Posicion Posicion { get; set; }
     public Posesion(Usuario usuario, Futbolista futbolista)
     {
         Usuario = usuario;
@@ -27,6 +28,7 @@ public class Posesion
         Duenos = duenos;
         Goles = goles;
         PartidosJugados = partidosJugados;
+        Posicion = Futbolista.Posiciones[0];
     }
     public void Reiniciar()
     {
@@ -49,4 +51,10 @@ public class Posesion
     }
     public bool EsFutbolista(Futbolista futbolista)
         => Futbolista == futbolista;
+
+    public void CambiarPosicion(Posicion posicion)
+    {
+        if(Futbolista.JuegaDe(posicion))
+            Posicion = posicion;
+    }
 }
