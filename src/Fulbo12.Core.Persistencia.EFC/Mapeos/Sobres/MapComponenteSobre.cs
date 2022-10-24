@@ -32,6 +32,7 @@ public class MapComponenteSobre : IEntityTypeConfiguration<ComponenteSobre>
 
         etb.HasDiscriminator<string>("tipo")
             .HasValue<CondicionFutbolistaEspecifico>("FutbolistaEspecifico")
+            .HasValue<CondicionLvlMayorIgual>("LvlMayorOIgual")
             .HasValue<CompuestoAnd>("And");
     }
 }
