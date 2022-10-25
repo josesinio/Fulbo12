@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Fulbo12.Core.Mvc.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Fulbo12.Core.Mvc.ViewModels;
 using Fulbo12.Core.Persistencia;
 using Fulbo12.Core.Futbol;
@@ -74,5 +72,5 @@ public class EquipoController : Controller
     {
         var resultado = await _unidad.RepoEquipo.ExisteNombreEnLigaAsync(idLiga, nombreEquipo);
         return resultado ? Json($"Ya existe {nombreEquipo} en esa liga") : Json(true);
-    }    
+    }
 }

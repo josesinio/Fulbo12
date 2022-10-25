@@ -44,5 +44,12 @@ namespace Fulbo12.Core.Mvc.Controllers
             }
             return RedirectToAction(nameof(Listado));
         }
+
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> VerificarNombre(string nombre)
+        {
+            var resultado = await _unidad.RepoTipoFutbolista.ExisteNombreAsync(nombre);
+            return resultado ? Json($"Ya existe {nombre} como Tipo de Futbolista") : Json(true);
+        }
     }
 }
