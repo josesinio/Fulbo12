@@ -2,6 +2,7 @@ using Fulbo12.Core.Persistencia;
 using Microsoft.AspNetCore.Mvc;
 using Fulbo12.Core.Futbol;
 using Fulbo12.Core.Persistencia.Excepciones;
+using Fulbo12.Core.Mvc.ViewModels;
 
 namespace Fulbo12.Core.Mvc.Controllers
 {
@@ -17,21 +18,23 @@ namespace Fulbo12.Core.Mvc.Controllers
             return View(tipoFutbolistas);
         }
         [HttpGet]
-        public IActionResult Alta() => View("Upsert");
+        public IActionResult Alta() => View("Upsert", new VMTipoFutbolista());
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Upsert(TipoFutbolista tipoFutbolista)
+        public async Task<IActionResult> Upsert(VMTipoFutbolista vmTipo)
         {
-            if (tipoFutbolista.Id == 0)
+            if (!ModelState.IsValid)
+                return View("Upsert", vmTipo);
+            if (vmTipo.Id == 0)
             {
-                await _unidad.RepoTipoFutbolista.AltaAsync(tipoFutbolista);
+                await _unidad.RepoTipoFutbolista.AltaAsync(vmTipo.GenerarTipoFutbolista());
             }
             else
             {
-                var tipoFRepo = await _unidad.RepoTipoFutbolista.ObtenerPorIdAsync(tipoFutbolista.Id);
+                var tipoFRepo = await _unidad.RepoTipoFutbolista.ObtenerPorIdAsync(vmTipo.Id);
                 if (tipoFRepo is null)
                     return NotFound();
-                tipoFRepo.Nombre = tipoFutbolista.Nombre;
+                tipoFRepo.Nombre = vmTipo.Nombre;
                 _unidad.RepoTipoFutbolista.Modificar(tipoFRepo);
             }
             try

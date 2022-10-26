@@ -10,18 +10,18 @@ public class VMTipoFutbolista
     [MaxLength(30)]
     public string Nombre { get; set; }
     public byte Id { get; set; }
-    public TipoFutbolista TipoFutbolista { get; set; }
-    public VMTipoFutbolista()
-    {
-
-    }
+    public bool Especial { get; set; }
+    public VMTipoFutbolista() { }
     public VMTipoFutbolista(TipoFutbolista tipoFutbolista)
     {
         Nombre = tipoFutbolista.Nombre;
         Id = tipoFutbolista.Id;
-        TipoFutbolista = tipoFutbolista;
+        Especial = tipoFutbolista.Especial;
     }
-    public void GenerarTipoFutbolista()
-        => TipoFutbolista = new TipoFutbolista(Nombre) { Id = Id };
-
+    public TipoFutbolista GenerarTipoFutbolista()
+        => new TipoFutbolista(Nombre)
+        {
+            Id = Id,
+            Especial = Especial
+        };
 }
