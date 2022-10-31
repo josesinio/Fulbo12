@@ -19,6 +19,19 @@ namespace Fulbo12.Core.Mvc.Controllers
         }
         [HttpGet]
         public IActionResult Alta() => View("Upsert", new VMTipoFutbolista());
+        [HttpGet]
+        public async Task<IActionResult> Modificar(byte? id) 
+        {
+        if (id is null || id == 0)
+            return NotFound();
+
+        var tipoFutbolista = await _unidad.RepoTipoFutbolista.ObtenerPorIdAsync(id);
+        if (tipoFutbolista is null)
+            return NotFound();
+
+        var vmTipoFutbolista = new VMTipoFutbolista(tipoFutbolista);
+        return View("Upsert", vmTipoFutbolista);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Upsert(VMTipoFutbolista vmTipo)
