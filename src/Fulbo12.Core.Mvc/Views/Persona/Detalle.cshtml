@@ -5,7 +5,7 @@
 }
 
 <a asp-controller="Futbolista" asp-action="Alta" asp-route-Id="@Model.Id">
-    <button>Hacer Futbolista</button>
+    <button type="submit" class="btn btn-primary">Hacer Futbolista <i class="bi bi-dribbble"></i></button>
 </a>
-<h2 class="text-center">@Model.Id</h2>
 <h2 class="text-center">@Model.Nombre @Model.Apellido</h2>
+<h4 class="text-center">@Model.Pais.Nombre • @Model.Altura</h4>

@@ -20,7 +20,7 @@ public class PersonaController : Controller
     }
     public async Task<IActionResult> Detalle(short id)
     {
-        var persona = await _unidad.RepoPersona.ObtenerPorIdAsync(id);
+        var persona = (await _unidad.RepoPersona.ObtenerAsync(filtro: p => p.Id == id, null, "Pais")).FirstOrDefault();
         return View(persona);
     }
 
