@@ -2,3 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+const apiBandera = "https://countryflagsapi.com/svg/";
+function UrlBandera(abreviatura) {
+    return apiBandera.concat(abreviatura)
+}

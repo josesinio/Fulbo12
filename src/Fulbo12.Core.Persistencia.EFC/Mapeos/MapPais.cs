@@ -16,7 +16,12 @@ public class MapPais : IEntityTypeConfiguration<Pais>
         etb.HasIndex(p => p.Nombre)
             .HasDatabaseName("UQ_Pais_pais")
             .IsUnique();
+        
+        etb.Property(p=>p.Abreviatura)
+        .HasColumnName("abreviatura")
+        .IsFixedLength()
+        .HasMaxLength(2);
 
-        etb.HasData(new Pais(IdArgentina, "Argentina"));
+        etb.HasData(new Pais(IdArgentina, "Argentina", "ar"));
     }
 }
