@@ -6,3 +6,11 @@ const apiBandera = "https://countryflagsapi.com/svg/";
 function UrlBandera(abreviatura) {
     return apiBandera.concat(abreviatura)
 }
+
+function mostrar() {
+    var obejeto = document.getElementById('bandera')
+    if (obejeto.style.display == "block")
+        obejeto.style.display = "none";
+    else
+        obejeto.style.display = "block";
+}
