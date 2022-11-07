@@ -9,11 +9,11 @@ public class PaisesFixtures
     public Pais Chile { get; set; }
     public PaisesFixtures()
     {
-        Argentina = new Pais("Argentina");
-        Colombia = new Pais("Colombia");
-        Francia = new Pais("Francia");
-        Uruguay = new Pais("Uruguay");
-        Paraguay = new Pais("Paraguay");
-        Chile = new Pais("Chile");
+        Argentina = new Pais("Argentina", "ar");
+        Colombia = new Pais("Colombia", "co");
+        Francia = new Pais("Francia", "fr");
+        Uruguay = new Pais("Uruguay", "uy");
+        Paraguay = new Pais("Paraguay", "py");
+        Chile = new Pais("Chile", "cl");
     }
 }
