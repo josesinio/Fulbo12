@@ -3,14 +3,17 @@
 
 // Write your JavaScript code.
 const apiBandera = "https://countryflagsapi.com/svg/";
-function UrlBandera(abreviatura) {
-    return apiBandera.concat(abreviatura)
+function UrlBandera(idTextAbreviatura) {
+    var  textAbreviatura = document.getElementById(idTextAbreviatura);
+    return apiBandera.concat(textAbreviatura.value)
 }
 
-function mostrar() {
-    var obejeto = document.getElementById('bandera')
-    if (obejeto.style.display == "block")
-        obejeto.style.display = "none";
+function mostrar(img, abreviatura) {
+    img = document.getElementById(img);
+    img.src = UrlBandera(abreviatura);
+
+    if (img.style.display == "block")
+        img.style.display = "none";
     else
-        obejeto.style.display = "block";
+        img.style.display = "block";
 }
