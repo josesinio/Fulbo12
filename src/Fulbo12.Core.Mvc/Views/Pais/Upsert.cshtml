@@ -27,16 +27,15 @@
         <div class="col-auto">
             <input id="abreviatura" asp-for="Abreviatura" class="form-control" />
         </div>
+        @* arreglense csm *@
         <div class="col-auto">
             <input class="btn btn-primary" type="button" onclick="mostrar('bandera', 'abreviatura')"
-                value="Previsualizacion"</input>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <img class="oculto img-fluid" id="bandera" alt="bandera">
-                    </div>
-                </div>
-            </div>
+                value="Previsualizacion" />
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-6">
+            <img class="img-fluid" id="bandera" alt="">
         </div>
     </div>
     <div class="row g-3 align-items-center">

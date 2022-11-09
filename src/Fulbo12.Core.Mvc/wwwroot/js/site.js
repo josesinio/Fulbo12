@@ -10,7 +10,7 @@ function UrlBanderaFlagCdn(abreviatura) {
     const apiFlagCdn = "https://flagcdn.com/";
     return apiFlagCdn.concat(abreviatura, ".svg");
 }
-
+// SUERTE
 function mostrar(idImg, idTextAbreviatura) {
     const img = document.getElementById(idImg);
     const abreviatura = document.getElementById(idTextAbreviatura).value;
@@ -18,7 +18,7 @@ function mostrar(idImg, idTextAbreviatura) {
     img.src = UrlBanderaFlagCdn(abreviatura);
     console.log("Url: " + UrlBanderaFlagCdn(abreviatura));
     console.log("src = " + img.src)
-    if (img.style.display == "none")
-        img.style.display = "block";
+    // if (img.style.display == "none")
+    //     img.style.display = "block";
     console.log("display = " + img.style.display);
 }
