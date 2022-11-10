@@ -18,3 +18,9 @@ function mostrar(idImg, idTextAbreviatura) {
     // if (img.style.display == "none")
     //     img.style.display = "block";
 }
+
+function BanderaListado(idImg, abreviatura) {
+    const img = document.getElementById(idImg);
+    img.src = UrlBanderaFlagCdn(abreviatura);
+}
+window.onload = BanderaListado;

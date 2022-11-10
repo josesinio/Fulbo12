@@ -6,20 +6,23 @@
 
 @if (Model.Count() != 0)
 {
+
     <h3>Paises</h3>
     <br><br>
     <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">Nombre</th>
+                <th scope="col">Abreviatura</th>
                 <th scope="col" colspan="2">Acciones</th>
             </tr>
         </thead>
-        <tbody class="">
+        <tbody class="" >
             @foreach (var pais in Model)
             {
                 <tr>
-                    <th scope="row"><a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
+                    <th scope="row"><a asp-action="Detalle" asp-route-Id="@pais.Id"> <img id="id" onload="BanderaListado('id', 'ar')" alt=""> @pais.Nombre</a></th>
+                    @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Abreviatura</a></td> *@
                     <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
                     <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>
                 </tr>
