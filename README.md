@@ -7,7 +7,7 @@
   <img src="https://et12.edu.ar/imgs/computacion/vamoaprogramabanner.png">
 </p>
 
-# Fulbo12
+# Fulbo12 - ⚽1️⃣2️⃣
 
 Proyecto en `C#` para generar un simulador de futbol. El proyecto apunta a reforzar los conocimientos de nuestros alumnos en Programación y abordar temáticas extra-curriculares pero presentes en un ámbito laboral: versionado de software y trabajo colaborativo en grupo.
 
@@ -21,7 +21,7 @@ git clone https://github.com/ET12DE1Computacion/Fulbo12
 
 ### Pre-requisitos 📋
 
-- .NET 6.0.5 (SDK .NET 6.0.300) - [Descargar](https://dotnet.microsoft.com/download/dotnet/6.0)
+- .NET 6.0.5 (SDK .NET 6.0.402) - [Descargar](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ### Instalación 🔧
 

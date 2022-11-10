@@ -14,11 +14,7 @@ function UrlBanderaFlagCdn(abreviatura) {
 function mostrar(idImg, idTextAbreviatura) {
     const img = document.getElementById(idImg);
     const abreviatura = document.getElementById(idTextAbreviatura).value;
-    console.log("Abreviatura: " + abreviatura);
     img.src = UrlBanderaFlagCdn(abreviatura);
-    console.log("Url: " + UrlBanderaFlagCdn(abreviatura));
-    console.log("src = " + img.src)
     // if (img.style.display == "none")
     //     img.style.display = "block";
-    console.log("display = " + img.style.display);
 }
