@@ -5,4 +5,12 @@ public class RepoFutbolista : RepoGenerico<Futbolista>, IRepoFutbolista
 {
     public RepoFutbolista(Fulbo12Contexto contexto) : base(contexto) { }
     
+    public bool ExisteFutbolistaCon(byte idPersona, byte idTipoFutbolista, byte idEquipo)
+        => DbSet.Any(   f => EF.Property<byte>(f, "idPersona") == idPersona
+                    &&  EF.Property<byte>(f, "idEquipo") == idEquipo
+                    &&  EF.Property<byte>(f, "idTipoFutbolista") == idTipoFutbolista);
+    public async Task<bool> ExisteFutbolistaConAsync(byte idPersona, byte idTipoFutbolista, byte idEquipo) 
+        => await DbSet.AnyAsync(  f =>  EF.Property<byte>(f, "idPersona") == idPersona
+                    &&  EF.Property<byte>(f, "idEquipo") == idEquipo
+                    &&  EF.Property<byte>(f, "idTipoFutbolista") == idTipoFutbolista);
 }
