@@ -17,6 +17,7 @@ public class Posesion
         Usuario = usuario;
         Futbolista = futbolista;
         Duenos = 0;
+        Posicion = Futbolista.Posiciones[0];
         Reiniciar();
     }
     public Posesion(Usuario usuario, Futbolista futbolista, DateTime adquision,

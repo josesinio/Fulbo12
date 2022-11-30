@@ -8,7 +8,7 @@ public class VMTipoFutbolista
     [Remote(action: "VerificarNombre", controller: "TipoFutbolista")]
     [MinLength(4)]
     [MaxLength(30)]
-    public string Nombre { get; set; }
+    public string Nombre { get; set; } = string.Empty;
     public byte Id { get; set; }
     public bool Especial { get; set; }
     public VMTipoFutbolista() { }

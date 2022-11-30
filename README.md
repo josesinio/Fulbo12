@@ -21,7 +21,7 @@ git clone https://github.com/ET12DE1Computacion/Fulbo12
 
 ### Pre-requisitos 📋
 
-- .NET 6.0.5 (SDK .NET 6.0.402) - [Descargar](https://dotnet.microsoft.com/download/dotnet/6.0)
+- .NET 7 (SDK .NET 7.0.100) - [Descargar](https://dotnet.microsoft.com/download/dotnet/7.0)
 
 ### Instalación 🔧
 

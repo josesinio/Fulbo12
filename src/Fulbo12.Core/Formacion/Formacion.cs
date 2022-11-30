@@ -15,8 +15,9 @@ public class Formacion
     public List<PosicionEnCancha> Suplentes { get; set; }
     public List<PosicionEnCancha> Reserva { get; set; }
     public PosicionEnCancha Arquero { get; set; }
-    public Formacion()
+    public Formacion(PosicionEnCancha arquero)
     {
+        Arquero = arquero;
         Lineas = new List<Linea>();
         Suplentes = new();
         Reserva = new();
@@ -54,7 +55,9 @@ public class Formacion
     {
         if (lista.Count < tope)
         {
-            if (ExistePersona(pec.Persona))
+            if (!pec.HayJugador)
+                throw new ArgumentNullException("La posicion no tiene Persona");
+            if (ExistePersona(pec.Persona!))
                 throw new InvalidOperationException(_jugadorYaExiste);
             lista.Add(pec);
         }

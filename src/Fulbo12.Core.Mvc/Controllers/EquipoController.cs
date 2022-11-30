@@ -50,7 +50,7 @@ public class EquipoController : Controller
         if (VMequipo.IdEquipo == 0)
         {
             var liga = await _unidad.RepoLiga.ObtenerPorIdAsync(VMequipo.IdLiga);
-            var equipo = new Equipo(VMequipo.NombreEquipo!, liga);
+            var equipo = new Equipo(VMequipo.NombreEquipo!, liga!);
             equipo.Futbolistas = new List<Futbolista>();
             await _unidad.RepoEquipo.AltaAsync(equipo);
         }
@@ -59,7 +59,7 @@ public class EquipoController : Controller
         {
             await _unidad.GuardarAsync();
         }
-        catch (EntidadDuplicadaException e)
+        catch (EntidadDuplicadaException)
         {
             return NotFound();
         }

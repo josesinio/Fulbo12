@@ -7,14 +7,14 @@ public interface IRepo<T> where T : class
     void Alta(IEnumerable<T> entidades);
     Task AltaAsync(T entidad);
     IEnumerable<T> Obtener(
-        Expression<Func<T, bool>> filtro = null,
-        Func<IQueryable<T>, IOrderedQueryable<T>> orden = null,
-        string includes = null);
+        Expression<Func<T, bool>>? filtro = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orden = null,
+        string? includes = null);
     Task<IEnumerable<T>> ObtenerAsync(
-        Expression<Func<T, bool>> filtro = null,
-        Func<IQueryable<T>, IOrderedQueryable<T>> orden = null,
-        string includes = null);
-    T ObtenerPorId(params object[] claves);
-    Task<T> ObtenerPorIdAsync(params object[] claves);
+        Expression<Func<T, bool>>? filtro = null,
+        Func<IQueryable<T>, IOrderedQueryable<T>>? orden = null,
+        string? includes = null);
+    T? ObtenerPorId(params object[] claves);
+    Task<T?> ObtenerPorIdAsync(params object[] claves);
     void Modificar(T entidad);
 }

@@ -54,7 +54,7 @@ namespace Fulbo12.Core.Mvc.Controllers
             {
                 await _unidad.GuardarAsync();
             }
-            catch (EntidadDuplicadaException e)
+            catch (EntidadDuplicadaException)
             {
                 return NotFound();
             }
