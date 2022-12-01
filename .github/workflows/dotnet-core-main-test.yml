@@ -1,4 +1,4 @@
-name: main-test.NET6
+name: main-test.NET7
 
 on:
   push:

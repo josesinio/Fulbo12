@@ -1,5 +1,5 @@
-![main build.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-build.NET6/badge.svg?branch=main) ![main test.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-test.NET6/badge.svg?branch=main)
-![dev build.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-build.NET6/badge.svg?branch=dev) ![dev test.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-test.NET6/badge.svg?branch=dev)
+![main build.NET7](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-build.NET7/badge.svg?branch=main) ![main test.NET7](https://github.com/ET12DE1Computacion/Fulbo12/workflows/main-test.NET7/badge.svg?branch=main)
+![dev build.NET7](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-build.NET7/badge.svg?branch=dev) ![dev test.NET6](https://github.com/ET12DE1Computacion/Fulbo12/workflows/dev-test.NET7/badge.svg?branch=dev)
 [![Abrir en Visual Studio Code](https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Abrir%20en%20Visual%20Studio%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc)](https://open.vscode.dev/ET12DE1Computacion/Fulbo12)
 
 <h1 align="center">E.T. Nº12 D.E. 1º "Libertador Gral. José de San Martín"</h1>

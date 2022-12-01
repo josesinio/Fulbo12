@@ -1,4 +1,4 @@
-name: main-build.NET6
+name: main-build.NET7
 
 on:
   push:
