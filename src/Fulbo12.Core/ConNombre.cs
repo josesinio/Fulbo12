@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Fulbo12.Core;
 /// <summary>
@@ -12,9 +13,11 @@ public abstract class ConNombre
 
     [MaxLength(30)]
     [Required]
-    public string Nombre { get; set; }
-    public ConNombre(){}
+    public required string Nombre { get; set; }
+    public ConNombre() { }
+    [SetsRequiredMembers]
     public ConNombre(string nombre) => Nombre = nombre;
+    [SetsRequiredMembers]
     public ConNombre(string nombre, byte id) : this(nombre)
         => Id = id;
 }

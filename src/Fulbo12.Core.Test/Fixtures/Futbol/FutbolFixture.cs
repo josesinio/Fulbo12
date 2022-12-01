@@ -8,12 +8,14 @@ public class FutbolFixture
     public LigasFixture Ligas { get; set; }
     public PosicionesFixture Posiciones { get; set; }
     public CoreFixture Core { get; set; }
+    public TiposFutbolistasFixture TipoFutbolistas { get; set; }
     public FutbolFixture()
     {
         Core = new CoreFixture();
         Ligas = new LigasFixture(Core.Paises);
         Equipos = new EquiposFixture(Ligas);
         Posiciones = new PosicionesFixture();
-        Futbolistas = new FutbolistasFixture(Core.Personas, Equipos, Posiciones);
+        TipoFutbolistas = new TiposFutbolistasFixture();
+        Futbolistas = new FutbolistasFixture(Core.Personas, Equipos, Posiciones, TipoFutbolistas);
     }
 }

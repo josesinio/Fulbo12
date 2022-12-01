@@ -69,7 +69,7 @@ public class LigaController : Controller
         if (vmLiga.IdLiga == 0)
         {
             var pais = await _unidad.RepoPais.ObtenerPorIdAsync(vmLiga.IdPais);
-            var liga = new Liga(vmLiga.NombreLiga!, pais);
+            var liga = new Liga(vmLiga.NombreLiga!, pais!);
             liga.Equipos = new List<Equipo>();
             await _unidad.RepoLiga.AltaAsync(liga);
         }
@@ -78,7 +78,7 @@ public class LigaController : Controller
         {
             await _unidad.GuardarAsync();
         }
-        catch (EntidadDuplicadaException e)
+        catch (EntidadDuplicadaException)
         {
             return NotFound();
         }

@@ -7,8 +7,8 @@ namespace Fulbo12.Core.Mvc.ViewModels
     public class VMPersonaJuego
     {
         public SelectList? Paises { get; set; }
-        public string? NombrePersona { get; set; }
-        public string ApellidoPersona { get; set; }
+        public string NombrePersona { get; set; } = string.Empty;
+        public string ApellidoPersona { get; set; } = string.Empty;
         [Required]
         [Range(35,160,ErrorMessage = "El peso tiene que estar entre {1} y {2}")]
         public float PesoPersona { get; set; }
@@ -46,13 +46,14 @@ namespace Fulbo12.Core.Mvc.ViewModels
 
         internal PersonaJuego CrearPersona(IUnidad unidad)
         {
+            // IdPais se setea en base a una opción seleccionada del SelectList
             var pais = unidad.RepoPais.ObtenerPorId(IdPais);
             return new PersonaJuego()
             {
                 Altura = AlturaPersona,
                 Nacimiento = NacimientoPersona,
                 Nombre = NombrePersona,
-                Pais = pais,
+                Pais = pais!,
                 Peso = PesoPersona,
                 Apellido = ApellidoPersona            
             };

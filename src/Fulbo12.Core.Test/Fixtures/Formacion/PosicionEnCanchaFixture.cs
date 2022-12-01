@@ -3,6 +3,7 @@ using Fulbo12.Core.Futbol.Fixtures;
 namespace Fulbo12.Core.Formacion.Fixtures;
 public class PosicionEnCanchaFixture
 {
+    public PosicionEnCancha POVacante { get; set; }
     public PosicionEnCancha DFI { get; set; }
     public PosicionEnCancha DFC { get; set; }
     public PosicionEnCancha DFCVacante { get; set; }
@@ -15,67 +16,70 @@ public class PosicionEnCanchaFixture
     public PosicionEnCancha PecMiltonCasco { get; set; }
     public PosicionEnCancha PecEliasGomez { get; set; }
     public FutbolFixture Futbol { get; set; }
+    private PosicionesFixture _Posiciones => Futbol.Posiciones;
     public const byte NroFabra = 3;
     public const byte nroRojo = 6;
     public PosicionEnCanchaFixture()
     {
         Futbol = new FutbolFixture();
 
-        DFDVacante = new PosicionEnCancha(Futbol.Posiciones.DefensorDerecho)
+        DFDVacante = new PosicionEnCancha(_Posiciones.DefensorDerecho)
         {
             NumeroCamiseta = 4
         };
 
-        DFCVacante = new PosicionEnCancha(Futbol.Posiciones.DefensorCentral)
+        DFCVacante = new PosicionEnCancha(_Posiciones.DefensorCentral)
         {
             NumeroCamiseta = 2
         };
 
-        DFI = new PosicionEnCancha(Futbol.Posiciones.DefensorIzquierdo)
+        DFI = new PosicionEnCancha(_Posiciones.DefensorIzquierdo)
         {
             NumeroCamiseta = NroFabra,
             Futbolista = Futbol.Futbolistas.FFrankFabra
         };
 
-        DFC = new PosicionEnCancha(Futbol.Posiciones.DefensorCentral)
+        DFC = new PosicionEnCancha(_Posiciones.DefensorCentral)
         {
             NumeroCamiseta = nroRojo,
             Futbolista = Futbol.Futbolistas.FMarcosRojo
         };
 
-        PecNicoDeLaCruz = new PosicionEnCancha(posicion: null)
+        PecNicoDeLaCruz = new PosicionEnCancha(posicion: _Posiciones.MedioCentro)
         {
             Futbolista = Futbol.Futbolistas.FNicoDeLaCruz
         };
 
-        PecTomasPochettino = new PosicionEnCancha(posicion: null)
+        PecTomasPochettino = new PosicionEnCancha(_Posiciones.MedioCentro)
         {
             Futbolista = Futbol.Futbolistas.FTomasPochettino
         };
 
-        PecFrancoPetroli = new PosicionEnCancha(posicion: null)
+        PecFrancoPetroli = new PosicionEnCancha(_Posiciones.MedioCentro)
         {
             Futbolista = Futbol.Futbolistas.FFrancoPetroli
         };
 
-        PecEzequielCenturion = new PosicionEnCancha(posicion: null)
+        PecEzequielCenturion = new PosicionEnCancha(_Posiciones.Arquero)
         {
             Futbolista = Futbol.Futbolistas.FEzequielCenturion
         };
 
-        PecEmanuelMammana = new PosicionEnCancha(posicion: null)
+        PecEmanuelMammana = new PosicionEnCancha(_Posiciones.Arquero)
         {
             Futbolista = Futbol.Futbolistas.FEmanuelMammana
         };
 
-        PecMiltonCasco = new PosicionEnCancha(posicion: null)
+        PecMiltonCasco = new PosicionEnCancha(_Posiciones.DefensorIzquierdo)
         {
             Futbolista = Futbol.Futbolistas.FMiltonCasco
         };
 
-        PecEliasGomez = new PosicionEnCancha(posicion: null)
+        PecEliasGomez = new PosicionEnCancha(_Posiciones.MedioCentro)
         {
             Futbolista = Futbol.Futbolistas.FEliasGomez
         };
+
+        POVacante = new PosicionEnCancha(_Posiciones.Arquero);
     }
 }

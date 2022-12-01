@@ -60,7 +60,7 @@ public class PaisController : Controller
         {
             await _unidad.GuardarAsync();
         }
-        catch (EntidadDuplicadaException e)
+        catch (EntidadDuplicadaException)
         {
             return NotFound();
         }

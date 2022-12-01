@@ -1,4 +1,4 @@
-name: main-build.NET6
+name: main-build.NET7
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Install dependencies
       run: dotnet restore
       working-directory: src/

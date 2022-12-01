@@ -2,9 +2,9 @@ namespace Fulbo12.Core.Futbol;
 public class Futbolista
 {
     public ushort Id { get; set; }
-    public PersonaJuego Persona { get; set; }
-    public TipoFutbolista Tipofutbolista { get; set; }
-    public Equipo Equipo { get; set; }
+    public required PersonaJuego Persona { get; set; }
+    public required TipoFutbolista Tipofutbolista { get; set; }
+    public required Equipo Equipo { get; set; }
     public List<Posicion> Posiciones { get; set; }
     public byte Valoracion { get; set; }
 

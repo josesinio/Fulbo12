@@ -5,13 +5,9 @@
     ViewData["Title"] = texto;
 }
 
-<head>
-    <script type="text/javascript" src="site.js"></script>
-    <script type="text/css" src="site.css"></script>
-</head>
 <form asp-controller="Pais" asp-action="Upsert" method="post">
     <div asp-validation-summary="All"></div>
-    <div><input type="hidden" asp-for="@Model.Id" /></div>
+    <div><input type="hidden" asp-for="Id" /></div>
     <div class="row g-3 align-items-center">
         <div class="col-auto">
             <label asp-for="Nombre" class="col-form-label">Nombre</label>
