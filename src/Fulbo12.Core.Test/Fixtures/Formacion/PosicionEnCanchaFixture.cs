@@ -16,7 +16,7 @@ public class PosicionEnCanchaFixture
     public PosicionEnCancha PecMiltonCasco { get; set; }
     public PosicionEnCancha PecEliasGomez { get; set; }
     public FutbolFixture Futbol { get; set; }
-    private PosicionesFixture _Posiciones => _Posiciones;
+    private PosicionesFixture _Posiciones => Futbol.Posiciones;
     public const byte NroFabra = 3;
     public const byte nroRojo = 6;
     public PosicionEnCanchaFixture()
