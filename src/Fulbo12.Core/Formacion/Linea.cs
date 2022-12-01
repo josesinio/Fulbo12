@@ -14,6 +14,6 @@ public class Linea
         => Convert.ToByte(Posiciones.Sum(p => p.QuimicaJugador));
     public bool ExisteNumero(byte numeroCamiseta)
         => Posiciones.Any(p => p.EsNumero(numeroCamiseta));
-    public bool ExistePersona(Persona persona)
+    public bool ExistePersona(PersonaJuego persona)
         => Posiciones.Any(p => p.EsPersona(persona));
 }

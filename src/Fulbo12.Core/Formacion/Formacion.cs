@@ -15,8 +15,9 @@ public class Formacion
     public List<PosicionEnCancha> Suplentes { get; set; }
     public List<PosicionEnCancha> Reserva { get; set; }
     public PosicionEnCancha Arquero { get; set; }
-    public Formacion()
+    public Formacion(PosicionEnCancha arquero)
     {
+        Arquero = arquero;
         Lineas = new List<Linea>();
         Suplentes = new();
         Reserva = new();
@@ -44,7 +45,7 @@ public class Formacion
             throw new InvalidOperationException("No hay más dorsales disponibles");
         }
     }
-    public bool ExistePersona(Persona persona)
+    public bool ExistePersona(PersonaJuego persona)
         => Lineas.Any(l => l.ExistePersona(persona));
     public void AgregarSuplente(PosicionEnCancha futbolista)
         => AgregarSiSePuedeEn(Suplentes, futbolista, CantidadSuplentes);
@@ -54,7 +55,9 @@ public class Formacion
     {
         if (lista.Count < tope)
         {
-            if (ExistePersona(pec.Persona))
+            if (!pec.HayJugador)
+                throw new ArgumentNullException("La posicion no tiene Persona");
+            if (ExistePersona(pec.Persona!))
                 throw new InvalidOperationException(_jugadorYaExiste);
             lista.Add(pec);
         }

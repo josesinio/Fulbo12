@@ -1,0 +1,34 @@
+@using Fulbo12.Core.Futbol;
+@model Liga;
+@{
+    ViewData["Title"] = "Liga - Detalle";
+}
+
+<h2 class="text-center">@string.Concat(Model.Nombre,'(',Model.Pais.Nombre,')')</h2>
+<br><br>
+    @if (Model.Equipos.Count() != 0)
+{
+<h2>Equipos</h2>
+<table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                @* <th scope="col" colspan="2">Acciones</th> *@
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach (var equipo in Model.Equipos)
+            {
+                <tr>
+                    <th scope="row"><a asp-controller="Equipo" asp-action="Detalle" asp-route-Id="@equipo.Id">@equipo.Nombre</a></th>
+                    @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
+                    <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td> *@
+                </tr>
+            }
+        </tbody>
+</table>
+}
+else
+{
+    <p>No hay equipos cargados para esta liga.</p>
+}

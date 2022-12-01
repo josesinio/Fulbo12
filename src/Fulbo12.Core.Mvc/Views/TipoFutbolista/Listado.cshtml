@@ -1,0 +1,41 @@
+@using Fulbo12.Core.Futbol;
+@model IEnumerable<TipoFutbolista>
+@{
+    ViewData["Title"] = "Listado";
+}
+
+@if (Model.Count() != 0)
+{
+    <div class="text-center">
+    <h3>Tipos de Futbolistas</h3>
+    </div>
+    <br><br>
+    <div class="text-center">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                @* <th scope="col" colspan="2">Acciones</th> *@
+            </tr>
+        </thead>
+        <tbody class="">
+            @foreach (var tipoFutbolista in Model)
+            {
+                <tr>
+                    <th scope="row">
+                        <a>@tipoFutbolista.Nombre</a>
+                        <td><a asp-action="Modificar" asp-route-Id="@tipoFutbolista.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>
+                    </th>
+                    @* <td><a asp-action="Detalle" asp-route-Id="@tipoFutbolista.Id">Detalle <i class="bi bi-eyeglasses"
+                        style="color: black;"></i></a></td> *@
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+
+}
+else
+{
+    <p>No hay Tipos de Futbolistas cargados.</p>
+}

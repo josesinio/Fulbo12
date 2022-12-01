@@ -1,25 +1,27 @@
+using System.Diagnostics.CodeAnalysis;
 using Fulbo12.Core.Futbol;
 
 namespace Fulbo12.Core.Formacion;
 public class FormacionBuilder
 {
-    public Formacion Formacion { get; private set; }
-    private Linea linea { get; set; }
-    public FormacionBuilder() => IniciarFormacion();
-    public FormacionBuilder IniciarFormacion()
+    public Formacion Formacion { get; private set; } = null!;
+    private Linea? _linea { get; set; }
+
+    public FormacionBuilder(PosicionEnCancha arquero) => IniciarFormacion(arquero);
+    public FormacionBuilder IniciarFormacion(PosicionEnCancha arquero)
     {
-        Formacion = new Formacion();
-        linea = null;
+        Formacion = new Formacion(arquero);
+        _linea = null;
         return this;
     }
     public FormacionBuilder AgregarLinea()
     {
-        linea = new Linea();
-        return AgregarLinea(linea);
+        _linea = new Linea();
+        return AgregarLinea(_linea);
     }
     public FormacionBuilder AgregarLinea(Linea linea)
     {
-        this.linea = linea;
+        this._linea = linea;
         Formacion.Lineas.Add(linea);
         return this;
     }
@@ -35,8 +37,11 @@ public class FormacionBuilder
     }
     public FormacionBuilder AgregarPosicion(PosicionEnCancha posicionEnCancha)
     {
+        if (_linea is null)
+            throw new InvalidOperationException("No se puede agregar posición si no hay linea");
+
         posicionEnCancha.NumeroCamiseta ??= Formacion.NumeroDisponible;
-        linea.Posiciones.Add(posicionEnCancha);
+        _linea.Posiciones.Add(posicionEnCancha);
         return this;
     }
     public FormacionBuilder AgregarArquero(Futbolista futbolista, byte? nro = null)
@@ -44,7 +49,7 @@ public class FormacionBuilder
         var Arquero = new PosicionEnCancha()
         {
             Futbolista = futbolista,
-            Posicion = new("Arquero"),
+            Posicion = new Posicion() { Nombre = "Arquero", Abreviado = "PO" },
             NumeroCamiseta = nro ?? Formacion.NumeroDisponible
         };
         return AgregarArquero(Arquero);

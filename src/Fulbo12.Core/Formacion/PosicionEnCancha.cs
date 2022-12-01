@@ -1,12 +1,15 @@
+using System.Diagnostics.CodeAnalysis;
 using Fulbo12.Core.Futbol;
 
 namespace Fulbo12.Core.Formacion;
 public class PosicionEnCancha
 {
-    public Futbolista Futbolista { get; set; }
-    public Posicion Posicion { get; set; }
-    public byte? NumeroCamiseta { get; set; }
+    public Futbolista? Futbolista { get; set; } = null;
+    public required Posicion Posicion { get; set; }
+    public byte? NumeroCamiseta { get; set; } = null;
     public PosicionEnCancha() { }
+    
+    [SetsRequiredMembers]
     public PosicionEnCancha(Posicion posicion) => Posicion = posicion;
     public byte QuimicaJugador
     {
@@ -16,8 +19,8 @@ public class PosicionEnCancha
         }
     }
     public bool HayJugador => Futbolista is not null;
-    public bool EsPersona(Persona persona)
-        => HayJugador && Futbolista.Persona == persona;
+    public bool EsPersona(PersonaJuego persona)
+        => HayJugador && Futbolista!.Persona == persona;
     public bool EsNumero(byte numCamiseta) => NumeroCamiseta.Equals(numCamiseta);
-    public Persona Persona => Futbolista.Persona;
+    public PersonaJuego? Persona => HayJugador ? Futbolista!.Persona : null;
 }

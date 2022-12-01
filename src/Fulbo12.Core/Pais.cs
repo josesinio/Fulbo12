@@ -1,8 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Fulbo12.Core;
-public class Pais
+public class Pais : ConNombre
 {
-    public byte Id { get; set; }
-    public string  Nombre { get; set; }
-    public Pais() {}
-    public Pais(string nombre) => Nombre = nombre;
+    public required string Abreviatura { get; set; }
+    public Pais() : base() { }
+    
+    [SetsRequiredMembers]
+    public Pais(byte id, string nombre, string abreviatura) : base(nombre, id)
+        => Abreviatura = abreviatura;
 }

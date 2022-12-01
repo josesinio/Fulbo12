@@ -1,0 +1,43 @@
+@using Fulbo12.Core;
+@model IEnumerable<Pais>
+@{
+    ViewData["Title"] = "Pais";
+}
+
+@if (Model.Count() != 0)
+{
+<head>
+    <script type="text/javascript" src="site.js"></script>
+    <script type="text/css" src="site.css"></script>
+</head>
+    <h3>Paises</h3>
+    <br><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Abreviatura</th>
+                <th scope="col" colspan="2">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="" >
+            @foreach (var pais in Model)
+            {
+                @* <button class="btn btn-primary" type="button" onclick="BanderaListado('bandera', '@pais.Abreviatura')">
+                Previsualización <i class="bi bi-eye"></i>
+                </button> *@
+                <tr>
+                    <th scope="row"><img id='@String.Concat("bandera", pais.Abreviatura)' class="img-fluid img-listado" alt=""> <a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
+                    @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id" id="abreviatura">@pais.Abreviatura</a></td> *@
+                    <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
+                    <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>                    
+                </tr>
+                @* BanderaListado('@String.Concat("bandera", pais.Abreviatura)', @pais.Abreviatura); *@
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No hay paises cargados.</p>
+}

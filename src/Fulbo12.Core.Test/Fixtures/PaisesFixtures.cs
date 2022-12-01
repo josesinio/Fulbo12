@@ -1,6 +1,8 @@
 namespace Fulbo12.Core.Fixtures;
 public class PaisesFixtures
 {
+    private byte _id = 0;
+    private byte _Id => ++_id;
     public Pais Argentina { get; set; }
     public Pais Colombia { get; set; }
     public Pais Francia { get; set; }
@@ -9,11 +11,11 @@ public class PaisesFixtures
     public Pais Chile { get; set; }
     public PaisesFixtures()
     {
-        Argentina = new Pais("Argentina");
-        Colombia = new Pais("Colombia");
-        Francia = new Pais("Francia");
-        Uruguay = new Pais("Uruguay");
-        Paraguay = new Pais("Paraguay");
-        Chile = new Pais("Chile");
+        Argentina = new Pais(_Id, "Argentina", "ar");
+        Colombia = new Pais(_Id, "Colombia", "co");
+        Francia = new Pais(_Id, "Francia", "fr");
+        Uruguay = new Pais(_Id, "Uruguay", "uy");
+        Paraguay = new Pais(_Id, "Paraguay", "py");
+        Chile = new Pais(_Id, "Chile", "cl");
     }
 }

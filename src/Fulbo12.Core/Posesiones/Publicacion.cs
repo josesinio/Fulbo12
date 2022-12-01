@@ -8,11 +8,11 @@ public class Publicacion
     public byte Dias { get; init; }
     public uint OfertaMinima { get; init; }
     public uint Compra { get; init; }
-    public Usuario Ofertante { get; set; }
+    public Usuario? Ofertante { get; set; }
     public uint? Oferta { get; set; }
     public uint OfertaOMinima => Oferta ?? OfertaMinima;
     public readonly string msjMaxDias = $"No pueden ser más de {MaximoDias} días";
-    public bool HayOfertante => Ofertante is not null;
+    public bool HayOfertante => Ofertante is not null;                      
     public Publicacion(Posesion posesion)
     {
         Posesion = posesion;
@@ -47,7 +47,7 @@ public class Publicacion
     private void BajarOfertanteAntiguo()
     {
         if (HayOfertante)
-            Ofertante.SacarOferta(this);
+            Ofertante!.SacarOferta(this);
     }
     public void Aplicar()
     {
@@ -57,9 +57,9 @@ public class Publicacion
         if (HayOfertante)
         {
             Posesion.Reiniciar();
-            vendedor.Acreditar(Oferta.Value);
-            Posesion.Usuario = Ofertante;
-            Ofertante.AgregarNovedad(Posesion);
+            vendedor.Acreditar(Oferta!.Value);
+            Posesion.Usuario = Ofertante!;
+            Ofertante!.AgregarNovedad(Posesion);
         }
         else
         {

@@ -1,13 +1,15 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Fulbo12.Core.Futbol;
-public class Liga
+public class Liga : ConNombre
 {
-    public string Nombre { get; set; }
-    public List<Equipo> Equipos { get; set; }
-    public Pais Pais { get; set; }
-    public Liga() { }
-    public Liga(string nombre, Pais pais)
+    public required List<Equipo> Equipos { get; set; }
+    public required Pais Pais { get; set; }
+    [SetsRequiredMembers]
+    public Liga(string nombre, Pais pais) : base(nombre)
     {
-        Nombre = nombre;
         Pais = pais;
+        Equipos = new List<Equipo>();
     }
+    public Liga() { }
 }

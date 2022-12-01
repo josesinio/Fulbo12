@@ -3,18 +3,19 @@ public class FormacionFixture
 {
     public PosicionEnCanchaFixture PosicionesEnCancha { get; set; }
     public LineaFixture Lineas {get; set;}
-    private FormacionBuilder fb {get; set;}
+    private FormacionBuilder _fb;
+    private PosicionEnCancha _Arquero => PosicionesEnCancha.POVacante;
     public FormacionFixture()
     {
         PosicionesEnCancha = new PosicionEnCanchaFixture ();
         Lineas = new LineaFixture (PosicionesEnCancha);
-        fb = new FormacionBuilder();
+        _fb = new FormacionBuilder(_Arquero);
     }
     public Formacion CrearFormacion()
     {
         var futbolistas = PosicionesEnCancha.Futbol.Futbolistas;
         var posiciones = PosicionesEnCancha.Futbol.Posiciones;
-        return  fb  .IniciarFormacion()
+        return  _fb .IniciarFormacion(_Arquero)
                     .AgregarLinea(Lineas.Defensas)
                     .AgregarLinea()
                         .AgregarPosicion(futbolistas.FEnzoPerez, posiciones.MediocampistaDefensivo, 5)

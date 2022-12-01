@@ -1,9 +1,10 @@
+using System.Diagnostics.CodeAnalysis;
 using Fulbo12.Core.Futbol;
 
 namespace Fulbo12.Core.Posesiones;
-public class Usuario
+public class Usuario : PersonaBase
 {
-    public static readonly uint MonedasMaximas = 9999999;
+    public static readonly uint MonedasMaximas = 9_999_999;
     public static readonly byte LimitePosesiones = 100;
     public static readonly string _futbolistaEnPosesion
         = "Futbolista ya se encuentra en posesión";
@@ -17,20 +18,17 @@ public class Usuario
         = "No se puede ofertar por Publicaciones propias";
     public static readonly string _ofertaMenor
         = "No se puede ofertar por debajo";
-    public string Nombre { get; init; }
-    public string Apellido { get; init; }
-    public DateTime Nacimiento { get; init; }
-    public string Email { get; set; }
+    public required string Email { get; set; }
     public uint Monedas { get; private set; }
-    public List<Posesion> NuevasPosesiones { get; init; }
-    public List<Posesion> Posesiones { get; init; }
-    public List<Posesion> Transferibles { get; init; }
-    public List<Publicacion> Publicaciones { get; init; }
-    public Usuario(string nombre, string apellido, DateTime nacimiento, string email)
+    public required List<Posesion> NuevasPosesiones { get; init; }
+    public required List<Posesion> Posesiones { get; init; }
+    public required List<Posesion> Transferibles { get; init; }
+    public required List<Publicacion> Publicaciones { get; init; }
+    public Usuario() { }
+    [SetsRequiredMembers]
+    public Usuario(short id, string nombre, string apellido, DateTime nacimiento, Pais pais, string email)
+        : base (id, nombre, apellido, nacimiento, pais)
     {
-        Nombre = nombre;
-        Apellido = apellido;
-        Nacimiento = nacimiento;
         Email = email;
         Monedas = 0;
         NuevasPosesiones = new List<Posesion>();
@@ -93,7 +91,7 @@ public class Usuario
         Debitar(oferta);
         publicacion.RecibirOferta(this, oferta);
     }
-    public void SacarOferta(Publicacion publicacion) => Acreditar(publicacion.Oferta.Value);
+    public void SacarOferta(Publicacion publicacion) => Acreditar(publicacion.Oferta!.Value);
     public void Acreditar(uint monedas)
         => Monedas = Monedas + monedas > MonedasMaximas ? MonedasMaximas : Monedas + monedas;
     public void BajarPublicacion(Publicacion publicacion)

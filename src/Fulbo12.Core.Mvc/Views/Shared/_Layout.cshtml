@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Fulbo12.Core.Mvc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Fulbo12.Core.Mvc.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Fulbo12</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                    aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarPaisMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Pais
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarPaisMenu">
+                                <li><a class="dropdown-item" asp-controller="Pais" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Pais" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarLigaMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Liga
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarLigaMenu">
+                                <li><a class="dropdown-item" asp-controller="Liga" asp-action="Index"><i class="bi bi-list-nested"></i> Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Liga" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Equipo
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
+                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Equipo" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Persona
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
+                                <li><a class="dropdown-item" asp-controller="Persona" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="Persona" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta</a></li>
+                                <li><a class="dropdown-item" asp-controller="Persona" asp-action="Buscar"><i class="bi bi-search"></i> Buscar</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarEquipoMenu" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Futbol
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarEquipoMenu">
+                                <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Listado"><i class="bi bi-list-nested"></i> Listado Tipos</a></li>                                
+                                <li><a class="dropdown-item" asp-controller="TipoFutbolista" asp-action="Alta"><i class="bi bi-plus-circle"></i> Alta Tipo</a></li>
+                            </ul>
+                        </li>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Fulbo12 - <a href="https://et12.edu.ar/">et12.edu.ar</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
