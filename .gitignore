@@ -8,7 +8,7 @@
 
 # Migraciones y configuraciones
 [Mm]igrations/
-appsettings.json
+appSettings.json
 
 ### VisualStudioCode ###
 .vscode/*

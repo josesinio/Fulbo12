@@ -2,9 +2,16 @@
 
 ### Preparando el entorno
 
-Para poder crear la migración, es importante primero haber instalado las herramientas de _Entity Framework Core_ 🦄 con el comando
+Para poder crear la migración, es importante primero haber instalado las herramientas de _Entity Framework Core 7_ 🦄 con el comando
+
 ```shell
 dotnet tool install --global dotnet-ef
+```
+
+En caso de que ya lo tengas instalado y lo quieras actualizar, podes usar el comando
+
+```shell
+dotnet tool update --global dotnet-ef
 ```
 
 Después en este directorio `src\Fulbo12.Core.Persistencia.EFC` crea tu archivo `appsettings.json` con la siguiente estructura:

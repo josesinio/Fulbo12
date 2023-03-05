@@ -22,6 +22,7 @@ git clone https://github.com/ET12DE1Computacion/Fulbo12
 ### Pre-requisitos 📋
 
 - .NET 7 (SDK .NET 7.0.100) - [Descargar](https://dotnet.microsoft.com/download/dotnet/7.0)
+- Entity Framework Core 7 - [Instalacion](src/Fulbo12.Core.Persistencia.EFC/README.md#preparando-el-entorno)
 
 ### Instalación 🔧
 

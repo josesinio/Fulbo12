@@ -32,7 +32,7 @@ public sealed class Fulbo12Contexto : DbContext
                 .AddJsonFile("appSettings.json")
                 .Build();
 
-            string strConexion = myConfig.GetConnectionString("dev");
+            string strConexion = myConfig.GetConnectionString("dev")!;
             var serverVersion = new MySqlServerVersion(versionString: myConfig["SerVersion"]);
             ob.UseMySql(strConexion, serverVersion);
         }
