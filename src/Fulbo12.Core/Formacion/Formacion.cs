@@ -46,7 +46,10 @@ public class Formacion
         }
     }
     public bool ExistePersona(PersonaJuego persona)
-        => Lineas.Any(l => l.ExistePersona(persona));
+        => Arquero.EsPersona(persona)
+        || Lineas.Any(l => l.ExistePersona(persona))
+        || Suplentes.Any(s => s.EsPersona(persona))
+        || Reserva.Any(r => r.EsPersona(persona));
     public void AgregarSuplente(PosicionEnCancha futbolista)
         => AgregarSiSePuedeEn(Suplentes, futbolista, CantidadSuplentes);
     public void AgregarReserva(PosicionEnCancha futbolista)
