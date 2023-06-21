@@ -3,6 +3,7 @@ using System.Text;
 namespace Fulbo12.Core.Formacion;
 public class Formacion
 {
+    public int IdFormacion {get; set;}
     public static readonly byte CantidadTitulares = 11;
     public static readonly byte CantidadSuplentes = 5;
     public static readonly byte CantidadReserva = 5;
