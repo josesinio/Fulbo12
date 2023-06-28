@@ -1,3 +1,94 @@
+## Diagrama de clases "Formación"
+
+```mermaid
+ClassDiagram
+direction LR
+
+Class FormacionBuilder
+-formacion : Formacion
+-linia : Linia
++IniciarFormacion():FormacionBuilder
++AgregarLinia():FormacionBuilder
++AgregarLinia(Linia):FormacionBuilder
++AgregarPocision(PosicionEnCancha):FormacionBuilder
++AgregarPocision(Futbolista,Posicion,byte?):FormacionBuilder
++AgregarArquero(PosicionEnCancha):FormacionBuilder
++AgregarArquero(Futbolista,byte?):FormacionBuilder
+
+Class Formacion
+  -linias: List~Linia~
+  -CantidadTitulares: byte
+  -CantidadSuplentes: byte
+  -CantidadReserva: byte
+  -CantidadTotalJugadores: byte
+  -arquero: PosicionEnCancha
+  -_jugadorYaExiste: string {readOnly}
+  -_posicionLlenas: string {readOnly}
+  -suplentes: List~PosicionEnCancha~
+  -reserva: List~PosicionEnCancha~
+  -Alineacion
+  -id
+  +Formacion()
+  +ExisteNumero(byte): bool
+  +ToTring(): string
+  +ExistePersona(Persona): bool
+  +AgregarSuplente(PosicionEnCancha): void
+  +AgregarReserva(PosicionEnCancha): void
+  -AgregarSiSePuedeEn(List~PosicionEnCancha~,PosicionEnCancha,byte):void
+  
+  ~~property~~
+
+  +QuimicaJugadores():byte
+  -posicionPorLinia():IEnumerable~byte~
+  +NumeroDisponible(): byte
+
+  Class Linia
+
+  -numeroDeLinia: byte
+  -posiciones: PosicionEnCancha
+
+  +Linea()
+  +ExisteNumero(byte): bool
+  +ExistePersona(Persona): bool
+
+  ~~property~~
+
+  +CantidadJugadores()byte
+  +CantidadPosiciones():byte
+  +QuimicaJugadores():byte
+
+Class Posicion
+  + Posicion()
+  + Posicion(string)
+
+Class PosicionEnCancha
+  -numeroCamiseta: byte? 
+  -futbolista: Futbolista
+  -posicion: Posicion
+  
+  +EsNumero(byte): bool
+  +EsPersona(Persona): bool
+  ~~property~~
+  +QuimicaJugador(): byte
+  +HayJugador(): bool
+
+  Class Futbolista
+  -persona: Persona
+  -tipoFutbolista: TipoFutbolista
+  -equipo: Equipo
+  -posicion: List~Posicion~
+
+  +Futbolista()
+  +MismaNacionalidad(Futbolista):bool
+  +MismaLiga(Futbolista): bool
+  +JuegaDe(Posicion): bool
+
+
+
+```
+
+
+
 ## Código Formación
 
 ![Diagrama de Clases de Posesiones](Formacion%20Clases.png)
