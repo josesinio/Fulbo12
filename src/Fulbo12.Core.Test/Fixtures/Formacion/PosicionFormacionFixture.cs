@@ -15,7 +15,7 @@ public class PosicionFormacionFixture
     {
         Futbol = new FutbolFixture(); 
 
-        DFD = new PosicionFormacion(_Posiciones.DefensorDerecho);
+        DFD = new PosicionFormacion(_Posiciones.DefensorDerecho, 4, );
         {
             nroDFD = 4;
         }
