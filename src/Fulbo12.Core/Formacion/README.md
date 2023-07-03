@@ -4,7 +4,7 @@
 ClassDiagram
 direction LR
 
-Class FormacionBuilder
+class FormacionBuilder
 -formacion : Formacion
 -linia : Linia
 +IniciarFormacion():FormacionBuilder
@@ -15,7 +15,17 @@ Class FormacionBuilder
 +AgregarArquero(PosicionEnCancha):FormacionBuilder
 +AgregarArquero(Futbolista,byte?):FormacionBuilder
 
-Class Formacion
+FormacionBuilder -- Formacion
+FormacionBuilder -- Linea
+Linea --o Formacion
+PosicionEnCancha --o Formacion
+PosicionEnCancha --o  Linea
+Posicion --* PosicionEnCancha
+PosicionEnCancha -- Futbolista
+Posicion -- Futbolista
+
+
+class Formacion
   -linias: List~Linia~
   -CantidadTitulares: byte
   -CantidadSuplentes: byte
@@ -42,7 +52,7 @@ Class Formacion
   -posicionPorLinia():IEnumerable~byte~
   +NumeroDisponible(): byte
 
-  Class Linia
+class Linia
 
   -numeroDeLinia: byte
   -posiciones: PosicionEnCancha
@@ -57,11 +67,11 @@ Class Formacion
   +CantidadPosiciones():byte
   +QuimicaJugadores():byte
 
-Class Posicion
+class Posicion
   + Posicion()
   + Posicion(string)
 
-Class PosicionEnCancha
+class PosicionEnCancha
   -numeroCamiseta: byte? 
   -futbolista: Futbolista
   -posicion: Posicion
@@ -72,7 +82,7 @@ Class PosicionEnCancha
   +QuimicaJugador(): byte
   +HayJugador(): bool
 
-  Class Futbolista
+class Futbolista
   -persona: Persona
   -tipoFutbolista: TipoFutbolista
   -equipo: Equipo
