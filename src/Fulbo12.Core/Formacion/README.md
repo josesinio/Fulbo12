@@ -1,98 +1,111 @@
 ## Diagrama de clases "Formación"
 
 ```mermaid
-ClassDiagram
-direction LR
+    classDiagram
+    direction LR
 
-class FormacionBuilder
--formacion : Formacion
--linia : Linia
-+IniciarFormacion():FormacionBuilder
-+AgregarLinia():FormacionBuilder
-+AgregarLinia(Linia):FormacionBuilder
-+AgregarPocision(PosicionEnCancha):FormacionBuilder
-+AgregarPocision(Futbolista,Posicion,byte?):FormacionBuilder
-+AgregarArquero(PosicionEnCancha):FormacionBuilder
-+AgregarArquero(Futbolista,byte?):FormacionBuilder
+      class FormacionBuilder{
+        -formacion: Formacion
+        -linia: Linia
+        +IniciarFormacion() :FormacionBuilder
+        +AgregarLinia() :FormacionBuilder
+        +AgregarLinia(Linia) :FormacionBuilder
+        +AgregarPocision(PosicionEnCancha) :FormacionBuilder
+        +AgregarPocision(Futbolista,Posicion,byte?) :FormacionBuilder
+        +AgregarArquero(PosicionEnCancha) :FormacionBuilder
+        +AgregarArquero(Futbolista,byte?) :FormacionBuilder
+      }
 
-FormacionBuilder -- Formacion
-FormacionBuilder -- Linea
-Linea --o Formacion
-PosicionEnCancha --o Formacion
-PosicionEnCancha --o  Linea
-Posicion --* PosicionEnCancha
-PosicionEnCancha -- Futbolista
-Posicion -- Futbolista
+        FormacionBuilder -- Formacion
+        FormacionBuilder -- Linea
+        Linea --o Formacion
+        PosicionEnCancha --o Formacion
+        PosicionEnCancha --o  Linea
+        Posicion --* PosicionEnCancha
+        PosicionEnCancha -- Futbolista
+        Posicion -- Futbolista
+        PosicionFormacion --* Formacion
+        Alineacion --o Formacion
 
 
-class Formacion
-  -linias: List~Linia~
-  -CantidadTitulares: byte
-  -CantidadSuplentes: byte
-  -CantidadReserva: byte
-  -CantidadTotalJugadores: byte
-  -arquero: PosicionEnCancha
-  -_jugadorYaExiste: string {readOnly}
-  -_posicionLlenas: string {readOnly}
-  -suplentes: List~PosicionEnCancha~
-  -reserva: List~PosicionEnCancha~
-  -Alineacion
-  -id
-  +Formacion()
-  +ExisteNumero(byte): bool
-  +ToTring(): string
-  +ExistePersona(Persona): bool
-  +AgregarSuplente(PosicionEnCancha): void
-  +AgregarReserva(PosicionEnCancha): void
-  -AgregarSiSePuedeEn(List~PosicionEnCancha~,PosicionEnCancha,byte):void
-  
-  ~~property~~
+      class Formacion{
+        -linias: List~Linia~
+        -CantidadTitulares: byte
+        -CantidadSuplentes: byte
+        -CantidadReserva: byte
+        -CantidadTotalJugadores: byte
+        -arquero: PosicionEnCancha
+        -_jugadorYaExiste: string readOnly
+        -_posicionLlenas: string readOnly
+        -suplentes: List~PosicionEnCancha~
+        -reserva: List~PosicionEnCancha~
+        -Alineacion
+        -id
+        +Formacion()
+        +ExisteNumero(byte) bool
+        +ToTring() string
+        +ExistePersona(Persona) bool
+        +AgregarSuplente(PosicionEnCancha) void
+        +AgregarReserva(PosicionEnCancha) void
+        -AgregarSiSePuedeEn(List~PosicionEnCancha~,PosicionEnCancha,byte) void
+        ~~property~~
+        +QuimicaJugadores() byte
+        -posicionPorLinia() IEnumerable~byte~
+        +NumeroDisponible() byte
+      }
 
-  +QuimicaJugadores():byte
-  -posicionPorLinia():IEnumerable~byte~
-  +NumeroDisponible(): byte
+      class Linea{
+        -numeroDeLinia: byte
+        -posiciones: PosicionEnCancha
+        +Linea()
+        +ExisteNumero(byte): bool
+        +ExistePersona(Persona): bool
+        ~~property~~
+        +CantidadJugadores()byte
+        +CantidadPosiciones():byte
+        +QuimicaJugadores():byte
+      }
 
-class Linia
+      class Posicion{
+        +Posicion()
+        +Posicion(string)
+      }
 
-  -numeroDeLinia: byte
-  -posiciones: PosicionEnCancha
+      class PosicionEnCancha{
+        -numeroCamiseta: byte
+        -futbolista: Futbolista
+        -posicion: Posicion
+        +EsNumero(byte) bool
+        +EsPersona(Persona) bool
+        ~~property~~
+        +QuimicaJugador() byte
+        +HayJugador() bool
+      }
+      class Futbolista{
+        -persona: Persona
+        -tipoFutbolista: TipoFutbolista
+        -equipo: Equipo
+        -posicion: List~Posicion~
+        +Futbolista()
+        +MismaNacionalidad(Futbolista):bool
+        +MismaLiga(Futbolista): bool
+        +JuegaDe(Posicion): bool
+       }
 
-  +Linea()
-  +ExisteNumero(byte): bool
-  +ExistePersona(Persona): bool
+      class Alineacion{
+      -lineas: List~Linea~
 
-  ~~property~~
+      }
 
-  +CantidadJugadores()byte
-  +CantidadPosiciones():byte
-  +QuimicaJugadores():byte
+      class PosicionFormacion{
+      -idFormacion
+      -numCamiseta: byte
+      -Futbolista
+      -nroAlineaccion
 
-class Posicion
-  + Posicion()
-  + Posicion(string)
 
-class PosicionEnCancha
-  -numeroCamiseta: byte? 
-  -futbolista: Futbolista
-  -posicion: Posicion
-  
-  +EsNumero(byte): bool
-  +EsPersona(Persona): bool
-  ~~property~~
-  +QuimicaJugador(): byte
-  +HayJugador(): bool
 
-class Futbolista
-  -persona: Persona
-  -tipoFutbolista: TipoFutbolista
-  -equipo: Equipo
-  -posicion: List~Posicion~
-
-  +Futbolista()
-  +MismaNacionalidad(Futbolista):bool
-  +MismaLiga(Futbolista): bool
-  +JuegaDe(Posicion): bool
-
+      }
 
 
 ```
