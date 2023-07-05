@@ -12,8 +12,6 @@ public class PosicionFormacion
 {
     public int IdFormacion { get; set; }
     public byte NumCamiseta { get; set; }
-
-
     public byte NroAlineacion { get; set; }
     public float DerechaSuperior { get; set; }
     public float IzquierdaSuperior { get; set; }
@@ -21,24 +19,21 @@ public class PosicionFormacion
     public float DerechaInferior {get; set;}
     public float Izquierdainferior {get; set;}
 
-
     [NotMapped]
     public PointF Coordenada { get; set; }
 
     [NotMapped]
     public RectangleF Area { get; set; }
 
-    public PosicionFormacion(int Idformacion, byte numCamiseta, Futbolista futbolista, byte nroAlineacion, float derechaSuperior, float izquierdaSuperior, float derechaInferior, float izquierdaInferior)
+    public PosicionFormacion(int Idformacion, byte numCamiseta,  byte nroAlineacion, float derechaSuperior, float izquierdaSuperior, float derechaInferior, float izquierdaInferior)
     {
         IdFormacion = Idformacion;
         NumCamiseta = numCamiseta;
         NroAlineacion = nroAlineacion;
-        Futbolista = futbolista;
         DerechaSuperior = derechaSuperior;
         IzquierdaSuperior = izquierdaSuperior;
         DerechaInferior = derechaInferior;
         Izquierdainferior = izquierdaInferior;
-    
         InstanciarArea();
     }
 

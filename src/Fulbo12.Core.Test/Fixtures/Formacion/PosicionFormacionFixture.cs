@@ -7,7 +7,7 @@ public class PosicionFormacionFixture
 {
     public PosicionFormacion  DFD {get; set;}
     public PosicionFormacion DFC {get; set;}
-    public FutbolFixture Futbol {get; set;} 
+    public FutbolistaFixture Futbol {get; set;} 
     private  PosicionesFixture _Posiciones => Futbol.Posiciones;
     public  byte  nroDFD {get; set;} 
     public byte nroDFC {get; set;} 
@@ -15,7 +15,7 @@ public class PosicionFormacionFixture
     {
         Futbol = new FutbolFixture(); 
 
-        DFD = new PosicionFormacion(_Posiciones.DefensorDerecho, 4, );
+        DFD = new PosicionFormacion()
         {
             nroDFD = 4;
         }
