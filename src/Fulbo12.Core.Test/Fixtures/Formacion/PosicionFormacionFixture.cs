@@ -5,25 +5,38 @@ namespace Fulbo12.Core.Formacion.Fixtures;
 
 public class PosicionFormacionFixture
 {
-    public PosicionFormacion  DFD {get; set;}
-    public PosicionFormacion DFC {get; set;}
-    public FutbolistaFixture Futbol {get; set;} 
-    private  PosicionesFixture _Posiciones => Futbol.Posiciones;
-    public  byte  nroDFD {get; set;} 
-    public byte nroDFC {get; set;} 
-    public PosicionFormacionFixture ()
+    public PosicionFormacion DFD { get; set; }
+    public PosicionFormacion DFC { get; set; }
+    public FutbolFixture Futbol { get; set; }
+    private FutbolistasFixture _Futbolista => Futbol.Futbolistas;
+    public PosicionFormacionFixture()
     {
-        Futbol = new FutbolFixture(); 
 
         DFD = new PosicionFormacion()
         {
-            nroDFD = 4;
-        }
+            IdFormacion = 1,
+            Futbolista = Futbol.Futbolistas.FFAMarceloWeigandt,
+            NumCamiseta = 4,
+            NroAlineacion = 1,
+            DerechaSuperior = 1000_000,
+            IzquierdaSuperior = 10_10,
+            DerechaInferior = 0_0,
+            Izquierdainferior = 10_0
 
-        DFC = new PosicionFormacion(_Posiciones.DefensorCentral);
+        };
+
+        DFC = new PosicionFormacion()
         {
-            nroDFC = 2;
-        }
+            IdFormacion = 1,
+            Futbolista = Futbol.Futbolistas.FMarcosRojo,
+            NumCamiseta = 2,
+            NroAlineacion = 1,
+            DerechaSuperior = 1000_000,
+            IzquierdaSuperior = 20_20,
+            DerechaInferior = 0 - 5,
+            Izquierdainferior = 10_0,
+
+        };
     }
 
 

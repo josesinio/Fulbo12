@@ -11,13 +11,13 @@ namespace Fulbo12.Core.Formacion;
 public class PosicionFormacion
 {
     public int IdFormacion { get; set; }
+    public Futbolista Futbolista { get; set; }
     public byte NumCamiseta { get; set; }
     public byte NroAlineacion { get; set; }
     public float DerechaSuperior { get; set; }
     public float IzquierdaSuperior { get; set; }
-
-    public float DerechaInferior {get; set;}
-    public float Izquierdainferior {get; set;}
+    public float DerechaInferior { get; set; }
+    public float Izquierdainferior { get; set; }
 
     [NotMapped]
     public PointF Coordenada { get; set; }
@@ -25,9 +25,10 @@ public class PosicionFormacion
     [NotMapped]
     public RectangleF Area { get; set; }
 
-    public PosicionFormacion(int Idformacion, byte numCamiseta,  byte nroAlineacion, float derechaSuperior, float izquierdaSuperior, float derechaInferior, float izquierdaInferior)
+    public PosicionFormacion(int Idformacion, Futbolista futbolista, byte numCamiseta, byte nroAlineacion, float derechaSuperior, float izquierdaSuperior, float derechaInferior, float izquierdaInferior)
     {
         IdFormacion = Idformacion;
+        Futbolista = futbolista;
         NumCamiseta = numCamiseta;
         NroAlineacion = nroAlineacion;
         DerechaSuperior = derechaSuperior;
@@ -38,7 +39,7 @@ public class PosicionFormacion
     }
 
     private void InstanciarArea()
-        =>  Area = new RectangleF(DerechaSuperior,IzquierdaSuperior, DerechaInferior, Izquierdainferior);
+        => Area = new RectangleF(DerechaSuperior, IzquierdaSuperior, DerechaInferior, Izquierdainferior);
 
     public PointF PuntoMedio
         => new PointF(Area.Location.X - DerechaInferior + IzquierdaSuperior / 2, Area.Location.Y - DerechaInferior + IzquierdaSuperior / 2);

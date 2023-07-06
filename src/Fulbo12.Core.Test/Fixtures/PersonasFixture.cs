@@ -32,16 +32,26 @@ public class PersonasFixture
     public PersonaJuego PFrancoArmani { get; set; }
     public PersonaJuego PEzequielCenturion { get; set; }
     public PersonaJuego PFrancoPetroli { get; set; }
+    public PersonaJuego PFMarceloWeigandt { get; private set; }
 
     public PersonasFixture(PaisesFixtures paisesFixtures)
     {
+        PFMarceloWeigandt = new PersonaJuego()
+        {
+            Nombre = "Marcelo",
+            Apellido = "Weigandt",
+            Pais = paisesFixtures.Argentina,
+            Altura = 1.75f,
+            Peso = 75
+        };
+
         PLioMessi = new PersonaJuego()
         {
             Nombre = "Lionel",
             Apellido = "Messi",
             Pais = paisesFixtures.Argentina,
-            Altura = 1.7f,
-            Peso = 67
+            Altura = 1.68f,
+            Peso = 81
         };
 
         PFrankFabra = new PersonaJuego()

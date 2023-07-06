@@ -34,8 +34,16 @@ public class FutbolistasFixture
     public Futbolista FFrancoArmani { get; private set; }
     public Futbolista FEzequielCenturion { get; private set; }
     public Futbolista FFrancoPetroli { get; private set; }
+    public Futbolista FFAMarceloWeigandt { get; private set; }
     public FutbolistasFixture(PersonasFixture pef, EquiposFixture ef, PosicionesFixture pof, TiposFutbolistasFixture tff)
     {
+        FFAMarceloWeigandt = new Futbolista()
+        {
+            Persona = pef.PFMarceloWeigandt,
+            Equipo = ef.BocaJrs,
+            Posiciones = new List<Posicion>() { pof.DefensorDerecho },
+            Tipofutbolista = tff.Libertadores
+        };
         FLioMessi = new Futbolista()
         {
             Persona = pef.PLioMessi,
