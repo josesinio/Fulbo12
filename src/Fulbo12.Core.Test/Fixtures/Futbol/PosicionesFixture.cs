@@ -14,6 +14,7 @@ public class PosicionesFixture
     public Posicion MedioCentro { get; set; }
     public Posicion MediocampistaIzquierdo { get; set; }
     public Posicion DelanteroCentral { get; set; }
+    public Posicion LateralDerecho { get; set; }
 
     public PosicionesFixture()
     {
@@ -28,5 +29,6 @@ public class PosicionesFixture
         MedioCentro = new Posicion(_Id, "Medio Centro", "MC");
         MediocampistaIzquierdo = new Posicion(_Id, "Mediocampista Izquierdo", "MI");
         DelanteroCentral = new Posicion(_Id, "Delantero Central", "DC");
+        LateralDerecho = new Posicion(_Id, "Lateral Derecho", "LD");
     }
 }

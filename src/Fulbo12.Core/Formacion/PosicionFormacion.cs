@@ -38,9 +38,13 @@ public class PosicionFormacion
         InstanciarArea();
     }
 
+    public PosicionFormacion()
+    {
+    }
+
     private void InstanciarArea()
         => Area = new RectangleF(DerechaSuperior, IzquierdaSuperior, DerechaInferior, Izquierdainferior);
 
     public PointF PuntoMedio
-        => new PointF(Area.Location.X - DerechaInferior + IzquierdaSuperior / 2, Area.Location.Y - DerechaInferior + IzquierdaSuperior / 2);
+        => new PointF(Area.Location.X - DerechaInferior + IzquierdaSuperior / 2, Area.Location.Y - DerechaInferior + DerechaSuperior / 2);
 }

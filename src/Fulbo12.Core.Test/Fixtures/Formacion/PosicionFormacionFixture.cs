@@ -1,27 +1,26 @@
-using Fulbo12.Core.Formacion;
 using Fulbo12.Core.Futbol.Fixtures;
 
 namespace Fulbo12.Core.Formacion.Fixtures;
 
 public class PosicionFormacionFixture
 {
-    public PosicionFormacion DFD { get; set; }
+    public PosicionFormacion LD { get; set; }
     public PosicionFormacion DFC { get; set; }
-    public FutbolFixture Futbol { get; set; }
-    private FutbolistasFixture _Futbolista => Futbol.Futbolistas;
+    private FutbolFixture Futbol { get; set; }
+    private FutbolistasFixture _Futbolistas => Futbol.Futbolistas;
     public PosicionFormacionFixture()
     {
 
-        DFD = new PosicionFormacion()
+        LD = new PosicionFormacion()
         {
             IdFormacion = 1,
             Futbolista = Futbol.Futbolistas.FFAMarceloWeigandt,
             NumCamiseta = 4,
             NroAlineacion = 1,
             DerechaSuperior = 1000_000,
-            IzquierdaSuperior = 10_10,
-            DerechaInferior = 0_0,
-            Izquierdainferior = 10_0
+            IzquierdaSuperior = 10.1f,
+            DerechaInferior = 0,
+            Izquierdainferior = 10
 
         };
 
