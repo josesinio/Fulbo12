@@ -5,7 +5,8 @@ namespace Fulbo12.Core.Formacion.Fixtures;
 public class PosicionFormacionFixture
 {
     public PosicionFormacion LD { get; set; }
-    public PosicionFormacion DFC { get; set; }
+    public PosicionFormacion DfcMR442 { get; set; }
+    public PosicionFormacion DfcMR433 {get; set; }
     private FutbolFixture Futbol { get; set; }
     private FutbolistasFixture _Futbolistas => Futbol.Futbolistas;
     public PosicionFormacionFixture()
@@ -18,22 +19,35 @@ public class PosicionFormacionFixture
             NumCamiseta = 4,
             NroAlineacion = 1,
             DerechaSuperior = 1000_000,
-            IzquierdaSuperior = 10.1f,
-            DerechaInferior = 0,
-            Izquierdainferior = 10
+            SuperiorX = 10.1f,
+            Ancho = 0,
+            Largo = 10
 
         };
 
-        DFC = new PosicionFormacion()
+        DfcMR442 = new PosicionFormacion()
         {
             IdFormacion = 1,
             Futbolista = Futbol.Futbolistas.FMarcosRojo,
             NumCamiseta = 2,
             NroAlineacion = 1,
             DerechaSuperior = 1000_000,
-            IzquierdaSuperior = 20_20,
-            DerechaInferior = 0 - 5,
-            Izquierdainferior = 10_0,
+            SuperiorX = 20_20,
+            Ancho = 0 - 5,
+            Largo = 10_0,
+
+        };
+
+        DfcMR433 = new PosicionFormacion()
+        {
+            IdFormacion = 1,
+            Futbolista = Futbol.Futbolistas.FMarcosRojo,
+            NumCamiseta = 2,
+            NroAlineacion = 1,
+            DerechaSuperior = ,
+            SuperiorX = 20_20,
+            Ancho = 0 - 5,
+            Largo = 10_0,
 
         };
     }

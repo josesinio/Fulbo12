@@ -14,10 +14,10 @@ public class PosicionFormacion
     public Futbolista Futbolista { get; set; }
     public byte NumCamiseta { get; set; }
     public byte NroAlineacion { get; set; }
-    public float DerechaSuperior { get; set; }
-    public float IzquierdaSuperior { get; set; }
-    public float DerechaInferior { get; set; }
-    public float Izquierdainferior { get; set; }
+    public float SuperiorY { get; set; }
+    public float SuperiorX { get; set; }
+    public float Ancho { get; set; }
+    public float Largo { get; set; }
     public static readonly float LargoCancha = 110f;
     public static readonly float AnchoCancha = 75f;
 
@@ -27,16 +27,16 @@ public class PosicionFormacion
     [NotMapped]
     public RectangleF Area { get; set; }
 
-    public PosicionFormacion(int Idformacion, Futbolista futbolista, byte numCamiseta, byte nroAlineacion, float derechaSuperior, float izquierdaSuperior, float derechaInferior, float izquierdaInferior)
+    public PosicionFormacion(int Idformacion, Futbolista futbolista, byte numCamiseta, byte nroAlineacion, float superiorX, float superiorY, float ancho, float largo)
     {
         IdFormacion = Idformacion;
         Futbolista = futbolista;
         NumCamiseta = numCamiseta;
         NroAlineacion = nroAlineacion;
-        DerechaSuperior = derechaSuperior;
-        IzquierdaSuperior = izquierdaSuperior;
-        DerechaInferior = derechaInferior;
-        Izquierdainferior = izquierdaInferior;
+        SuperiorX = superiorX;
+        SuperiorY = superiorY;
+        Ancho = ancho;
+        Largo = largo;
         InstanciarArea();
     }
 
@@ -45,8 +45,8 @@ public class PosicionFormacion
     }
 
     private void InstanciarArea()
-        => Area = new RectangleF(DerechaSuperior, IzquierdaSuperior, DerechaInferior, Izquierdainferior);
+        => Area = new RectangleF( SuperiorX,SuperiorY, Ancho, Largo);
 
     public PointF PuntoMedio
-        => new PointF(Area.Location.X - DerechaInferior + IzquierdaSuperior / 2, Area.Location.Y - DerechaInferior + DerechaSuperior / 2);
+        => new PointF(Area.Location.X - Ancho + SuperiorX / 2, Area.Location.Y - Ancho + DerechaSuperior / 2);
 }
