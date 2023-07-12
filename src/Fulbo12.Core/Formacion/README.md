@@ -13,30 +13,30 @@
         +AgregarPocision(PosicionEnCancha) :FormacionBuilder
         +AgregarPocision(Futbolista,Posicion,byte?) :FormacionBuilder
         +AgregarArquero(PosicionEnCancha) :FormacionBuilder
-        +AgregarArquero(Futbolista,byte?) :FormacionBuilder
+        +AgregarArquero(Futbolista,byte?) :FormacionBui lder
       }
 
-        FormacionBuilder -- Formacion
-        FormacionBuilder -- Linea
-        Linea --o Formacion
-        PosicionEnCancha --o Formacion
-        PosicionEnCancha --o  Linea
-        Posicion --* PosicionEnCancha
-        PosicionEnCancha -- Futbolista
-        Posicion -- Futbolista
-        PosicionFormacion --* Formacion
-        Alineacion --o Formacion
+        FormacionBuilder --"1" Formacion
+        FormacionBuilder --"1" Linea
+        Linea --o"*" Formacion
+        PosicionEnCancha "*"--o Formacion
+        PosicionEnCancha "*"--o  Linea
+        Posicion "1"--* PosicionEnCancha
+        PosicionEnCancha --"1" Futbolista
+        Posicion "*"-- Futbolista
+        PosicionFormacion "*"--* Formacion
+        Alineacion "1"--o Formacion
 
 
       class Formacion{
         -linias: List~Linia~
-        -CantidadTitulares: byte
+        -CantidadTitulares : byte
         -CantidadSuplentes: byte
         -CantidadReserva: byte
         -CantidadTotalJugadores: byte
         -arquero: PosicionEnCancha
-        -_jugadorYaExiste: string readOnly
-        -_posicionLlenas: string readOnly
+        -_jugadorYaExiste: string 
+        -_posicionLlenas: string 
         -suplentes: List~PosicionEnCancha~
         -reserva: List~PosicionEnCancha~
         -Alineacion
@@ -98,15 +98,21 @@
       }
 
       class PosicionFormacion{
-      -idFormacion
+      -idFormacion: int
       -numCamiseta: byte
-      -Futbolista
-      -nroAlineaccion
-
+      -Futbolista Futbolista 
+      -nroAlineaccion: byte
+      -DerechaSuperior: float 
+      -IzquierdaSuperior: float 
+      -DerechaInferior float
+      -Izquierdainferior float 
+      -static  float LargoCancha = 110f;
+      -static  float AnchoCancha = 75f;
+      
 
 
       }
-
+ 
 
 ```
 
