@@ -18,6 +18,8 @@ public class PosicionFormacion
     public float IzquierdaSuperior { get; set; }
     public float DerechaInferior { get; set; }
     public float Izquierdainferior { get; set; }
+    public static readonly float LargoCancha = 110f;
+    public static readonly float AnchoCancha = 75f;
 
     [NotMapped]
     public PointF Coordenada { get; set; }
