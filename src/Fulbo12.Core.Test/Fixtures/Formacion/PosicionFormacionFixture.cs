@@ -18,7 +18,7 @@ public class PosicionFormacionFixture
             Futbolista = Futbol.Futbolistas.FFAMarceloWeigandt,
             NumCamiseta = 4,
             NroAlineacion = 1,
-            DerechaSuperior = 1000_000,
+            SuperiorY = 1000_000,
             SuperiorX = 10.1f,
             Ancho = 0,
             Largo = 10
@@ -31,10 +31,10 @@ public class PosicionFormacionFixture
             Futbolista = Futbol.Futbolistas.FMarcosRojo,
             NumCamiseta = 2,
             NroAlineacion = 1,
-            DerechaSuperior = 1000_000,
-            SuperiorX = 20_20,
-            Ancho = 0 - 5,
-            Largo = 10_0,
+            SuperiorY = PosicionFormacion.LargoCancha/4,
+            SuperiorX = PosicionFormacion.AnchoCancha/2,
+            Ancho = PosicionFormacion.AnchoCancha/4,
+            Largo = PosicionFormacion.LargoCancha/4,
 
         };
 
@@ -43,11 +43,11 @@ public class PosicionFormacionFixture
             IdFormacion = 1,
             Futbolista = Futbol.Futbolistas.FMarcosRojo,
             NumCamiseta = 2,
-            NroAlineacion = 1,
-            DerechaSuperior = ,
-            SuperiorX = 20_20,
-            Ancho = 0 - 5,
-            Largo = 10_0,
+            NroAlineacion = 2,
+            SuperiorY = PosicionFormacion.LargoCancha/4,
+            SuperiorX = PosicionFormacion.AnchoCancha/2,
+            Ancho = PosicionFormacion.AnchoCancha/4,
+            Largo = PosicionFormacion.LargoCancha/4,
 
         };
     }

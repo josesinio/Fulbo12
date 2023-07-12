@@ -48,5 +48,5 @@ public class PosicionFormacion
         => Area = new RectangleF( SuperiorX,SuperiorY, Ancho, Largo);
 
     public PointF PuntoMedio
-        => new PointF(Area.Location.X - Ancho + SuperiorX / 2, Area.Location.Y - Ancho + DerechaSuperior / 2);
+        => new PointF(Area.Location.X - Ancho + SuperiorX / 2, Area.Location.Y - Ancho + SuperiorY / 2);
 }
