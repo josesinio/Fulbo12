@@ -22,18 +22,18 @@ public abstract class RepoGenerico<T> : IRepo<T> where T : class
             {
                 query = query.Include(propiedad);
             }
-        
+
         if (orden != null)
             query = orden(query);
-        
+
         return query;
     }
-    public virtual IEnumerable<T> Obtener(  Expression<Func<T, bool>>? filtro = null,
+    public virtual IEnumerable<T> Obtener(Expression<Func<T, bool>>? filtro = null,
                                             Func<IQueryable<T>, IOrderedQueryable<T>>? orden = null,
                                             string? includes = null)
         => ConfigurarConsulta(filtro, orden, includes)
                 .ToList();
-    public virtual async Task<IEnumerable<T>> ObtenerAsync( Expression<Func<T, bool>>? filtro = null,
+    public virtual async Task<IEnumerable<T>> ObtenerAsync(Expression<Func<T, bool>>? filtro = null,
                                                             Func<IQueryable<T>, IOrderedQueryable<T>>? orden = null,
                                                             string? includes = null)
         => await ConfigurarConsulta(filtro, orden, includes)
