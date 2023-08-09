@@ -4,18 +4,19 @@ namespace Fulbo12.Core.Formacion.Fixtures;
 
 public class PosicionFormacionFixture
 {
+    private readonly FutbolistasFixture _futbolistas;
     public PosicionFormacion LDMW442 { get; set; }
     public PosicionFormacion DfcMR442 { get; set; }
     public PosicionFormacion DfcMR433 { get; set; }
-    private FutbolFixture Futbol { get; set; }
-    private FutbolistasFixture _Futbolistas => Futbol.Futbolistas;
-    public PosicionFormacionFixture(FutbolistasFixture fut)
+
+    public PosicionFormacionFixture(FutbolistasFixture futbolistas)
     {
+        _futbolistas = futbolistas;
 
         LDMW442 = new PosicionFormacion()
         {
             IdFormacion = 1,
-            Futbolista = fut.FFAMarceloWeigandt,
+            Futbolista = _futbolistas.FFAMarceloWeigandt,
             NumCamiseta = 4,
             NroAlineacion = 1,
             SuperiorY = PosicionFormacion.LargoCancha,
@@ -28,7 +29,7 @@ public class PosicionFormacionFixture
         DfcMR442 = new PosicionFormacion()
         {
             IdFormacion = 1,
-            Futbolista = fut.FMarcosRojo,
+            Futbolista = _futbolistas.FMarcosRojo,
             NumCamiseta = 2,
             NroAlineacion = 1,
             SuperiorY = PosicionFormacion.LargoCancha / 4,
@@ -41,7 +42,7 @@ public class PosicionFormacionFixture
         DfcMR433 = new PosicionFormacion()
         {
             IdFormacion = 2,
-            Futbolista = fut.FMarcosRojo,
+            Futbolista = _futbolistas.FMarcosRojo,
             NumCamiseta = 2,
             NroAlineacion = 2,
             SuperiorY = PosicionFormacion.LargoCancha / 4,
@@ -50,6 +51,10 @@ public class PosicionFormacionFixture
             Largo = PosicionFormacion.LargoCancha / 4,
 
         };
+    }
+    public PosicionFormacionFixture() : this(new FutbolFixture().Futbolistas)
+    {
+        
     }
 
 

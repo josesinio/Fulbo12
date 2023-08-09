@@ -17,5 +17,6 @@ public class FutbolFixture
         Posiciones = new PosicionesFixture();
         TipoFutbolistas = new TiposFutbolistasFixture();
         Futbolistas = new FutbolistasFixture(Core.Personas, Equipos, Posiciones, TipoFutbolistas);
+        
     }
 }

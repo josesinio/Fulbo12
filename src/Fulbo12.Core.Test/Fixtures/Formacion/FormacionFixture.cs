@@ -1,3 +1,6 @@
+
+using Fulbo12.Core.Futbol.Fixtures;
+
 namespace Fulbo12.Core.Formacion.Fixtures;
 public class FormacionFixture
 {
@@ -6,10 +9,12 @@ public class FormacionFixture
     public LineaFixture Lineas { get; set; }
     private FormacionBuilder _fb;
     private PosicionEnCancha _Arquero => PosicionesEnCancha.POVacante;
-    public FormacionFixture()
+
+
+    public FormacionFixture(FutbolistasFixture futbolista)
     {
         PosicionesEnCancha = new PosicionEnCanchaFixture();
-        PosicionFormacion = new PosicionFormacionFixture();
+        PosicionFormacion = new PosicionFormacionFixture(futbolista);
         Lineas = new LineaFixture(PosicionesEnCancha);
         _fb = new FormacionBuilder(_Arquero);
     }
