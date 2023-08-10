@@ -5,15 +5,15 @@ namespace Fulbo12.Core.Test.Formacion;
 [Trait("Category", "Formacion")]
 public class PosicionFormacionTest : IClassFixture<FutbolistasFixture>
 {
-    FutbolistasFixture Futbolista { get; set; }
+    FutbolistasFixture PosicionFormacion { get; set; }
 
-    public PosicionFormacionTest(FutbolistasFixture fubolistas)
-    => Futbolista = fubolistas;
+    public PosicionFormacionTest(FutbolistasFixture posicionFormacion)
+    => PosicionFormacion = posicionFormacion;
 
     [Fact]
     public void PuntosMedios()
     {
-        var pmMR442 = new PointF(FutbolistasFixture..SuperiorX, PosicionFormacion.DfcMR442.SuperiorY);
+        var pmMR442 = new PointF(PosicionFormacion.DfcMR442.SuperiorX, PosicionFormacion.DfcMR442.SuperiorY);
 
         var PM = new PointF(PosicionFormacion.DfcMR433.SuperiorX, PosicionFormacion.DfcMR433.SuperiorY);
 
