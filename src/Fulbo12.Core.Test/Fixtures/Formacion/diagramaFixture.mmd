@@ -1,0 +1,22 @@
+flowchart LR
+
+Futbo.Fixture ==> Equipo.Fixture 
+Futbo.Fixture ==> Futbolista.Fixture
+Futbo.Fixture ==> Ligas.Fixture
+Futbo.Fixture ==> Posiciones.Fixture
+Futbo.Fixture ==> Tipo.Futbolista.Fixture
+Futbo.Fixture ==>  Core.Fixture
+
+
+
+
+
+Formacion.Fixture-.->Posicion.Cancha.Fixture;
+Formacion.Fixture-.->Posicion.Formacion.Fixture;
+Formacion.Fixture-.->Linea.Fixture;
+Formacion.Fixture-.->Formacion.Builder,
+
+Posicion.Fixture ==>Usuario.Fixture
+
+Core.Fixture-.->Paises.Fixture;
+Core.Fixture-.->Personas.Fixture;
