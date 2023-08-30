@@ -1,3 +1,6 @@
+## Dependencia entre Fixtures
+
+```mermaid
 flowchart LR
 
 Futbo.Fixture ==> Equipo.Fixture 
@@ -26,3 +29,5 @@ Posicion.Formacion.Fixture-.->Futbolista.Fixture;
 Futbolista.Fixture-.->Posiciones.Fixture;
 Futbolista.Fixture-.-> Tipo.Futbolista.Fixture;
 Linea.Fixture-.->Posicion.Cancha.Fixture;;
+
+```
