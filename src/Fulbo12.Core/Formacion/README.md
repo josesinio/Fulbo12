@@ -1,3 +1,123 @@
+## Diagrama de clases "Formación"
+
+```mermaid
+    classDiagram
+    direction LR
+
+      class FormacionBuilder{
+        -formacion: Formacion
+        -linia: Linia
+        +IniciarFormacion() :FormacionBuilder
+        +AgregarLinia() :FormacionBuilder
+        +AgregarLinia(Linia) :FormacionBuilder
+        +AgregarPocision(PosicionEnCancha) :FormacionBuilder
+        +AgregarPocision(Futbolista,Posicion,byte?) :FormacionBuilder
+        +AgregarArquero(PosicionEnCancha) :FormacionBuilder
+        +AgregarArquero(Futbolista,byte?) :FormacionBui lder
+      }
+
+        FormacionBuilder --"1" Formacion
+        FormacionBuilder --"1" Linea
+        Linea --o"*" Formacion
+        PosicionEnCancha "*"--o Formacion
+        PosicionEnCancha "*"--o  Linea
+        Posicion "1"--* PosicionEnCancha
+        PosicionEnCancha --"1" Futbolista
+        Posicion "*"-- Futbolista
+        PosicionFormacion "*"--* Formacion
+        Alineacion "1"--o Formacion
+
+
+      class Formacion{
+        -linias: List~Linia~
+        -CantidadTitulares : byte
+        -CantidadSuplentes: byte
+        -CantidadReserva: byte
+        -CantidadTotalJugadores: byte
+        -arquero: PosicionEnCancha
+        -_jugadorYaExiste: string 
+        -_posicionLlenas: string 
+        -suplentes: List~PosicionEnCancha~
+        -reserva: List~PosicionEnCancha~
+        -Alineacion
+        -id
+        +Formacion()
+        +ExisteNumero(byte) bool
+        +ToTring() string
+        +ExistePersona(Persona) bool
+        +AgregarSuplente(PosicionEnCancha) void
+        +AgregarReserva(PosicionEnCancha) void
+        -AgregarSiSePuedeEn(List~PosicionEnCancha~,PosicionEnCancha,byte) void
+        ~~property~~
+        +QuimicaJugadores() byte
+        -posicionPorLinia() IEnumerable~byte~
+        +NumeroDisponible() byte
+      }
+
+      class Linea{
+        -numeroDeLinia: byte
+        -posiciones: PosicionEnCancha
+        +Linea()
+        +ExisteNumero(byte): bool
+        +ExistePersona(Persona): bool
+        ~~property~~
+        +CantidadJugadores()byte
+        +CantidadPosiciones():byte
+        +QuimicaJugadores():byte
+      }
+
+      class Posicion{
+        +Posicion()
+        +Posicion(string)
+      }
+
+      class PosicionEnCancha{
+        -numeroCamiseta: byte
+        -futbolista: Futbolista
+        -posicion: Posicion
+        +EsNumero(byte) bool
+        +EsPersona(Persona) bool
+        ~~property~~
+        +QuimicaJugador() byte
+        +HayJugador() bool
+      }
+      class Futbolista{
+        -persona: Persona
+        -tipoFutbolista: TipoFutbolista
+        -equipo: Equipo
+        -posicion: List~Posicion~
+        +Futbolista()
+        +MismaNacionalidad(Futbolista):bool
+        +MismaLiga(Futbolista): bool
+        +JuegaDe(Posicion): bool
+       }
+
+      class Alineacion{
+      -lineas: List~Linea~
+
+      }
+
+      class PosicionFormacion{
+      -idFormacion: int
+      -numCamiseta: byte
+      -Futbolista Futbolista 
+      -nroAlineaccion: byte
+      -DerechaSuperior: float 
+      -IzquierdaSuperior: float 
+      -DerechaInferior float
+      -Izquierdainferior float 
+      -static  float LargoCancha = 110f;
+      -static  float AnchoCancha = 75f;
+      
+
+
+      }
+ 
+
+```
+
+
+
 ## Código Formación
 
 ![Diagrama de Clases de Posesiones](Formacion%20Clases.png)
