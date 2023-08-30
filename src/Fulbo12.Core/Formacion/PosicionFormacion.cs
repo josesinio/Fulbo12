@@ -10,14 +10,14 @@ namespace Fulbo12.Core.Formacion;
 /// </summary>
 public class PosicionFormacion
 {
-    public int IdFormacion { get; set; }
-    public Futbolista Futbolista { get; set; }
-    public byte NumCamiseta { get; set; }
-    public byte NroAlineacion { get; set; }
-    public float SuperiorY { get; set; }
-    public float SuperiorX { get; set; }
-    public float Ancho { get; set; }
-    public float Largo { get; set; }
+    public required int IdFormacion { get; set; } = 0;
+    public required Futbolista Futbolista { get; set; }
+    public required byte NumCamiseta { get; set; }
+    public required byte NroAlineacion { get; set; }
+    public required float SuperiorY { get; set; }
+    public required float SuperiorX { get; set; }
+    public required float Ancho { get; set; }
+    public required float Largo { get; set; }
     public static readonly float LargoCancha = 110f;
     public static readonly float AnchoCancha = 75f;
 

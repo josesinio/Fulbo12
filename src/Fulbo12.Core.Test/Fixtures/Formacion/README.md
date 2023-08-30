@@ -20,14 +20,16 @@ Formacion.Fixture-.->Formacion.Builder,
 
 Posicion.Fixture ==>Usuario.Fixture
 
-Core.Fixture-.->Paises.Fixture;
-Core.Fixture-.->Personas.Fixture;
+Core.Fixture==>Paises.Fixture;
+Core.Fixture==>Personas.Fixture;
 
 Equipo.Fixture-.->Ligas.Fixture;
 Posicion.Fixture-.->Futbolista.Fixture;
-Posicion.Formacion.Fixture-.->Futbolista.Fixture;
+Posicion.Formacion.Fixture==>Futbolista.Fixture;
 Futbolista.Fixture-.->Posiciones.Fixture;
 Futbolista.Fixture-.-> Tipo.Futbolista.Fixture;
+Futbolista.Fixture-.->Personas.Fixture;
+Futbolista.Fixture-.->Equipo.Fixture;
 Linea.Fixture-.->Posicion.Cancha.Fixture;;
 
 ```

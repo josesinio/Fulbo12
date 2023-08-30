@@ -1,14 +1,14 @@
 using System.Drawing;
-using Fulbo12.Core.Futbol.Fixtures;
+using Fulbo12.Core.Formacion.Fixtures;
 
 namespace Fulbo12.Core.Test.Formacion;
 [Trait("Category", "Formacion")]
-public class PosicionFormacionTest : IClassFixture<FutbolistasFixture>
+public class PosicionFormacionTest : IClassFixture<ClassFixturePosicionFormacion>
 {
-    FutbolistasFixture PosicionFormacion { get; set; }
+    PosicionFormacionFixture PosicionFormacion { get; set; }
 
-    public PosicionFormacionTest(FutbolistasFixture posicionFormacion)
-    => PosicionFormacion = posicionFormacion;
+    public PosicionFormacionTest(ClassFixturePosicionFormacion posicionFormacion)
+    => PosicionFormacion = posicionFormacion.PosicionFormacionFixture;
 
     [Fact]
     public void PuntosMedios()
