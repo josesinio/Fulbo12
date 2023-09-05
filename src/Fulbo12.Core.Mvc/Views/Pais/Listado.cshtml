@@ -2,6 +2,7 @@
 @model IEnumerable<Pais>
 @{
     ViewData["Title"] = "Pais";
+    const string servicioUrl = @"https://flagcdn.com/";
 }
 
 @if (Model.Count() != 0)
@@ -23,16 +24,14 @@
         <tbody class="" >
             @foreach (var pais in Model)
             {
-                @* <button class="btn btn-primary" type="button" onclick="BanderaListado('bandera', '@pais.Abreviatura')">
-                Previsualización <i class="bi bi-eye"></i>
-                </button> *@
                 <tr>
-                    <th scope="row"><img id='@String.Concat("bandera", pais.Abreviatura)' class="img-fluid img-listado" alt=""> <a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
-                    @* <td><a asp-action="Detalle" asp-route-Id="@pais.Id" id="abreviatura">@pais.Abreviatura</a></td> *@
+                    @{
+                        var banderaUrl = String.Concat(servicioUrl, pais.Abreviatura, ".svg");
+                    }
+                    <th scope="row"><img id='@String.Concat("bandera", pais.Abreviatura)' class="img-fluid img-listado" alt='@String.Concat("Bandera de ", pais.Nombre)' src="@banderaUrl"> <a asp-action="Detalle" asp-route-Id="@pais.Id">@pais.Nombre</a></th>
                     <td><a asp-action="Detalle" asp-route-Id="@pais.Id">Detalle <i class="bi bi-eyeglasses" style="color: black;"></i></a></td>
                     <td><a asp-action="Modificar" asp-route-Id="@pais.Id">Modificar <i class="bi bi-pencil-fill" style="color: black;"></i></a></td>                    
                 </tr>
-                @* BanderaListado('@String.Concat("bandera", pais.Abreviatura)', @pais.Abreviatura); *@
             }
         </tbody>
     </table>
