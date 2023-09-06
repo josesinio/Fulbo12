@@ -50,7 +50,7 @@ public class PersonasFixture
             Nombre = "Lionel",
             Apellido = "Messi",
             Pais = paisesFixtures.Argentina,
-            Altura = 1.68f,
+            Altura = 1.7f,
             Peso = 81
         };
 
