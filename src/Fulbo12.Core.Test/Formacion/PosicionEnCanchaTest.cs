@@ -1,11 +1,12 @@
 using Fulbo12.Core.Formacion.Fixtures;
+using Fulbo12.Core.Test.Formacion;
 
 namespace Fulbo12.Core.Formacion.Test;
 [Trait("Category", "Formacion")]
-public class PosicionEnCanchaTest : IClassFixture<FormacionFixture>
+public class PosicionEnCanchaTest : IClassFixture<ClassFixtureFormacion>
 {
     PosicionEnCanchaFixture PosicionesEnCancha { get; set; }
-    public PosicionEnCanchaTest(FormacionFixture formacionFixture)
+    public PosicionEnCanchaTest(ClassFixtureFormacion formacionFixture)
         => PosicionesEnCancha = formacionFixture.PosicionesEnCancha;
 
     [Theory]

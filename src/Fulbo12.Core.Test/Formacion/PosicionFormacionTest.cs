@@ -14,11 +14,8 @@ public class PosicionFormacionTest : IClassFixture<ClassFixturePosicionFormacion
     public void PuntosMedios()
     {
         var pmMR442 = new PointF(PosicionFormacion.DfcMR442.SuperiorX, PosicionFormacion.DfcMR442.SuperiorY);
-
         var PM = new PointF(PosicionFormacion.DfcMR433.SuperiorX, PosicionFormacion.DfcMR433.SuperiorY);
 
         Assert.Equal(pmMR442, PM);
-
-
     }
 }

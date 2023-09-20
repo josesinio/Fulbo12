@@ -1,14 +1,15 @@
 using Fulbo12.Core.Formacion.Fixtures;
+using Fulbo12.Core.Test.Formacion;
 
 namespace Fulbo12.Core.Formacion.Test;
 [Trait("Category", "Formacion")]
-public class LineaTest : IClassFixture<FormacionFixture>
+public class LineaTest : IClassFixture<ClassFixtureFormacion>
 {
     static readonly byte _NroInexistente = 250;
     static readonly byte _CantidadJugadoresDefensa = 2;
     static readonly byte _CantidadPosicionesDefensa = 4;
     public LineaFixture Lineas { get; set; }
-    public LineaTest(FormacionFixture formacion)
+    public LineaTest(ClassFixtureFormacion formacion)
     {
         Lineas = formacion.Lineas;
     }

@@ -1,17 +1,18 @@
 using Fulbo12.Core.Formacion.Fixtures;
 using Fulbo12.Core.Futbol.Fixtures;
+using Fulbo12.Core.Test.Formacion;
 
 namespace Fulbo12.Core.Formacion.Test;
 [Trait("Category", "Formacion")]
-public class FormacionTest : IClassFixture<FormacionFixture>
+public class FormacionTest : IClassFixture<ClassFixtureFormacion>
 {
     public Formacion Formacion { get; set; }
     private FutbolistasFixture FixFutbolistas { get; set; }
     public PosicionEnCanchaFixture PecF { get; set; }
     static readonly string _nombre = "4 - 1 - 4 - 1";
-    public FormacionTest(FormacionFixture fixture)
+    public FormacionTest(ClassFixtureFormacion fixture) 
     {
-        Formacion = fixture.CrearFormacion();
+        Formacion = fixture.FormacionFixture.CrearFormacion();
         FixFutbolistas = fixture.PosicionesEnCancha.Futbol.Futbolistas;
         PecF = fixture.PosicionesEnCancha;
     }
@@ -44,6 +45,7 @@ public class FormacionTest : IClassFixture<FormacionFixture>
     public void NoSePuedeAgregarRepetido()
     {
         var msj = Assert.Throws<InvalidOperationException>
+        //TODO - Ver el fixture para crear un solo de la cruz y no varios para comparar por referencia
             (() => Formacion.AgregarSuplente(PecF.PecNicoDeLaCruz));
         Assert.Equal(Formacion._jugadorYaExiste, msj.Message);
 

@@ -15,14 +15,13 @@ public class PosicionEnCanchaFixture
     public PosicionEnCancha PecEmanuelMammana { get; set; }
     public PosicionEnCancha PecMiltonCasco { get; set; }
     public PosicionEnCancha PecEliasGomez { get; set; }
-    public FutbolFixture Futbol { get; set; }
+    public FutbolFixture Futbol { get; }
     private PosicionesFixture _Posiciones => Futbol.Posiciones;
     public const byte NroFabra = 3;
     public const byte nroRojo = 6;
-    public PosicionEnCanchaFixture()
+    public PosicionEnCanchaFixture(FutbolFixture futbol)
     {
-        Futbol = new FutbolFixture();
-
+        Futbol = futbol;
         DFDVacante = new PosicionEnCancha(_Posiciones.DefensorDerecho)
         {
             NumeroCamiseta = 4
@@ -81,5 +80,9 @@ public class PosicionEnCanchaFixture
         };
 
         POVacante = new PosicionEnCancha(_Posiciones.Arquero);
+    }
+    public PosicionEnCanchaFixture() : this(new FutbolFixture())
+    {
+
     }
 }

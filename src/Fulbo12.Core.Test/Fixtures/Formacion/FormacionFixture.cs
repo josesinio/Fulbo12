@@ -9,12 +9,10 @@ public class FormacionFixture
     public LineaFixture Lineas { get; set; }
     private FormacionBuilder _fb;
     private PosicionEnCancha _Arquero => PosicionesEnCancha.POVacante;
-
-
-    public FormacionFixture(FutbolistasFixture futbolista)
-    {
-        PosicionesEnCancha = new PosicionEnCanchaFixture();
-        PosicionFormacion = new PosicionFormacionFixture(futbolista);
+    public FormacionFixture(FutbolFixture futbol)
+    {        
+        PosicionesEnCancha = new PosicionEnCanchaFixture(futbol);
+        PosicionFormacion = new PosicionFormacionFixture(futbol.Futbolistas);
         Lineas = new LineaFixture(PosicionesEnCancha);
         _fb = new FormacionBuilder(_Arquero);
     }
