@@ -18,4 +18,13 @@ public class PosicionFormacionTest : IClassFixture<ClassFixturePosicionFormacion
 
         Assert.Equal(pmMR442, PM);
     }
+
+    [Fact]
+    public void PuntoNoMedio()
+    {
+        var puntoMedioEF = new PointF(PosicionFormacion.MCEF433.SuperiorX, PosicionFormacion.MCEF433.SuperiorY);
+        var puntoMedioMR = new PointF(PosicionFormacion.DfcMR442.SuperiorX, PosicionFormacion.DfcMR442.SuperiorY);
+
+        Assert.NotEqual(puntoMedioEF, puntoMedioMR);
+    }
 }

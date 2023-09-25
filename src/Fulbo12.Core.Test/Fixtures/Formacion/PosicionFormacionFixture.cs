@@ -8,10 +8,23 @@ public class PosicionFormacionFixture
     public PosicionFormacion LDMW442 { get; set; }
     public PosicionFormacion DfcMR442 { get; set; }
     public PosicionFormacion DfcMR433 { get; set; }
+    public PosicionFormacion MCEF433 { get; set; }
 
     public PosicionFormacionFixture(FutbolistasFixture futbolistas)
     {
         Futbolistas = futbolistas;
+
+        MCEF433 = new PosicionFormacion()
+        {
+            IdFormacion = 2,
+            Futbolista = Futbolistas.FEnzoFernandez,
+            NumCamiseta = 5,
+            NroAlineacion = 2,
+            SuperiorY = PosicionFormacion.LargoCancha / 1 - 5,
+            SuperiorX = PosicionFormacion.AnchoCancha / 1 - 5,
+            Ancho = PosicionFormacion.AnchoCancha / 3,
+            Largo = PosicionFormacion.LargoCancha / 3,
+        };
 
         LDMW442 = new PosicionFormacion()
         {
