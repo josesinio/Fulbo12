@@ -64,10 +64,13 @@ public class PosicionFormacionFixture
             Largo = PosicionFormacion.LargoCancha / 4,
 
         };
+        DfcMR433.InstanciarArea();
     }
     public PosicionFormacionFixture() : this(new FutbolFixture().Futbolistas)
     {
 
     }
+    
+
 
 }
