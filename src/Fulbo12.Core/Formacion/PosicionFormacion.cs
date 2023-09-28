@@ -45,10 +45,10 @@ public class PosicionFormacion
     }
 
     public void InstanciarArea()
-        => Area = new RectangleF( SuperiorX,SuperiorY, Ancho, Largo);
+        => Area = new RectangleF(SuperiorX, SuperiorY, Ancho, Largo);
 
     public PointF PuntoMedio
-        => new PointF(Area.Location.X - Ancho + SuperiorX / 2, Area.Location.Y - Ancho + SuperiorY / 2);
+        => new(Area.Location.X - Ancho + SuperiorX / 2, Area.Location.Y - Ancho + SuperiorY / 2);
     public bool TieneA(float x, float y) => Area.Contains(x, y);
     public bool TieneA(PointF punto) => Area.Contains(punto);
 }
