@@ -5,15 +5,15 @@
     direction LR
 
       class FormacionBuilder{
-        -formacion: Formacion
-        -linia: Linia
+        -Formacion: Formacion
+        -Linea: Linea
         +IniciarFormacion() :FormacionBuilder
-        +AgregarLinia() :FormacionBuilder
-        +AgregarLinia(Linia) :FormacionBuilder
+        +AgregarLinea() :FormacionBuilder
+        +AgregarLinea(Linia) :FormacionBuilder
         +AgregarPocision(PosicionEnCancha) :FormacionBuilder
         +AgregarPocision(Futbolista,Posicion,byte?) :FormacionBuilder
         +AgregarArquero(PosicionEnCancha) :FormacionBuilder
-        +AgregarArquero(Futbolista,byte?) :FormacionBui lder
+        +AgregarArquero(Futbolista,byte?) :FormacionBuilder
       }
 
         FormacionBuilder --"1" Formacion
@@ -29,18 +29,18 @@
 
 
       class Formacion{
-        -linias: List~Linia~
+        -Lineas: List~Linea~
         -CantidadTitulares : byte
         -CantidadSuplentes: byte
         -CantidadReserva: byte
         -CantidadTotalJugadores: byte
-        -arquero: PosicionEnCancha
-        -_jugadorYaExiste: string 
-        -_posicionLlenas: string 
-        -suplentes: List~PosicionEnCancha~
-        -reserva: List~PosicionEnCancha~
+        -Arquero: PosicionEnCancha
+        -_JugadorYaExiste: string 
+        -_PosicionLlenas: string 
+        -Suplentes: List~PosicionEnCancha~
+        -Reserva: List~PosicionEnCancha~
         -Alineacion
-        -id
+        -Id
         +Formacion()
         +ExisteNumero(byte) bool
         +ToTring() string
@@ -50,13 +50,13 @@
         -AgregarSiSePuedeEn(List~PosicionEnCancha~,PosicionEnCancha,byte) void
         ~~property~~
         +QuimicaJugadores() byte
-        -posicionPorLinia() IEnumerable~byte~
+        -PosicionPorLinea() IEnumerable~byte~
         +NumeroDisponible() byte
       }
 
       class Linea{
-        -numeroDeLinia: byte
-        -posiciones: PosicionEnCancha
+        -NumeroDeLinea: byte
+        -Posiciones: PosicionEnCancha
         +Linea()
         +ExisteNumero(byte): bool
         +ExistePersona(Persona): bool
@@ -72,9 +72,9 @@
       }
 
       class PosicionEnCancha{
-        -numeroCamiseta: byte
-        -futbolista: Futbolista
-        -posicion: Posicion
+        -NumeroCamiseta: byte
+        -Futbolista: Futbolista
+        -Posicion: Posicion
         +EsNumero(byte) bool
         +EsPersona(Persona) bool
         ~~property~~
@@ -82,10 +82,10 @@
         +HayJugador() bool
       }
       class Futbolista{
-        -persona: Persona
-        -tipoFutbolista: TipoFutbolista
-        -equipo: Equipo
-        -posicion: List~Posicion~
+        -Persona: Persona
+        -TipoFutbolista: TipoFutbolista
+        -Equipo: Equipo
+        -Posicion: List~Posicion~
         +Futbolista()
         +MismaNacionalidad(Futbolista):bool
         +MismaLiga(Futbolista): bool
@@ -93,21 +93,21 @@
        }
 
       class Alineacion{
-      -lineas: List~Linea~
+      -Lineas: List~Linea~
 
       }
 
       class PosicionFormacion{
-      -idFormacion: int
-      -numCamiseta: byte
+      -IdFormacion: int
+      -NumCamiseta: byte
       -Futbolista Futbolista 
-      -nroAlineaccion: byte
+      -NroAlineaccion: byte
       -DerechaSuperior: float 
       -IzquierdaSuperior: float 
       -DerechaInferior float
       -Izquierdainferior float 
-      -static  float LargoCancha = 110f;
-      -static  float AnchoCancha = 75f;
+      -Static  float LargoCancha = 110f;
+      -Static  float AnchoCancha = 75f;
       
 
 
