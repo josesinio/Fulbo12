@@ -108,7 +108,8 @@
       -Izquierdainferior float 
       -Static  float LargoCancha = 110f;
       -Static  float AnchoCancha = 75f;
-      
+      +TieneA( float,  float) : bool
+      +TieneA(PointF) : bool 
 
 
       }
